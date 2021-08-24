@@ -1,0 +1,27 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fa4a18;
+}
+
+.nav-logo img {
+  width: 130px;
+  height: auto;
+  margin-left: 40px;
+}
+
+.nav-nonuser {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+  width: 200px;
+  justify-content: space-between;
+}
+
+.nav-user {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+  width: 200px;
+  justify-content: space-between;
+}
