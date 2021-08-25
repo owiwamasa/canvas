@@ -33,7 +33,7 @@ const NavBar = () => {
         :
         <div className='nav-user'>
           {user.isArtist &&
-            <NavLink className='nav-artist-link' to={`/artist/${user.id}`} exact={true} activeClassName='active'>
+            <NavLink className='nav-artist-link' to={`/artist-page/${user.id}`} exact={true} activeClassName='active'>
             My Artist Page
             </NavLink>
           }

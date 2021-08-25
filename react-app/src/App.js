@@ -27,12 +27,12 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
         <Route path='/' exact={true} >
           <HomePage />
         </Route>
+        <ProtectedRoute path='/users/:userId' exact={true} >
+          <User />
+        </ProtectedRoute>
         <Route path='/artist-page/:artistPageId' exact={true} >
           <ArtistPage/>
         </Route>
