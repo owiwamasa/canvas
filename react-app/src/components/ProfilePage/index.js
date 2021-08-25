@@ -5,6 +5,7 @@ import { allArtistPages } from '../../store/artistPage';
 import { deleteArtist } from '../../store/artistPage';
 import { editUser } from '../../store/session';
 import CreateArtistPageModal from '../CreateArtistPageModal';
+import './ProfilePage.css'
 
 function ProfilePage() {
   const [user, setUser] = useState({});
@@ -13,7 +14,6 @@ function ProfilePage() {
   const artistPages = useSelector(state => state.artistPageReducer.artistPages)
   const artistPageId = artistPages?.filter(page => page?.userId === currentUser?.id)[0]?.id
   const dispatch = useDispatch()
-  console.log('PROFILE', currentUser.isArtist)
 
   useEffect(() => {
     if (!userId) {
@@ -49,9 +49,9 @@ function ProfilePage() {
         <strong>Username</strong> {user.username}
       </div>
       {!currentUser.isArtist ?
-        <CreateArtistPageModal/>
+        <CreateArtistPageModal />
         :
-          <button onClick={deleteArtistPage}>Delete My Artist Page</button>
+          <button className='delete-artistPage' onClick={deleteArtistPage}>Delete Artist Page</button>
       }
     </div>
   );

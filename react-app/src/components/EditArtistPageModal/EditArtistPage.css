@@ -1,0 +1,13 @@
+.edit-artistPage {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  right: 50px;
+  top: 140px;
+  color: white;
+}
+
+.fa-edit {
+  font-size: 40px;
+  color: white;
+}
