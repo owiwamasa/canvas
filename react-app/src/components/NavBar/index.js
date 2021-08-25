@@ -1,12 +1,20 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { login } from '../../store/session';
 import LogoutButton from '../auth/LogoutButton';
+import LoginFormModal from '../LoginFormModal';
+import SignUpFormModal from '../SignUpFormModal';
 
 import './NavBar.css'
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user);
+  const dispatch = useDispatch();
+
+  const demoLogin = () => {
+    dispatch(login('Demo@email.com', 'password'));
+  }
 
   return (
     <nav>
@@ -18,30 +26,21 @@ const NavBar = () => {
         </div>
         {!user ?
         <div className='nav-nonuser'>
-          <div>
-            <NavLink to='/login' exact={true} activeClassName='active'>
-              Login
-            </NavLink>
-          </div>
-          <div>
-            <NavLink to='/sign-up' exact={true} activeClassName='active'>
-              Sign Up
-            </NavLink>
-          </div>
-          <div>
-            <button>Demo</button>
-          </div>
+            <LoginFormModal />
+            <SignUpFormModal />
+            <button className='nav-demo' onClick={demoLogin}>Demo</button>
         </div>
         :
         <div className='nav-user'>
-          <div>
-            <NavLink to='/users/:id' exact={true} activeClassName='active'>
-              Profile Page
+          {user.isArtist &&
+            <NavLink className='nav-artist-link' to={`/artist/${user.id}`} exact={true} activeClassName='active'>
+            My Artist Page
             </NavLink>
-          </div>
-          <div>
+          }
+            <NavLink className='nav-profile-link' to={`/users/${user.id}`} exact={true} activeClassName='active'>
+              {`${user.username}'s Page`}
+            </NavLink>
             <LogoutButton />
-          </div>
         </div>
       }
       </div>

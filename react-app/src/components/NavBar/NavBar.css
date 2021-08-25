@@ -2,26 +2,83 @@
   display: flex;
   justify-content: space-between;
   background-color: #fa4a18;
+  height: 90px;
+  align-items: center;
 }
 
 .nav-logo img {
   width: 130px;
   height: auto;
-  margin-left: 40px;
+  margin-left: 50px;
 }
 
 .nav-nonuser {
   display: flex;
   align-items: center;
-  margin-right: 40px;
-  width: 200px;
-  justify-content: space-between;
+  margin-right: 50px;
+  font-family: "Hind", sans-serif;
+  text-transform: uppercase;
 }
 
 .nav-user {
   display: flex;
   align-items: center;
-  margin-right: 40px;
-  width: 200px;
-  justify-content: space-between;
+  margin-right: 50px;
+  font-family: "Hind", sans-serif;
+  text-transform: uppercase;
+}
+
+.nav-artist-link,
+.nav-profile-link {
+  font-size: 16px;
+  font-family: "Hind", sans-serif;
+  font-weight: bolder;
+  color: white;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 6px 0;
+}
+
+.nav-artist-link:hover,
+.nav-profile-link:hover,
+.nav-login:hover,
+.nav-signup:hover {
+  border-bottom: 2px solid white;
+}
+
+.nav-login,
+.nav-signup {
+  font-size: 16px;
+  font-family: "Hind", sans-serif;
+  font-weight: bolder;
+  color: white;
+  text-decoration: none;
+  white-space: nowrap;
+  border: none;
+  background-color: transparent;
+  text-transform: uppercase;
+  padding: 1px 0;
+}
+
+.nav-profile-link,
+.nav-signup {
+  margin-left: 50px;
+}
+
+.nav-demo {
+  border: 2px solid white;
+  border-radius: 30px;
+  padding: 10px 25px;
+  background-color: transparent;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: "Hind", sans-serif;
+  font-weight: bolder;
+  margin-left: 40px;
+}
+
+.nav-demo:hover {
+  color: #fa4a18;
+  background-color: white;
 }

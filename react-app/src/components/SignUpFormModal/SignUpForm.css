@@ -1,0 +1,9 @@
+.signup-div {
+  display: flex;
+  width: 420px;
+  justify-content: space-between;
+}
+
+.signup-3 input {
+  width: 390px;
+}
