@@ -19,5 +19,7 @@ class ArtistPage(db.Model):
             'id': self.id,
             'biography': self.biography,
             'headerImage': self.headerImage,
-            'userId': self.userId
+            'userId': self.userId,
+            'username': self.user.username,
+            'profilePic': self.user.profilePic
         }
