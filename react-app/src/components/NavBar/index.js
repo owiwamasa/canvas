@@ -21,7 +21,7 @@ const NavBar = () => {
 
   useEffect(() => {
     dispatch(allArtistPages())
-  }, [dispatch])
+  }, [dispatch, user])
 
   return (
     <nav>
