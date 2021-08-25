@@ -1,9 +1,12 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import LoginForm from "./LoginForm";
 import { Modal } from '../../context/Modal'
+import { setErrors } from '../../store/errors';
 
 function LoginFormModal() {
     const [showModal, setShowModal] = useState(false)
+    const dispatch = useDispatch()
 
     return (
         <>
@@ -11,6 +14,7 @@ function LoginFormModal() {
             {showModal && (
                 <Modal onClose={() => {
                     setShowModal(false)
+                    dispatch(setErrors([]))
                     }}>
                     <LoginForm />
                 </Modal>

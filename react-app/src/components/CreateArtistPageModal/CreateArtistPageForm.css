@@ -1,0 +1,16 @@
+.form-input textarea {
+  font-family: "Hind", sans-serif;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  padding: 10px 15px;
+  border: none;
+  width: 350px;
+  height: 150px;
+  resize: none;
+  margin-top: -20px;
+}
+
+.headerImageURL input {
+  width: 350px;
+}

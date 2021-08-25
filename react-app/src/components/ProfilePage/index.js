@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import CreateArtistPageModal from '../CreateArtistPageModal';
 
-function User() {
+function ProfilePage() {
   const [user, setUser] = useState({});
   const { userId }  = useParams();
 
@@ -21,17 +22,18 @@ function User() {
   }
 
   return (
-    <ul>
-      <li>
+    <div>
+      <div>
         <strong>User Id</strong> {userId}
-      </li>
-      <li>
+      </div>
+      <div>
         <strong>Username</strong> {user.username}
-      </li>
-      <li>
+      </div>
+      <div>
         <strong>Email</strong> {user.email}
-      </li>
-    </ul>
+      </div>
+      <CreateArtistPageModal/>
+    </div>
   );
 }
-export default User;
+export default ProfilePage;

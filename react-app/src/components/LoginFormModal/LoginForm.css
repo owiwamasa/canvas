@@ -45,3 +45,18 @@ form {
   border: 3px solid white;
   color: #ffc328;
 }
+
+.form-errors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.form-errors div {
+  margin-bottom: 10px;
+  font-family: "Hind", sans-serif;
+  font-weight: bolder;
+  font-size: 18px;
+  color: red;
+}

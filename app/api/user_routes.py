@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
-from flask_login import login_required
-from app.models import User
+from flask_login import login_required, current_user
+from app.models import User, db
 
 user_routes = Blueprint('users', __name__)
 
@@ -17,3 +17,20 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+@user_routes.route('/<int:id>', methods=['PUT'])
+def user_edit(id):
+    user = User.query.get(id)
+    if user.isArtist:
+        user.isArtist = False
+        db.session.commit()
+
+        users = User.query.order_by(User.id).all()
+        return {'users': [user.to_dict() for user in users]}
+    else:
+        user.isArtist = True
+        db.session.commit()
+
+        users = User.query.order_by(User.id).all()
+        return {'users': [user.to_dict() for user in users]}

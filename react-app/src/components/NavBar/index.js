@@ -40,7 +40,7 @@ const NavBar = () => {
         :
         <div className='nav-user'>
           {user.isArtist &&
-            <NavLink className='nav-artist-link' to={`/artist-page/${myArtistPageId}`} exact={true} activeClassName='active'>
+            <NavLink className='nav-artist-link' to={`/artist-pages/${myArtistPageId}`} exact={true} activeClassName='active'>
             My Artist Page
             </NavLink>
           }

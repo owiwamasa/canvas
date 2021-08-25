@@ -16,11 +16,13 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password, profilePic));
-      if (data) {
-        setErrors(data)
-      }
+
+    const data = await dispatch(signUp(username, email, password, profilePic));
+
+    if (data && (password !== repeatPassword)) {
+      setErrors(data.concat(['Passwords do not match']))
+    } else if (data){
+      setErrors(data)
     }
   };
 
@@ -90,7 +92,6 @@ const SignUpForm = () => {
               placeholder='Confirm Password'
               onChange={updateRepeatPassword}
               value={repeatPassword}
-              required={true}
             ></input>
           </div>
         </div>
@@ -102,7 +103,6 @@ const SignUpForm = () => {
           placeholder='Profile Picture URL'
           onChange={(e) => setProfilePic(e.target.value)}
           value={profilePic}
-          required={true}
         ></input>
       </div>
       <button className='form-submit' type='submit'>Sign Up</button>
