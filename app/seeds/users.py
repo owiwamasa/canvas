@@ -8,7 +8,7 @@ def seed_users():
     banksy = User(
         username='Banksy', email='Banksy@email.com', password='password', isArtist=True, profilePic='https://sothebys-com.brightspotcdn.com/74/98/f4ad821547df928be67569aa1202/gettyimages-501590118.jpg')
     basquiat = User(
-        username='Basquiat', email='Basquiat@email.com', password='password', isArtist=True, profilePic='https://stillwerise.uk/wp-content/uploads/2020/10/jmbmain.jpg')
+        username='Basquiat', email='Basquiat@email.com', password='password', isArtist=True, profilePic='https://upload.wikimedia.org/wikipedia/en/5/51/Jean-Michel_Basquiat_1982_by_Andy_Warhol.png')
     davidChoe = User(
         username='DavidChoe', email='DavidChoe@email.com', password='password', isArtist=True, profilePic='https://i.ytimg.com/vi/XhKMn7tiIpc/maxresdefault.jpg')
     samFlores = User(
