@@ -45,7 +45,7 @@ const NavBar = () => {
             </NavLink>
           }
             <NavLink className='nav-profile-link' to={`/users/${user.id}`} exact={true} activeClassName='active'>
-              {`${user.username}'s Page`}
+              {user.username}
             </NavLink>
             <LogoutButton />
         </div>
