@@ -4,6 +4,7 @@ import { setErrors } from "./errors"
 const GET_ALL_ARTISTS = '/artistPages/GET_ALL_ARTISTS'
 const GET_ONE_ARTIST = '/artistPages/GET_ONE_ARTISTS'
 const CREATE_ARTIST = '/artistPages/CREATE_ARTIST'
+const DELETE_ARTIST = '/artistPages/DELETE_ARTIST'
 
 
 const getAllArtists = (artists) => {
@@ -18,6 +19,9 @@ const createArtist = (artist) => {
     return {type: CREATE_ARTIST, artist}
 }
 
+const deleteOneArtist = (artist) => {
+    return {type: DELETE_ARTIST, artist}
+}
 
 export const allArtistPages = () => async dispatch => {
     const res = await fetch('/api/artist-pages/')
@@ -52,6 +56,15 @@ export const createArtistPage = (artist) => async dispatch => {
     }
 }
 
+export const deleteArtist = (artistId) => async dispatch => {
+    const res = await fetch(`/api/artist-pages/${artistId}`, {
+        method: 'DELETE'
+    })
+    if (res.ok){
+        dispatch(deleteOneArtist(artistId))
+    }
+}
+
 
 const initialState = {artistPages: []}
 
@@ -64,6 +77,13 @@ const artistPageReducer = (state = initialState, action) => {
             return {...state, ...action.artist}
         case CREATE_ARTIST:
             return {...state, artistPages: [...state.artistPages, action.artist]}
+        case DELETE_ARTIST:
+            return {
+                ...state,
+                artistPages: [...state.artistPages.filter(
+                    artist => artist.id !== action.artistId
+                )]
+            }
         default:
             return state
     }

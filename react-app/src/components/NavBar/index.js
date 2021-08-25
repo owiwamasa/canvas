@@ -14,6 +14,7 @@ const NavBar = () => {
   const artistPages = useSelector(state => state.artistPageReducer.artistPages)
   const myArtistPageId = artistPages?.filter(page => page?.userId === user?.id)[0]?.id
   const dispatch = useDispatch();
+  console.log('NAVBAR', user.isArtist)
 
   const demoLogin = () => {
     dispatch(login('Demo@email.com', 'password'));
@@ -21,7 +22,7 @@ const NavBar = () => {
 
   useEffect(() => {
     dispatch(allArtistPages())
-  }, [dispatch, user])
+  }, [dispatch])
 
   return (
     <nav>

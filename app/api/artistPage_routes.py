@@ -36,3 +36,11 @@ def create_artist_page():
     return jsonify([f'{field.capitalize()}: {error}'
                 for field in errors
                 for error in errors[field]]),400
+
+
+@artistPage_routes.route('/<int:id>', methods=['DELETE'])
+def delete_artist_page(id):
+    artistPage = ArtistPage.query.get(id)
+    db.session.delete(artistPage)
+    db.session.commit()
+    return 'Deleted'

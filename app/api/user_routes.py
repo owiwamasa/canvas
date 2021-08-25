@@ -27,10 +27,10 @@ def user_edit(id):
         db.session.commit()
 
         users = User.query.order_by(User.id).all()
-        return {'users': [user.to_dict() for user in users]}
+        return user.to_dict()
     else:
         user.isArtist = True
         db.session.commit()
 
         users = User.query.order_by(User.id).all()
-        return {'users': [user.to_dict() for user in users]}
+        return user.to_dict()

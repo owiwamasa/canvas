@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { createArtistPage } from "../../store/artistPage"
-import { editUser } from "../../store/user"
+import { editUser } from "../../store/session"
 import Errors from "../Errors"
 import './CreateArtistPageForm.css'
 
