@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import User from './components/User';
+import User from './components/ProfilePage';
 import { authenticate } from './store/session';
 import ArtistPage from './components/ArtistPage';
 import HomePage from './components/HomePage';
@@ -33,7 +33,7 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <Route path='/artist-page/:artistPageId' exact={true} >
+        <Route path='/artist-pages/:artistPageId' exact={true} >
           <ArtistPage/>
         </Route>
       </Switch>

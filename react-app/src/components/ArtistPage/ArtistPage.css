@@ -1,0 +1,72 @@
+.artistPage {
+  background-color: rgb(244, 244, 244);
+}
+
+.artistPage-header-img {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.artistPage-header-img img {
+  width: 100%;
+  height: auto;
+}
+
+.artistPage-userCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  background-color: white;
+  border-radius: 50px;
+  padding: 60px 20px;
+  margin-left: 40px;
+  position: absolute;
+  top: 300px;
+}
+
+.artistPage-user-img {
+  width: 180px;
+  height: 180px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgb(0, 0, 0);
+  border: 8px solid #ffc328;
+}
+
+.artistPage-user-img img {
+  width: 180px;
+  height: auto;
+}
+
+.artistPage-username {
+  margin-bottom: 20px;
+  font-family: "Hind", sans-serif;
+  font-weight: bolder;
+  font-size: 35px;
+}
+
+.artistPage-bio {
+  margin-top: 40px;
+  width: 300px;
+}
+
+.artistPage-bio-title {
+  font-family: "Hind", sans-serif;
+  font-weight: bolder;
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+.artistPage-bio-detail {
+  font-family: "Hind", sans-serif;
+  font-size: 20px;
+  line-height: 1.5;
+}

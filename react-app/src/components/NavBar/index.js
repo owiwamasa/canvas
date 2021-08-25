@@ -1,20 +1,27 @@
 import { useSelector, useDispatch } from 'react-redux';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { login } from '../../store/session';
 import LogoutButton from '../auth/LogoutButton';
 import LoginFormModal from '../LoginFormModal';
 import SignUpFormModal from '../SignUpFormModal';
+import { allArtistPages } from '../../store/artistPage';
 
 import './NavBar.css'
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user);
+  const artistPages = useSelector(state => state.artistPageReducer.artistPages)
+  const myArtistPageId = artistPages?.filter(page => page?.userId === user?.id)[0]?.id
   const dispatch = useDispatch();
 
   const demoLogin = () => {
     dispatch(login('Demo@email.com', 'password'));
   }
+
+  useEffect(() => {
+    dispatch(allArtistPages())
+  }, [dispatch, user])
 
   return (
     <nav>
@@ -33,12 +40,12 @@ const NavBar = () => {
         :
         <div className='nav-user'>
           {user.isArtist &&
-            <NavLink className='nav-artist-link' to={`/artist-page/${user.id}`} exact={true} activeClassName='active'>
+            <NavLink className='nav-artist-link' to={`/artist-pages/${myArtistPageId}`} exact={true} activeClassName='active'>
             My Artist Page
             </NavLink>
           }
             <NavLink className='nav-profile-link' to={`/users/${user.id}`} exact={true} activeClassName='active'>
-              {`${user.username}'s Page`}
+              {user.username}
             </NavLink>
             <LogoutButton />
         </div>
