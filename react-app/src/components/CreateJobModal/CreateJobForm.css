@@ -1,0 +1,23 @@
+.create-job {
+  font-family: "Hind", sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+  color: white;
+  background-color: #1154af;
+  border: 3px solid #1154af;
+  padding: 10px 30px;
+  border-radius: 25px;
+  margin-top: 20px;
+}
+
+.work-form-input {
+  margin-bottom: 20px;
+}
+
+.work-form-input input {
+  width: 350px;
+}
+
+.work-datepicker {
+  width: 350px;
+}
