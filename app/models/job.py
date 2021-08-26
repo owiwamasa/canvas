@@ -32,5 +32,6 @@ class Job(db.Model):
             'completed': self.completed,
             'completedArtwork': self.completedArtwork,
             'userId': self.userId,
-            'artistId': self.artistId
+            'artistId': self.artistId,
+            'createdAt': self.createdAt,
         }
