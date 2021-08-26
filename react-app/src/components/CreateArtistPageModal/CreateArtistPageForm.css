@@ -14,3 +14,14 @@
 .headerImageURL input {
   width: 350px;
 }
+
+.create-artistPage {
+  font-family: "Hind", sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+  color: white;
+  background-color: #1154af;
+  border: 3px solid #1154af;
+  padding: 10px 20px;
+  border-radius: 30px;
+}

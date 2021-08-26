@@ -1,34 +1,37 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory } from "react-router-dom"
-import { createArtistPage } from "../../store/artistPage"
-import { editUser } from "../../store/session"
+import { allArtistPages } from "../../store/artistPage"
+import { editArtist } from "../../store/artistPage"
 import Errors from "../Errors"
-import './CreateArtistPageForm.css'
+import './EditArtistPage.css'
 
-function CreateArtistPageForm({setShowModal}){
-    const [biography, setBiography] = useState('')
-    const [headerImage, setHeaderImage] = useState('')
+function EditArtistPageForm({setShowModal}){
     const user = useSelector(state => state.session.user);
+    const artistPages = useSelector(state => state.artistPageReducer.artistPages)
+    const artist = artistPages.filter(page => page.userId === user.id)[0]
+    const artistId = artist.id
+    const [biography, setBiography] = useState(artist.biography)
+    const [headerImage, setHeaderImage] = useState(artist.headerImage)
     const dispatch = useDispatch()
-    const history = useHistory()
 
-    const createArtist = async (e) => {
+    const editOneArtist = async (e) => {
         e.preventDefault()
 
         const artist = {biography, headerImage, userId: user.id}
-        const success = await dispatch(createArtistPage(artist))
+        const success = await dispatch(editArtist(artist, artistId))
         if (success) {
-            await dispatch(editUser(user))
             setShowModal(false)
-            history.push(`/artist-pages/${success.id}`)
         }
     }
 
+    useEffect(() => {
+        dispatch(allArtistPages())
+    }, [dispatch])
+
 
     return (
-        <form onSubmit={createArtist}>
-            <div className='form-header'>Create Artist Page</div>
+        <form onSubmit={editOneArtist}>
+            <div className='form-header'>Edit Artist Page</div>
             <Errors />
             <div className='form-input'>
                 <textarea
@@ -46,10 +49,10 @@ function CreateArtistPageForm({setShowModal}){
                 onChange={(e) => setHeaderImage(e.target.value)}
                 />
             </div>
-            <button className='form-submit' type='submit'>Create</button>
+            <button className='form-submit' type='submit'>Edit</button>
         </form>
     )
 }
 
 
-export default CreateArtistPageForm
+export default EditArtistPageForm
