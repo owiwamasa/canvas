@@ -7,6 +7,7 @@ import User from './components/ProfilePage';
 import { authenticate } from './store/session';
 import ArtistPage from './components/ArtistPage';
 import HomePage from './components/HomePage';
+import Footer from './components/Footer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -37,6 +38,7 @@ function App() {
           <ArtistPage/>
         </Route>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }

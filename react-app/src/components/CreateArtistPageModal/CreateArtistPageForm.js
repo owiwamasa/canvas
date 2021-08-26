@@ -18,7 +18,6 @@ function CreateArtistPageForm({setShowModal}){
 
         const artist = {biography, headerImage, userId: user.id}
         const success = await dispatch(createArtistPage(artist))
-        console.log(success)
         if (success) {
             await dispatch(editUser(user))
             setShowModal(false)
