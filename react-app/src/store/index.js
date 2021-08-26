@@ -4,12 +4,14 @@ import session from './session'
 import artistPageReducer from './artistPage';
 import errorsReducer from './errors';
 import usersReducer from './user';
+import postsReducer from './post';
 
 const rootReducer = combineReducers({
   session,
   artistPageReducer,
   errorsReducer,
-  usersReducer
+  usersReducer,
+  postsReducer
 });
 
 

@@ -40,11 +40,11 @@ const NavBar = () => {
         :
         <div className='nav-user'>
           {user.isArtist &&
-            <NavLink className='nav-artist-link' to={`/artist-pages/${myArtistPageId}`} exact={true} activeClassName='active'>
+            <NavLink className='nav-artist-link' to={`/artist-pages/${myArtistPageId}`}>
             My Artist Page
             </NavLink>
           }
-            <NavLink className='nav-profile-link' to={`/users/${user.id}`} exact={true} activeClassName='active'>
+            <NavLink className='nav-profile-link' to={`/users/${user.id}`}>
               {user.username}
             </NavLink>
             <LogoutButton />
