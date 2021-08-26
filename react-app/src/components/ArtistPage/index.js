@@ -18,7 +18,7 @@ function ArtistPage(){
 
     return(
         <div className='artistPage'>
-            {(user.id === artist.userId) &&
+            {(user?.id === artist?.userId) &&
                 <EditArtistPageModal/>
             }
             <div className='artistPage-header-img'>

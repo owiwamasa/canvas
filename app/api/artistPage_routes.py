@@ -44,3 +44,19 @@ def delete_artist_page(id):
     db.session.delete(artistPage)
     db.session.commit()
     return 'Deleted'
+
+
+@artistPage_routes.route('/<int:id>', methods=['PUT'])
+def edit_artist_page(id):
+    form = CreateArtistPageForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        artist = ArtistPage.query.get_or_404(id)
+        artist.biography = form.biography.data
+        artist.headerImage = form.headerImage.data
+        db.session.commit()
+        return artist.toDict()
+    errors = form.errors
+    return jsonify([f'{field.capitalize()}: {error}'
+                for field in errors
+                for error in errors[field]]),400
