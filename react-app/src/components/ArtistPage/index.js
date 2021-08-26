@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useParams } from "react-router-dom"
 import { oneArtistPage } from "../../store/artistPage"
 import EditArtistPageModal from "../EditArtistPageModal"
+import { getAllPosts } from "../../store/post"
 import './ArtistPage.css'
 
 
@@ -10,10 +11,14 @@ function ArtistPage(){
     const { artistPageId } = useParams()
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user);
-    const artist = useSelector((state) => state.artistPageReducer)
+    const artist = useSelector(state => state.artistPageReducer)
+    const posts = useSelector(state => state.postsReducer.posts)
+    const myPosts = posts.filter(post => post.artistPageId === +artistPageId)
+
 
     useEffect(() => {
         dispatch(oneArtistPage(artistPageId))
+        dispatch(getAllPosts())
     }, [dispatch, artistPageId])
 
     return(
@@ -36,7 +41,13 @@ function ArtistPage(){
                     <div className='artistPage-bio-detail'>{artist.biography}</div>
                 </div>
             </div>
-
+            <div className='artistPage-allPosts'>
+                {myPosts && myPosts.map(post => (
+                    <div key={post.id} className='artistPage-post'>
+                        <img src={post.image} alt='artist post'/>
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

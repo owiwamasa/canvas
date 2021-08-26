@@ -63,6 +63,7 @@
   font-weight: bolder;
   font-size: 25px;
   margin-bottom: 15px;
+  margin-top: 10px;
 }
 
 .artistPage-bio-detail {
@@ -93,4 +94,32 @@
   padding: 10px 30px;
   border-radius: 25px;
   margin-top: 20px;
+}
+
+.artistPage-allPosts {
+  display: flex;
+  flex-wrap: wrap;
+  width: 75%;
+  position: relative;
+  left: 510px;
+  justify-content: center;
+  margin-top: 100px;
+  padding-bottom: 50px;
+}
+
+.artistPage-post {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+  background-color: #f4f4f4;
+  margin-bottom: 50px;
+  margin-right: 50px;
+}
+
+.artistPage-post img {
+  height: auto;
+  width: 780px;
 }
