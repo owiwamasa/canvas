@@ -1,7 +1,7 @@
 import {useSelector} from 'react-redux'
 
 const Errors = () =>{
-    const errors = useSelector((state) => state.errorsReducer);
+    const errors = useSelector((state) => state.errorReducer);
 
     return(
         <div className='form-errors'>

@@ -17,7 +17,7 @@ export const getAllPosts = () => async dispatch => {
 
 const initialState = {'posts': []}
 
-const postsReducer = (state = initialState, action) => {
+const postReducer = (state = initialState, action) => {
     switch(action.type){
         case GET_ALL_POSTS:
             return {...state, ...action.posts}
@@ -27,4 +27,4 @@ const postsReducer = (state = initialState, action) => {
 }
 
 
-export default postsReducer
+export default postReducer

@@ -2,16 +2,18 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
 import artistPageReducer from './artistPage';
-import errorsReducer from './errors';
-import usersReducer from './user';
-import postsReducer from './post';
+import errorReducer from './errors';
+import userReducer from './user';
+import postReducer from './post';
+import jobReducer from './job';
 
 const rootReducer = combineReducers({
   session,
   artistPageReducer,
-  errorsReducer,
-  usersReducer,
-  postsReducer
+  errorReducer,
+  userReducer,
+  postReducer,
+  jobReducer
 });
 
 

@@ -7,7 +7,7 @@ export const setErrors = (errors) => {
 
 const initialState = []
 
-const errorsReducer = (state, action) => {
+const errorReducer = (state, action) => {
     switch(action.type){
         case SET_ERRORS:
             return action.errors
@@ -17,4 +17,4 @@ const errorsReducer = (state, action) => {
 }
 
 
-export default errorsReducer
+export default errorReducer

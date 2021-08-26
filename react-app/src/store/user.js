@@ -21,7 +21,7 @@
 // const initialState = {'users': []}
 
 
-// const usersReducer = (state = initialState, action) => {
+// const userReducer = (state = initialState, action) => {
 //     switch(action.type){
 //         case EDIT_USER:
 //             return { ...state, ...action.user }
@@ -31,4 +31,4 @@
 // }
 
 
-// export default usersReducer
+// export default userReducer

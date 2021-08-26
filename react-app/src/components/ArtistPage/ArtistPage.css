@@ -1,5 +1,6 @@
 .artistPage {
   background-color: rgb(244, 244, 244);
+  min-height: 900px;
 }
 
 .artistPage-header-img {
