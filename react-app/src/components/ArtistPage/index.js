@@ -19,7 +19,6 @@ function ArtistPage(){
     const hasJob = jobs.find(job => (job?.userId === user?.id) && (job?.artistId === artist?.userId))
     const posts = useSelector(state => state.postReducer.posts)
     const myPosts = posts.filter(post => post.artistPageId === +artistPageId)
-    console.log(hasJob)
 
     useEffect(() => {
         dispatch(allArtistPages())
@@ -43,7 +42,7 @@ function ArtistPage(){
                 {(artist?.userId !== user?.id && user) &&
                     <div className='artistPage-nonuser-btns'>
                         {hasJob ?
-                          <button className='artistPage-job-sent' disabled={true}>Work Request Sent <i class="fas fa-check"></i></button>
+                          <button className='artistPage-job-sent' disabled={true}>Work Request Sent <i className="fas fa-check"></i></button>
                         : <CreateJobModal artistId={artist?.userId} />}
                         <button className='artistPage-message'>Message</button>
                     </div>

@@ -20,10 +20,7 @@ function EditArtistPageForm({setShowModal}){
         const artist = {biography, headerImage, userId: user.id}
         const success = await dispatch(editArtist(artist, artistId))
         if (success) {
-            // console.log(success.biography)
             setBiography(success.biography)
-            // console.log(biography)
-            // console.log('ARTIST BIO', artist.biography)
             setHeaderImage(success.headerImage)
             setShowModal(false)
         }
