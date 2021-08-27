@@ -1,40 +1,27 @@
-import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import DatePicker from "react-datepicker";
 import Errors from "../Errors"
-import { createJob } from '../../store/job';
-import './CreateJobForm.css'
+import './EditJobForm.css'
 import "react-datepicker/dist/react-datepicker.css";
 
-function CreateJobForm({setShowModal, artistId}){
-    const [title, setTitle] = useState('')
-    const [description, setDescription] = useState('')
+function EditJobForm({setShowModal, job}){
+    const [title, setTitle] = useState(job?.title)
+    const [description, setDescription] = useState(job?.description)
     const [dueDate, setDueDate] = useState(new Date())
     const dispatch = useDispatch()
-    const user = useSelector(state => state.session.user);
 
-    const createOneJob = async (e) => {
+    const editOneJob = async (e) => {
         e.preventDefault()
-        const job = {title, description, dueDate, userId: user.id, artistId}
-        const success = await dispatch(createJob(job))
-        if (success) {
-            setShowModal(false)
-        }
+        // const editJob = {title, description, dueDate, userId: job.userId, artistId: job.artistId}
+        // const success = await dispatch(createJob(job))
+        // if (success) {
+        //     setShowModal(false)
+        // }
     }
-
-    // const useCreateJob = (createOneJob) => {
-    //     useEffect(() => {
-    //         let active = true
-    //         createOneJob().then(data => {
-    //             if (active) console.log(data)
-    //         })
-    //         return () => {active = false}
-    //     }, [createOneJob])
-    // }
-
     return(
-        <form onSubmit={createOneJob}>
-            <div className='form-header'>Create Work Request</div>
+        <form onSubmit={editOneJob}>
+            <div className='form-header'>Edit Work Request</div>
             <Errors />
             <div className='form-input work-form-input'>
                 <input
@@ -54,7 +41,6 @@ function CreateJobForm({setShowModal, artistId}){
             </div>
             <div className='form-input'>
                 <DatePicker className='work-datepicker'
-                value={dueDate}
                 dateFormat='MM/dd/yyyy'
                 selected={dueDate}
                 onChange={(date) => setDueDate(date)} />
@@ -65,4 +51,4 @@ function CreateJobForm({setShowModal, artistId}){
 }
 
 
-export default CreateJobForm
+export default EditJobForm

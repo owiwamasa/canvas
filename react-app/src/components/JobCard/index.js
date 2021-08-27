@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteJob } from '../../store/job'
-
+import EditJobModal from '../EditJobModal'
 import './JobCard.css'
 
 function JobCard({artist, otherUser, job}){
@@ -41,7 +41,8 @@ function JobCard({artist, otherUser, job}){
                 </div>
             </div>
             <div className='job-card-edit-btns'>
-                <button><i className="fas fa-edit"></i></button>
+                <EditJobModal job={job}/>
+                {/* <button><i className="fas fa-edit"></i></button> */}
                 <button onClick={(e) => deleteOneJob(e, job?.id)}><i className="fas fa-trash-alt"></i></button>
             </div>
         </div>
