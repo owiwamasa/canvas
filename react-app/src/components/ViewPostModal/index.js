@@ -14,7 +14,7 @@ function ViewPostModal({post, artist}) {
                 <Modal onClose={() => {
                     setShowModal(false)
                     }}>
-                    <ViewPost post={post} artist={artist}/>
+                    <ViewPost setShowModal={setShowModal} post={post} artist={artist}/>
                 </Modal>
             )}
         </>
