@@ -8,6 +8,7 @@
   padding: 30px;
   background-color: white;
   font-family: "Hind", sans-serif;
+  margin-bottom: 50px;
 }
 
 .job-card-header {
@@ -29,6 +30,7 @@
 .job-card-date {
   font-weight: bolder;
   font-size: 14px;
+  margin-right: 20px;
 }
 
 .job-card-header-right {
@@ -39,7 +41,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .job-card-header-center .fa-check-circle {
@@ -58,6 +60,26 @@
   font-size: 18px;
   margin-left: 10px;
   margin-right: 10px;
+}
+
+.job-card-accept-btn {
+  border: none;
+  font-size: 14px;
+  background-color: #1154af;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 20px;
+  margin-right: 15px;
+  margin-left: 35px;
+}
+
+.job-card-complete-btn {
+  border: none;
+  font-size: 14px;
+  background-color: #2acdb9;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 20px;
 }
 
 .job-card-profilePic {
@@ -113,4 +135,10 @@
 .job-card-name {
   margin-bottom: 5px;
   font-size: 14px;
+}
+
+.job-card-body {
+  min-width: 460px;
+  max-width: 460px;
+  line-height: 1.5;
 }

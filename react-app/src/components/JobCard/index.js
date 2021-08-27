@@ -1,18 +1,18 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { deleteJob } from '../../store/job'
 
 import './JobCard.css'
 
 function JobCard({artist, otherUser, job}){
     const dispatch = useDispatch()
-
+    const user = useSelector(state => state.session.user);
     const deleteOneJob = (e, id) => {
         e.preventDefault()
         dispatch(deleteJob(id))
     }
 
     return(
-    (job?.userId === otherUser?.id ?
+    (job?.userId === user?.id ?
         <div className='job-card' key={job.id}>
             <div className='job-card-header-center'>
                 <div className='job-card-dates'>
@@ -49,14 +49,14 @@ function JobCard({artist, otherUser, job}){
         <div className='job-card' key={job?.id}>
             <div className='job-card-header-center'>
                 <div className='job-card-dates'>
-                    <div className='job-card-date'>Deadline: {job?.dueDate}</div>
+                    <div className='job-card-date'>Deadline: {job?.dueDate.slice(0,17)}</div>
                 </div>
                 {job?.accepted ?
                 <div>Accepted <i className="far fa-check-circle"></i></div>
-            : <button>Accept</button>}
+            : <button className='job-card-accept-btn'>Accept</button>}
                 {job?.completed ?
                 <div>Completed <i className="far fa-check-circle"></i></div>
-            : <button>Complete</button>}
+            : <button className='job-card-complete-btn'>Complete</button>}
             </div>
             <div className='job-card-header'>
                 <div className='job-card-header-left'>
@@ -68,6 +68,7 @@ function JobCard({artist, otherUser, job}){
                         <div className='job-card-profilePic'>
                             <img src={otherUser?.profilePic} alt='profile'/>
                         </div>
+                    <div className='job-card-name'>Requested By:</div>
                     <div>{otherUser?.username}</div>
                 </div>
             </div>
