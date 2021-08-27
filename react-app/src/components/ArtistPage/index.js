@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import { allArtistPages } from "../../store/artistPage"
 import EditArtistPageModal from "../EditArtistPageModal"
 import { getAllPosts } from "../../store/post"
+import { allJobs } from "../../store/job"
 import CreateJobModal from "../CreateJobModal"
 import './ArtistPage.css'
 
@@ -14,12 +15,15 @@ function ArtistPage(){
     const user = useSelector(state => state.session.user);
     const artistPages = useSelector(state => state.artistPageReducer.artistPages)
     const artist = artistPages.find(page => page.id === +artistPageId)
+    const jobs = useSelector(state => state.jobReducer.jobs)
+    const hasJob = jobs.find(job => (job?.userId === user?.id) && (job?.artistId === artist?.userId))
     const posts = useSelector(state => state.postReducer.posts)
     const myPosts = posts.filter(post => post.artistPageId === +artistPageId)
 
     useEffect(() => {
         dispatch(allArtistPages())
         dispatch(getAllPosts())
+        dispatch(allJobs())
     }, [dispatch, artistPageId])
 
     return(
@@ -35,9 +39,11 @@ function ArtistPage(){
                 <div className='artistPage-user-img'>
                     <img src={artist?.profilePic} alt='profile'/>
                 </div>
-                {(artist?.userId !== user?.id) &&
+                {(artist?.userId !== user?.id && user) &&
                     <div className='artistPage-nonuser-btns'>
-                        <CreateJobModal artistId={artist?.userId} />
+                        {hasJob ?
+                          <button className='artistPage-job-sent' disabled={true}>Work Request Sent <i className="fas fa-check"></i></button>
+                        : <CreateJobModal artistId={artist?.userId} />}
                         <button className='artistPage-message'>Message</button>
                     </div>
                 }
