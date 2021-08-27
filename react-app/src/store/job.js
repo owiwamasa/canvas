@@ -72,6 +72,35 @@ export const editJob = (job, jobId) => async dispatch => {
     }
 }
 
+export const editAcceptJob = (job, jobId) => async dispatch => {
+    const res = await fetch(`/api/jobs/${jobId}/accepted`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(job)
+    })
+    if (res.ok) {
+        const job = await res.json()
+        dispatch(editOneJob(job))
+        return job
+    }
+}
+
+export const editCompleteJob = (job, jobId) => async dispatch => {
+    const res = await fetch(`/api/jobs/${jobId}/completed`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(job)
+    })
+    if (res.ok) {
+        const job = await res.json()
+        dispatch(editOneJob(job))
+        return job
+    } else {
+        const job = await res.json()
+        dispatch(setErrors(job))
+    }
+}
+
 
 const initialState = {jobs: []}
 

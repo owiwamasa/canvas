@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user
 from app.models import Job, User, db
-from app.forms import CreateJobForm
+from app.forms import CreateJobForm, CompleteJobForm
 
 
 job_routes = Blueprint('jobs', __name__)
@@ -41,6 +41,24 @@ def delete_job(id):
     db.session.commit()
     return 'Deleted'
 
+
+@job_routes.route('/<int:id>/accepted', methods=['PUT'])
+def accept_job(id):
+    job = Job.query.get_or_404(id)
+    job.accepted = True
+    db.session.commit()
+    return job.toDict()
+
+@job_routes.route('/<int:id>/completed', methods=['PUT'])
+def complete_job(id):
+    form = CompleteJobForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        job = Job.query.get_or_404(id)
+        job.completed = True
+        job.completedArtwork = form.completedArtwork.data
+        db.session.commit()
+        return job.toDict()
 
 @job_routes.route('/<int:id>', methods=['PUT'])
 def edit_job(id):

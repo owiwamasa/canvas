@@ -73,15 +73,6 @@
   margin-left: 35px;
 }
 
-.job-card-complete-btn {
-  border: none;
-  font-size: 14px;
-  background-color: #2acdb9;
-  color: white;
-  padding: 10px 30px;
-  border-radius: 20px;
-}
-
 .job-card-profilePic {
   display: flex;
   align-items: center;
@@ -141,4 +132,24 @@
   min-width: 460px;
   max-width: 460px;
   line-height: 1.5;
+}
+
+.job-card-artwork {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 250px;
+  height: 250px;
+}
+
+.job-card-artwork img {
+  width: auto;
+  height: 100%;
+}
+
+.job-card-artwork-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 80px;
 }

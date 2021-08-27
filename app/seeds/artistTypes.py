@@ -22,6 +22,7 @@ def seed_artistTypes():
     db.session.add(a7)
     db.session.add(a8)
     db.session.add(a9)
+    db.session.add(a10)
     db.session.commit()
 
 
