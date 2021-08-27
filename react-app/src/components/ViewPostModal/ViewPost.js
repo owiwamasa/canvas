@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { deletePost } from '../../store/post'
 import { editPost } from '../../store/post'
+import { setErrors } from '../../store/errors'
 import Errors from '../Errors'
 import './ViewPost.css'
 
@@ -26,6 +27,7 @@ function ViewPost({setShowModal, post, artist}){
         const success = await dispatch(editPost(editedPost, post.id))
         if (success) {
             setEditClicked(false)
+            dispatch(setErrors([]))
         }
     }
 
@@ -33,7 +35,11 @@ function ViewPost({setShowModal, post, artist}){
         <div className='post-card'>
             {artist?.userId === user?.id &&
             <div className='post-card-edit-btns'>
-                <button onClick={() => setEditClicked(!editClicked)}><i className="fas fa-edit"></i></button>
+                <button onClick={async () => {
+                    setEditClicked(!editClicked)
+                    await dispatch(setErrors([]))
+                    }
+                    }><i className="fas fa-edit"></i></button>
                 <button onClick={deleteOnePost}><i className="fas fa-trash-alt"></i></button>
             </div>
             }

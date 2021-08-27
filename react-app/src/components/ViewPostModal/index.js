@@ -1,9 +1,12 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import ViewPost from "./ViewPost";
 import { Modal } from '../../context/Modal'
+import { setErrors } from '../../store/errors';
 
 function ViewPostModal({post, artist}) {
     const [showModal, setShowModal] = useState(false)
+    const dispatch = useDispatch()
 
     return (
         <>
@@ -13,6 +16,7 @@ function ViewPostModal({post, artist}) {
             {showModal && (
                 <Modal onClose={() => {
                     setShowModal(false)
+                    dispatch(setErrors([]))
                     }}>
                     <ViewPost setShowModal={setShowModal} post={post} artist={artist}/>
                 </Modal>
