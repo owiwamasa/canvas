@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import DatePicker from "react-datepicker";
 import Errors from "../Errors"
+import { editJob } from '../../store/job';
 import './EditJobForm.css'
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -13,11 +14,11 @@ function EditJobForm({setShowModal, job}){
 
     const editOneJob = async (e) => {
         e.preventDefault()
-        // const editJob = {title, description, dueDate, userId: job.userId, artistId: job.artistId}
-        // const success = await dispatch(createJob(job))
-        // if (success) {
-        //     setShowModal(false)
-        // }
+        const editedJob = {title, description, dueDate, userId: job.userId, artistId: job.artistId}
+        const success = await dispatch(editJob(editedJob, job.id))
+        if (success) {
+            setShowModal(false)
+        }
     }
     return(
         <form onSubmit={editOneJob}>

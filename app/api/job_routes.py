@@ -40,3 +40,20 @@ def delete_job(id):
     db.session.delete(job)
     db.session.commit()
     return 'Deleted'
+
+
+@job_routes.route('/<int:id>', methods=['PUT'])
+def edit_job(id):
+    form = CreateJobForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        job = Job.query.get_or_404(id)
+        job.title = form.title.data
+        job.description = form.description.data
+        job.dueDate = form.dueDate.data
+        db.session.commit()
+        return job.toDict()
+    errors = form.errors
+    return jsonify([f'{field.capitalize()}: {error}'
+                for field in errors
+                for error in errors[field]]),400
