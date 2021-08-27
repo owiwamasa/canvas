@@ -85,6 +85,18 @@
   margin-top: 20px;
 }
 
+.artistPage-job-sent {
+  font-family: "Hind", sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+  color: white;
+  background-color: #1153afa7;
+  border: 3px solid white;
+  padding: 10px 30px;
+  border-radius: 25px;
+  margin-top: 20px;
+}
+
 .artistPage-allPosts {
   display: flex;
   flex-wrap: wrap;
