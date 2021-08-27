@@ -11,6 +11,7 @@ def seed_artistTypes():
     a7 = ArtistType(title='Logo Designer')
     a8 = ArtistType(title='Clothing Designer')
     a9 = ArtistType(title='Sculptor')
+    a10 = ArtistType(title='Animator')
 
     db.session.add(a1)
     db.session.add(a2)
