@@ -75,7 +75,7 @@ function ProfilePage() {
               return (
                 <JobCard key={job?.id} job={job} artist={artist} otherUser={otherUser}/>
               )}):
-            <div>No Jobs :(</div>
+            <div className='profilePage-noJob'>No Jobs :(</div>
             }
           </div>
         :

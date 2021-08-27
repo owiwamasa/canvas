@@ -36,5 +36,5 @@ def seed_artistPages():
 
 
 def undo_artistPages():
-    db.session.execute('TRUNCATE artistPages RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE "artistPages" RESTART IDENTITY CASCADE;')
     db.session.commit()

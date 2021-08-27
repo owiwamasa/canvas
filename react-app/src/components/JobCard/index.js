@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { deleteJob, editAcceptJob } from '../../store/job'
 import EditJobModal from '../EditJobModal'
 import EditCompletedJobModal from '../EditCompleteJobModal'
+import CompletedArtModal from '../CompletedArtModal'
 import './JobCard.css'
 
 function JobCard({artist, otherUser, job}){
@@ -59,9 +60,7 @@ function JobCard({artist, otherUser, job}){
             </div>
             :
             <div className='job-card-artwork-container'>
-                <div className='job-card-artwork'>
-                    <img src={job.completedArtwork}/>
-                </div>
+                <CompletedArtModal completedArtwork={job.completedArtwork}/>
             </div>
             }
         </div>
@@ -77,7 +76,6 @@ function JobCard({artist, otherUser, job}){
                 {job?.completed ?
                 <div className='job-card-status'>Completed <i className="far fa-check-circle"></i></div>
             : <EditCompletedJobModal job={job}/>
-            // <button onClick={editComplete} className='job-card-complete-btn'>Complete</button>
             }
             </div>
             <div className='job-card-header'>
@@ -97,9 +95,7 @@ function JobCard({artist, otherUser, job}){
         </div>
             {job.completed &&
             <div className='job-card-artwork-container'>
-                <div className='job-card-artwork'>
-                    <img src={job.completedArtwork}/>
-                </div>
+                <CompletedArtModal completedArtwork={job.completedArtwork}/>
             </div>
             }
         </div>)

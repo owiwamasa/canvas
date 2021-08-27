@@ -6,6 +6,8 @@ import EditArtistPageModal from "../EditArtistPageModal"
 import { getAllPosts } from "../../store/post"
 import { allJobs } from "../../store/job"
 import CreateJobModal from "../CreateJobModal"
+import CreatePostModal from "../CreatePostModal"
+import ViewPostModal from "../ViewPostModal"
 import './ArtistPage.css'
 
 
@@ -52,10 +54,13 @@ function ArtistPage(){
                     <div className='artistPage-bio-detail'>{artist?.biography}</div>
                 </div>
             </div>
+            <div className='artistPage-post-btn'>
+                <CreatePostModal artistPageId={artistPageId}/>
+            </div>
             <div className='artistPage-allPosts'>
                 {myPosts && myPosts.map(post => (
                     <div key={post.id} className='artistPage-post'>
-                        <img src={post.image} alt='artist post'/>
+                        <ViewPostModal post={post} artist={artist} />
                     </div>
                 ))}
             </div>

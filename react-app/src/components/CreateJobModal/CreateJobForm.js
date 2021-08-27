@@ -19,6 +19,9 @@ function CreateJobForm({setShowModal, artistId}){
         const success = await dispatch(createJob(job))
         if (success) {
             setShowModal(false)
+            setTitle('')
+            setDescription('')
+            setDueDate('')
         }
     }
 

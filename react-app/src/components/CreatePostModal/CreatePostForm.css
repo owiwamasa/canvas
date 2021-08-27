@@ -1,0 +1,18 @@
+.create-post {
+  border: none;
+  padding: 10px 20px;
+  font-family: "Hind", sans-serif;
+  font-size: 16px;
+  background-color: #29cdbb;
+  color: white;
+  border-radius: 30px;
+}
+
+.form-post input {
+  width: 350px;
+}
+
+.form-post-title input {
+  width: 350px;
+  margin-bottom: 30px;
+}
