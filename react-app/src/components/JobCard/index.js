@@ -1,15 +1,27 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteJob } from '../../store/job'
+import { deleteJob, editAcceptJob } from '../../store/job'
 import EditJobModal from '../EditJobModal'
+import EditCompletedJobModal from '../EditCompleteJobModal'
 import './JobCard.css'
 
 function JobCard({artist, otherUser, job}){
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user);
+
     const deleteOneJob = (e, id) => {
         e.preventDefault()
         dispatch(deleteJob(id))
     }
+
+    const editAccept = (e) => {
+        e.preventDefault()
+        dispatch(editAcceptJob(job, job.id))
+    }
+
+    // const editComplete = (e) => {
+    //     e.preventDefault()
+    //     dispatch(editCompleteJob(job, job.id))
+    // }
 
     return(
     (job?.userId === user?.id ?
@@ -40,11 +52,18 @@ function JobCard({artist, otherUser, job}){
                     </div>
                 </div>
             </div>
+            {!job.completed ?
             <div className='job-card-edit-btns'>
                 <EditJobModal job={job}/>
-                {/* <button><i className="fas fa-edit"></i></button> */}
                 <button onClick={(e) => deleteOneJob(e, job?.id)}><i className="fas fa-trash-alt"></i></button>
             </div>
+            :
+            <div className='job-card-artwork-container'>
+                <div className='job-card-artwork'>
+                    <img src={job.completedArtwork}/>
+                </div>
+            </div>
+            }
         </div>
         :
         <div className='job-card' key={job?.id}>
@@ -53,11 +72,13 @@ function JobCard({artist, otherUser, job}){
                     <div className='job-card-date'>Deadline: {job?.dueDate.slice(0,17)}</div>
                 </div>
                 {job?.accepted ?
-                <div>Accepted <i className="far fa-check-circle"></i></div>
-            : <button className='job-card-accept-btn'>Accept</button>}
+                <div className='job-card-status'>Accepted <i className="far fa-check-circle"></i></div>
+            : <button onClick={editAccept} className='job-card-accept-btn'>Accept</button>}
                 {job?.completed ?
-                <div>Completed <i className="far fa-check-circle"></i></div>
-            : <button className='job-card-complete-btn'>Complete</button>}
+                <div className='job-card-status'>Completed <i className="far fa-check-circle"></i></div>
+            : <EditCompletedJobModal job={job}/>
+            // <button onClick={editComplete} className='job-card-complete-btn'>Complete</button>
+            }
             </div>
             <div className='job-card-header'>
                 <div className='job-card-header-left'>
@@ -74,6 +95,13 @@ function JobCard({artist, otherUser, job}){
                 </div>
             </div>
         </div>
+            {job.completed &&
+            <div className='job-card-artwork-container'>
+                <div className='job-card-artwork'>
+                    <img src={job.completedArtwork}/>
+                </div>
+            </div>
+            }
         </div>)
     )
 }

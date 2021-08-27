@@ -1,0 +1,12 @@
+.edit-completed-job {
+  border: none;
+  font-size: 14px;
+  background-color: #2acdb9;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 20px;
+}
+
+.form-complete-job-input {
+  width: 300px;
+}
