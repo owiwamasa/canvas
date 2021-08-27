@@ -1,6 +1,7 @@
 .artistPage {
   background-color: #eeeeee;
   min-height: 900px;
+  overflow-x: hidden;
 }
 
 .artistPage-header-img {
@@ -102,7 +103,7 @@
   flex-wrap: wrap;
   width: 75%;
   position: relative;
-  right: -480px;
+  margin-left: 480px;
   justify-content: center;
   margin-top: 100px;
   padding-bottom: 50px;
