@@ -32,3 +32,11 @@ def create_job():
     return jsonify([f'{field.capitalize()}: {error}'
                 for field in errors
                 for error in errors[field]]),400
+
+
+@job_routes.route('/<int:id>', methods=['DELETE'])
+def delete_job(id):
+    job = Job.query.get(id)
+    db.session.delete(job)
+    db.session.commit()
+    return 'Deleted'

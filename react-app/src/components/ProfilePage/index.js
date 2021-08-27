@@ -19,9 +19,8 @@ function ProfilePage() {
   const users = useSelector(state => state.userReducer.users)
   const artistPageId = artistPages?.filter(page => page?.userId === currentUser?.id)[0]?.id
   const jobs = useSelector(state => state.jobReducer.jobs)
-  const myJobs = jobs.filter(job => ((job.userId === +userId) || (job.artistId === +userId )))
+  const myJobs = jobs?.filter(job => ((job?.userId === +userId) || (job?.artistId === +userId )))
   const dispatch = useDispatch()
-  let artist;
 
   useEffect(() => {
     if (!userId) {
@@ -70,57 +69,11 @@ function ProfilePage() {
       <div className='profilePage-content'>
         {jobsClicked ?
           <div className='profilePage-jobs'>
-            {myJobs.length ? myJobs.map(job => {
+            {myJobs?.length ? myJobs?.map(job => {
               let artist = users.find(user => user.id === job.artistId)
               let otherUser = users.find(user => user.id === job.userId)
               return (
-                <JobCard job={job} artist={artist} otherUser={otherUser}/>
-              // (job.userId === +userId ?
-              // <div className='job-card' key={job.id}>
-              //   <div className='job-card-header'>
-              //     <div className='job-card-header-left'>
-              //       <div className='job-card-title'>{job.title}</div>
-              //       <div className='job-card-date'>Start Date: {job.createdAt}</div>
-              //       <div className='job-card-date'>Deadline: {job.dueDate}</div>
-              //     </div>
-              //     <div className='job-card-header-right'>
-              //       {job.accepted ?
-              //       <div className='job-card-status'>Accepted <i class="far fa-check-circle"></i></div>
-              //     : <div className='job-card-status'>Accepted <i class="fas fa-times"></i></div>}
-              //       {job.completed ?
-              //       <div className='job-card-status'>Completed <i class="far fa-check-circle"></i></div>
-              //     : <div className='job-card-status'>Completed <i class="fas fa-times"></i></div>}
-              //       <div className='job-card-artist'>
-              //         <img src={artist.profilePic} />
-              //         <div>{artist.username}</div>
-              //       </div>
-              //     </div>
-              //   </div>
-              //   <div className='job-card-body'>{job.description}</div>
-              // </div>
-              // :
-              // <div className='job-card' key={job.id}>
-              //   <div className='job-card-header'>
-              //     <div className='job-card-header-left'>
-              //     <div className='job-card-title'>{job.title}</div>
-              //       <div className='job-card-date'>Start Date: {job.createdAt}</div>
-              //       <div className='job-card-date'>Deadline: {job.dueDate}</div>
-              //     </div>
-              //     <div className='job-card-header-right'>
-              //       {job.accepted ?
-              //       <div>Accepted <i class="far fa-check-circle"></i></div>
-              //     : <button>Accept</button>}
-              //       {job.completed ?
-              //       <div>Completed <i class="far fa-check-circle"></i></div>
-              //     : <button>Complete</button>}
-              //       <div className='job-card-otherUser'>
-              //         <img src={otherUser.profilePic} />
-              //         <div>{otherUser.username}</div>
-              //       </div>
-              //     </div>
-              //   </div>
-              //   <div className='job-card-body'>{job.description}</div>
-              // </div>)
+                <JobCard key={job?.id} job={job} artist={artist} otherUser={otherUser}/>
               )}):
             <div>No Jobs :(</div>
             }
