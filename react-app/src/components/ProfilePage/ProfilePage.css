@@ -7,4 +7,45 @@
   border: none;
   padding: 10px 20px;
   border-radius: 30px;
+  margin-top: 10px;
+}
+
+.profilePage {
+  min-height: 750px;
+  display: flex;
+  background-color: #eeeeee;
+}
+
+.profilePage-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 200px;
+  align-items: flex-start;
+  justify-content: space-around;
+  padding-top: 50px;
+  margin-top: 50px;
+  padding-bottom: 250px;
+  padding-left: 80px;
+  border-right: 2px solid rgba(128, 128, 128, 0.701);
+}
+
+.profilePage-sidebar-btn {
+  border: none;
+  font-family: "Hind", sans-serif;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 25px;
+}
+
+.profilePage-sidebar-btn:hover {
+  border-bottom: 2px solid black;
+}
+
+.profilePage-content {
+  display: flex;
+  justify-content: center;
+  align-items: space-around;
+  margin-top: 50px;
+  width: 85%;
 }

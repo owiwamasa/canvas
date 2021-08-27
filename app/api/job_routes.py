@@ -7,11 +7,16 @@ from app.forms import CreateJobForm
 job_routes = Blueprint('jobs', __name__)
 
 
+@job_routes.route('/')
+def get_all_jobs():
+    jobs = Job.query.all()
+    return {'jobs': [job.toDict() for job in jobs]}
+
+
 @job_routes.route('/', methods=['POST'])
 def create_job():
     form = CreateJobForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('-------------------------', form.data)
     if form.validate_on_submit():
         job = Job(
             title = form.title.data,
@@ -27,3 +32,11 @@ def create_job():
     return jsonify([f'{field.capitalize()}: {error}'
                 for field in errors
                 for error in errors[field]]),400
+
+
+@job_routes.route('/<int:id>', methods=['DELETE'])
+def delete_job(id):
+    job = Job.query.get(id)
+    db.session.delete(job)
+    db.session.commit()
+    return 'Deleted'

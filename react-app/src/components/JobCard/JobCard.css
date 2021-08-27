@@ -1,0 +1,144 @@
+.job-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  width: 650px;
+  border-radius: 20px;
+  padding: 30px;
+  background-color: white;
+  font-family: "Hind", sans-serif;
+  margin-bottom: 50px;
+}
+
+.job-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.job-card-title {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.job-card-dates {
+  margin-right: 160px;
+}
+
+.job-card-date {
+  font-weight: bolder;
+  font-size: 14px;
+  margin-right: 20px;
+}
+
+.job-card-header-right {
+  display: flex;
+}
+
+.job-card-header-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.job-card-header-center .fa-check-circle {
+  color: green;
+  margin-right: 15px;
+  margin-left: 5px;
+}
+
+.job-card-header-center .fa-times {
+  color: red;
+  margin-right: 15px;
+  margin-left: 5px;
+}
+
+.job-card-status {
+  font-size: 18px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.job-card-accept-btn {
+  border: none;
+  font-size: 14px;
+  background-color: #1154af;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 20px;
+  margin-right: 15px;
+  margin-left: 35px;
+}
+
+.job-card-complete-btn {
+  border: none;
+  font-size: 14px;
+  background-color: #2acdb9;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 20px;
+}
+
+.job-card-profilePic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  background-color: black;
+  border: 4px solid #ffc328;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.job-card-profilePic img {
+  width: 100%;
+  height: auto;
+}
+
+.job-card-header-left {
+  margin-left: 20px;
+}
+
+.job-card-edit-btns button {
+  border: none;
+  background-color: transparent;
+}
+
+.job-card-edit-btns .fa-trash-alt {
+  color: rgb(208, 17, 17);
+  font-size: 20px;
+}
+
+.job-card-edit-btns .fa-edit {
+  color: grey;
+  font-size: 20px;
+}
+
+.job-card-edit-btns {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+.job-card-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.job-card-name {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.job-card-body {
+  min-width: 460px;
+  max-width: 460px;
+  line-height: 1.5;
+}

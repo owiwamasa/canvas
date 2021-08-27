@@ -16,7 +16,6 @@ function CreateJobForm({setShowModal, artistId}){
     const createOneJob = async (e) => {
         e.preventDefault()
         const job = {title, description, dueDate, userId: user.id, artistId}
-        console.log(job)
         const success = await dispatch(createJob(job))
         if (success) {
             setShowModal(false)
