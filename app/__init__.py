@@ -11,6 +11,8 @@ from .api.auth_routes import auth_routes
 from .api.artistPage_routes import artistPage_routes
 from .api.post_routes import post_routes
 from .api.job_routes import job_routes
+from .api.artistType_routes import artistType_routes
+from .api.artistTypeList_routes import artistTypeList_routes
 
 from .seeds import seed_commands
 
@@ -37,6 +39,8 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(artistPage_routes, url_prefix='/api/artist-pages')
 app.register_blueprint(post_routes, url_prefix='/api/posts')
 app.register_blueprint(job_routes, url_prefix='/api/jobs')
+app.register_blueprint(artistType_routes, url_prefix='/api/artist-types')
+app.register_blueprint(artistTypeList_routes, url_prefix='/api/artist-type-lists')
 db.init_app(app)
 Migrate(app, db)
 
