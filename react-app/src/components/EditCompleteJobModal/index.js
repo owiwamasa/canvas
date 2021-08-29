@@ -10,7 +10,7 @@ function EditCompletedJobModal({job}) {
 
     return (
         <>
-            <button className='edit-completed-job' onClick={() => setShowModal(true)}>Completed</button>
+            <button className='edit-completed-job' onClick={() => setShowModal(true)}>Complete</button>
             {showModal && (
                 <Modal onClose={() => {
                     setShowModal(false)
