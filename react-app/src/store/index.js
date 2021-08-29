@@ -6,6 +6,8 @@ import errorReducer from './errors';
 import userReducer from './user';
 import postReducer from './post';
 import jobReducer from './job';
+import artistTypeReducer from './artistType';
+import artistTypeListReducer from './artistTypeList'
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +15,9 @@ const rootReducer = combineReducers({
   errorReducer,
   userReducer,
   postReducer,
-  jobReducer
+  jobReducer,
+  artistTypeReducer,
+  artistTypeListReducer
 });
 
 
