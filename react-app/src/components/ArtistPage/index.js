@@ -9,6 +9,8 @@ import CreateJobModal from "../CreateJobModal"
 import CreatePostModal from "../CreatePostModal"
 import ViewPostModal from "../ViewPostModal"
 import ArtistTypeForm from "../ArtistTypeForm"
+import { allArtistTypeLists } from "../../store/artistTypeList"
+import { allArtistTypes } from "../../store/artistType"
 import './ArtistPage.css'
 
 
@@ -22,12 +24,22 @@ function ArtistPage(){
     const hasJob = jobs.find(job => (job?.userId === user?.id) && (job?.artistId === artist?.userId))
     const posts = useSelector(state => state.postReducer.posts)
     const myPosts = posts.filter(post => post.artistPageId === +artistPageId)
+    const artistTypes = useSelector(state => state.artistTypeReducer.artistTypes)
+    const typeLists = useSelector(state => state.artistTypeListReducer.artistTypeLists)
+    const myLists = typeLists.filter(list => list.artistPageId === +artistPageId)
+    const myTypeTitles = myLists?.map(list => {
+        let typeTitle = artistTypes?.find(type => list?.artistTypeId === type.id)?.title
+        return typeTitle
+    })
+    const myTags = myTypeTitles?.join(', ')
     const [artistTypeButtonClicked, setArtistTypeButtonClicked] = useState(false)
 
     useEffect(() => {
         dispatch(allArtistPages())
         dispatch(getAllPosts())
         dispatch(allJobs())
+        dispatch(allArtistTypeLists())
+        dispatch(allArtistTypes())
     }, [dispatch, artistPageId])
 
     return(
@@ -43,6 +55,7 @@ function ArtistPage(){
                 <div className='artistPage-user-img'>
                     <img src={artist?.profilePic} alt='profile'/>
                 </div>
+                {myTags && <div className='artistPage-tags'>{myTags}</div>}
                 {(artist?.userId !== user?.id && user) ?
                     <div className='artistPage-nonuser-btns'>
                         {hasJob ?
@@ -53,7 +66,7 @@ function ArtistPage(){
                     :
                     (artistTypeButtonClicked ?
                         <ArtistTypeForm setArtistTypeButtonClicked={setArtistTypeButtonClicked} artistPageId={artistPageId}/> :
-                        <div><button onClick={() => setArtistTypeButtonClicked(!artistTypeButtonClicked)}>Add Artist Tags</button></div>
+                        <button className='artistPage-tag-btn' onClick={() => setArtistTypeButtonClicked(!artistTypeButtonClicked)}><i className="fas fa-plus"></i> Artist Tags</button>
                         )
                 }
                 <div className='artistPage-bio'>

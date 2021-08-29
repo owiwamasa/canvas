@@ -39,71 +39,80 @@ function ArtistTypeForm({setArtistTypeButtonClicked, artistPageId}){
     }, [dispatch])
 
     return (
-        <form onSubmit={onSubmit}>
-            <label key={artistTypes[0]?.id}> {artistTypes[0]?.title}
+        <form id='tag-form' onSubmit={onSubmit}>
+            <div className='tag-form-div'>
                 <input
                 type='checkbox'
                 checked={checked0}
                 onChange={() => setChecked0(!checked0)}
                 />
-            </label>
-            <label key={artistTypes[1]?.id}> {artistTypes[1]?.title}
+                <label key={artistTypes[0]?.id}> {artistTypes[0]?.title}</label>
+            </div>
+            <div className='tag-form-div'>
                 <input
                 type='checkbox'
                 checked={checked1}
                 onChange={() => setChecked1(!checked1)}
                 />
-            </label>
-            <label key={artistTypes[2]?.id}> {artistTypes[2]?.title}
+                <label key={artistTypes[1]?.id}> {artistTypes[1]?.title}</label>
+            </div>
+            <div className='tag-form-div'>
                 <input
                 type='checkbox'
                 checked={checked2}
                 onChange={() => setChecked2(!checked2)}
                 />
-            </label>
-            <label key={artistTypes[3]?.id}> {artistTypes[3]?.title}
+                <label key={artistTypes[2]?.id}> {artistTypes[2]?.title}</label>
+            </div>
+            <div className='tag-form-div'>
                 <input
                 type='checkbox'
                 checked={checked3}
                 onChange={() => setChecked3(!checked3)}
                 />
-            </label>
-            <label key={artistTypes[4]?.id}> {artistTypes[4]?.title}
+                <label key={artistTypes[3]?.id}> {artistTypes[3]?.title}</label>
+            </div>
+            <div className='tag-form-div'>
                 <input
                 type='checkbox'
                 checked={checked4}
                 onChange={() => setChecked4(!checked4)}
                 />
-            </label>
-            <label key={artistTypes[5]?.id}> {artistTypes[5]?.title}
+                <label key={artistTypes[4]?.id}> {artistTypes[4]?.title}</label>
+            </div>
+            <div className='tag-form-div'>
                 <input
                 type='checkbox'
                 checked={checked5}
                 onChange={() => setChecked5(!checked5)}
                 />
-            </label>
-            <label key={artistTypes[6]?.id}> {artistTypes[6]?.title}
+                <label key={artistTypes[5]?.id}> {artistTypes[5]?.title}</label>
+            </div>
+            <div className='tag-form-div'>
                 <input
                 type='checkbox'
                 checked={checked6}
                 onChange={() => setChecked6(!checked6)}
                 />
-            </label>
-            <label key={artistTypes[7]?.id}> {artistTypes[7]?.title}
+                <label key={artistTypes[6]?.id}> {artistTypes[6]?.title}</label>
+            </div>
+            <div className='tag-form-div'>
                 <input
                 type='checkbox'
                 checked={checked7}
                 onChange={() => setChecked7(!checked7)}
                 />
-            </label>
-            <label key={artistTypes[8]?.id}> {artistTypes[8]?.title}
+                <label key={artistTypes[7]?.id}> {artistTypes[7]?.title}</label>
+            </div>
+            <div className='tag-form-div'>
                 <input
                 type='checkbox'
                 checked={checked8}
                 onChange={() => setChecked8(!checked8)}
                 />
-            </label>
-            <button type='submit'>Add Artist Tags</button>
+                <label key={artistTypes[8]?.id}> {artistTypes[8]?.title}</label>
+            </div>
+            <button className='tag-form-submit' type='submit'><i className="fas fa-plus"></i> Artist Tags</button>
         </form>
     )
 }

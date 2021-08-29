@@ -16,3 +16,7 @@
   width: 350px;
   margin-bottom: 30px;
 }
+
+.create-post i {
+  font-size: 14px;
+}

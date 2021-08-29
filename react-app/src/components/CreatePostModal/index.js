@@ -10,7 +10,7 @@ function CreatePostModal({artistPageId}) {
 
     return (
         <>
-            <button className='create-post' onClick={() => setShowModal(true)}>Add Post +</button>
+            <button className='create-post' onClick={() => setShowModal(true)}>Add Post <i class="fas fa-plus"></i></button>
             {showModal && (
                 <Modal onClose={() => {
                     setShowModal(false)

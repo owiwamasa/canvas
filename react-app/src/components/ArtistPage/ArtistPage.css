@@ -138,3 +138,35 @@
   right: 80px;
   top: 520px;
 }
+
+.artistPage-tag-btn {
+  font-family: "Hind", sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+  color: #1153af;
+  background-color: white;
+  border: 3px solid #1153af;
+  padding: 10px 30px;
+  border-radius: 25px;
+  margin-top: 20px;
+}
+
+.artistPage-tag-btn:hover {
+  color: white;
+  background-color: #1153af;
+  border: 3px solid #1153af;
+}
+
+.artistPage-tag-btn i {
+  font-size: 14px;
+}
+
+.artistPage-tags {
+  margin-top: 20px;
+  font-family: "Hind", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  width: 300px;
+  text-align: center;
+  line-height: 1.3;
+}
