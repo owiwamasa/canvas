@@ -18,6 +18,15 @@ def user(id):
     return user.to_dict()
 
 
+@user_routes.route('/<int:id>/completed', methods=['PUT'])
+def user_edit_completed(id):
+    user = User.query.get(id)
+    user.numCompletedJobs = user.numCompletedJobs + 1
+    db.session.commit()
+    users = User.query.order_by(User.id).all()
+    return user.to_dict()
+
+
 @user_routes.route('/<int:id>', methods=['PUT'])
 def user_edit(id):
     user = User.query.get(id)

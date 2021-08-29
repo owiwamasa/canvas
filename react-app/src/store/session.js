@@ -114,6 +114,17 @@ export const editUser = (user) => async dispatch => {
   }
 }
 
+export const editUserCompletedJob = (userId) => async dispatch => {
+  const res = await fetch(`/api/users/${userId}/completed`, {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'}
+  })
+  if (res.ok){
+      const user = await res.json()
+      dispatch(editOneUser(user))
+  }
+}
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:

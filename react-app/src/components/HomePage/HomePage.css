@@ -1,0 +1,76 @@
+.home-artistTypes-scroll {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  padding-bottom: 20px;
+}
+
+.home-artistTypes-div {
+  position: relative;
+  margin: 80px 20px;
+}
+
+.home-artistTypes-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  color: white;
+  font-family: "Hind", sans-serif;
+  font-size: 22px;
+  font-weight: bolder;
+  background-color: rgba(0, 0, 0, 0.365);
+  height: 100%;
+  width: 100%;
+}
+
+.home-artistTypes-scroll-title {
+  font-family: "Hind", sans-serif;
+  font-size: 45px;
+  text-align: center;
+  margin-top: 70px;
+  font-weight: bolder;
+}
+
+.home-artistTypes-image-div {
+  width: 210px;
+  height: 280px;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-artistTypes-image {
+  height: 100%;
+  width: auto;
+}
+
+.home-page-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow-y: hidden;
+}
+
+.home-page-header-title {
+  color: white;
+  font-family: "Hind", sans-serif;
+  font-size: 45px;
+  position: absolute;
+  font-weight: bold;
+  line-height: 1.3;
+  background-color: rgba(0, 0, 0, 0.406);
+  width: 100%;
+  height: 100%;
+  padding-top: 400px;
+  padding-left: 300px;
+}
+
+.home-page-header img {
+  width: 100%;
+  height: auto;
+}

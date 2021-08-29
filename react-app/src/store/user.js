@@ -10,7 +10,6 @@ export const getAllUsers = (users) => {
     return {type: GET_ALL_USERS, users}
 }
 
-
 export const getOneUser = (userId) => async dispatch => {
     const res = await fetch(`/api/users/${userId}`)
     if (res.ok){
