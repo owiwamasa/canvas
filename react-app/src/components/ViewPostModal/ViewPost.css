@@ -113,13 +113,13 @@
   border-radius: 30px;
   padding: 10px 20px;
   background-color: white;
-  border: 3px solid #fa4a18;
-  color: #fa4a18;
+  border: 3px solid #1054af;
+  color: #1054af;
 }
 
 #edit-post-form button:hover {
-  background-color: #fa4a18;
-  border: 3px solid #fa4a18;
+  background-color: #1054af;
+  border: 3px solid #1054af;
   color: white;
 }
 

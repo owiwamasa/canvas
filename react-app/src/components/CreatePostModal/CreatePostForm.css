@@ -4,8 +4,15 @@
   font-family: "Hind", sans-serif;
   font-size: 16px;
   background-color: #29cdbb;
+  border: 2px solid #29cdbb;
   color: white;
   border-radius: 30px;
+}
+
+.create-post:hover {
+  background-color: white;
+  border: 2px solid #29cdbb;
+  color: #29cdbb;
 }
 
 .form-post input {

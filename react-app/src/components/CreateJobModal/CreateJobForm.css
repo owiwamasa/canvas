@@ -10,6 +10,12 @@
   margin-top: 20px;
 }
 
+.create-job:hover {
+  color: #1154af;
+  background-color: white;
+  border: 3px solid #1154af;
+}
+
 .work-form-input {
   margin-bottom: 20px;
 }

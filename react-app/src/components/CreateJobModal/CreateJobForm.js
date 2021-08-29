@@ -37,7 +37,7 @@ function CreateJobForm({setShowModal, artistId}){
 
     return(
         <form onSubmit={createOneJob}>
-            <div className='form-header'>Create Work Request</div>
+            <div className='form-header'>Send Work Request</div>
             <Errors />
             <div className='form-input work-form-input'>
                 <input
