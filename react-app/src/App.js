@@ -8,6 +8,7 @@ import { authenticate } from './store/session';
 import ArtistPage from './components/ArtistPage';
 import HomePage from './components/HomePage';
 import Footer from './components/Footer';
+import SearchResults from './components/SearchResults';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -36,6 +37,9 @@ function App() {
         </ProtectedRoute>
         <Route path='/artist-pages/:artistPageId' exact={true} >
           <ArtistPage/>
+        </Route>
+        <Route path='/search-results/:id' exact={true}>
+          <SearchResults />
         </Route>
       </Switch>
       <Footer />

@@ -9,23 +9,31 @@ function ArtistTypeForm({setArtistTypeButtonClicked, artistPageId}){
     const typeList = useSelector(state => state.artistTypeListReducer.artistTypeLists)
     const myLists = typeList.filter(list => list.artistPageId === +artistPageId)
 
+    const listFinder = (lists, id) => {
+        if (lists.find(list => list?.artistTypeId === id)) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     const dispatch = useDispatch()
-    const [checked0, setChecked0] = useState(myLists.find(list => list?.artistTypeId === 1))
-    const [checked1, setChecked1] = useState(myLists.find(list => list?.artistTypeId === 2))
-    const [checked2, setChecked2] = useState(myLists.find(list => list?.artistTypeId === 3))
-    const [checked3, setChecked3] = useState(myLists.find(list => list?.artistTypeId === 4))
-    const [checked4, setChecked4] = useState(myLists.find(list => list?.artistTypeId === 5))
-    const [checked5, setChecked5] = useState(myLists.find(list => list?.artistTypeId === 6))
-    const [checked6, setChecked6] = useState(myLists.find(list => list?.artistTypeId === 7))
-    const [checked7, setChecked7] = useState(myLists.find(list => list?.artistTypeId === 8))
-    const [checked8, setChecked8] = useState(myLists.find(list => list?.artistTypeId === 9))
+    const [checked0, setChecked0] = useState(listFinder(myLists, 1))
+    const [checked1, setChecked1] = useState(listFinder(myLists, 2))
+    const [checked2, setChecked2] = useState(listFinder(myLists, 3))
+    const [checked3, setChecked3] = useState(listFinder(myLists, 4))
+    const [checked4, setChecked4] = useState(listFinder(myLists, 5))
+    const [checked5, setChecked5] = useState(listFinder(myLists, 6))
+    const [checked6, setChecked6] = useState(listFinder(myLists, 7))
+    const [checked7, setChecked7] = useState(listFinder(myLists, 8))
+    const [checked8, setChecked8] = useState(listFinder(myLists, 9))
 
     const onSubmit = (e) => {
         e.preventDefault()
         const checks = [checked0, checked1, checked2, checked3, checked4, checked5, checked6, checked7, checked8]
         checks.forEach((check, idx) => {
             let payload = {'artistTypeId': idx + 1, artistPageId}
-            let list = typeList.find(list => list['artistTypeId'] === idx + 1)
+            let list = myLists.find(list => list['artistTypeId'] === idx + 1)
             if (check && !list) {
                 dispatch(createArtistTypeList(payload))
             } else if (!check && list){
