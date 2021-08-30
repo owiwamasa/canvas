@@ -6,7 +6,7 @@ class Post(db.Model):
     __tablename__ = 'posts'
 
     id = db.Column(db.Integer, primary_key=True)
-    image = db.Column(db.String(1000), nullable=False)
+    image = db.Column(db.String(2000), nullable=False)
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.String(1000), nullable=False)
     artistPageId = db.Column(db.Integer, db.ForeignKey(

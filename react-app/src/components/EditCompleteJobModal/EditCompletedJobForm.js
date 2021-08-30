@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import {editCompleteJob} from '../../store/job'
+import { editUserCompletedJob } from '../../store/session'
 import { useDispatch } from 'react-redux'
 import './EditCompletedJobForm.css'
 
@@ -15,6 +16,7 @@ function EditCompletedJobForm ({setShowModal, job}){
             setError('Completed Artwork URL must have a value.')
             return
         }
+        await dispatch(editUserCompletedJob(job.artistId))
         const completedJob = {'title': job.title, 'description': job.description, 'dueDate': job.dueDate, completedArtwork}
         const success = await dispatch(editCompleteJob(completedJob, job.id))
         if (success) {

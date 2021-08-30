@@ -11,7 +11,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     isArtist = db.Column(db.Boolean, default=False)
-    profilePic = db.Column(db.String(1000), nullable=True)
+    profilePic = db.Column(db.String(2000), nullable=True)
+    numCompletedJobs = db.Column(db.Integer, default=0)
 
     artistPage = db.relationship('ArtistPage', back_populates='user')
     inbox = db.relationship('Inbox', back_populates='user')
@@ -39,5 +40,6 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'isArtist': self.isArtist,
-            'profilePic': self.profilePic
+            'profilePic': self.profilePic,
+            'numCompletedJobs': self.numCompletedJobs
         }

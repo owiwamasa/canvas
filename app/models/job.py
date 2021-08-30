@@ -11,7 +11,7 @@ class Job(db.Model):
     dueDate = db.Column(db.DateTime, nullable=False)
     accepted = db.Column(db.Boolean, default=False)
     completed = db.Column(db.Boolean, default=False)
-    completedArtwork = db.Column(db.String(1000), nullable=True)
+    completedArtwork = db.Column(db.String(2000), nullable=True)
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     artistId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     createdAt = db.Column(db.DateTime, default=datetime.datetime.utcnow)
@@ -33,5 +33,5 @@ class Job(db.Model):
             'completedArtwork': self.completedArtwork,
             'userId': self.userId,
             'artistId': self.artistId,
-            'createdAt': self.createdAt,
+            'createdAt': self.createdAt
         }
