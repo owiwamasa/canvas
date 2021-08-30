@@ -29,16 +29,16 @@ function SearchResults(){
 
     return(
         <div className='search-results'>
-            <div className='search-results-title'>Search Results for {type.title}</div>
-            {pageList ? pageList.map(page => (
+            <div className='search-results-title'>Search Results for {type?.title}</div>
+            {pageList ? pageList?.map(page => (
                 <div className='search-user-card'>
-                    <Link to={`/artist-pages/${page.id}`}>
+                    <Link to={`/artist-pages/${page?.id}`}>
                         <div className='search-user-card-image'>
-                            <img src={page.profilePic}/>
+                            <img src={page?.profilePic}/>
                         </div>
                         <div className='search-user-card-info'>
-                            <div className='search-user-card-name'>{page.username}</div>
-                            <div className='search-user-card-bio'>{page.biography}</div>
+                            <div className='search-user-card-name'>{page?.username}</div>
+                            <div className='search-user-card-bio'>{page?.biography}</div>
                         </div>
                     </Link>
                 </div>

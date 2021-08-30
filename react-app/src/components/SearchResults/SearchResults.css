@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   background-color: #eeee;
+  min-height: 800px;
 }
 
 .search-results-title {
@@ -28,13 +28,14 @@
 }
 
 .search-user-card-image {
-  width: 800px;
+  min-width: 200px;
   height: 230px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
   border-radius: 30px 0 0 30px;
+  background-color: rgb(43, 43, 43);
 }
 
 .search-user-card-image img {
@@ -44,6 +45,10 @@
 
 .search-user-card-info {
   padding-left: 50px;
+  max-height: 197px;
+  width: 1500px;
+  overflow: hidden;
+  position: relative;
 }
 
 .search-user-card-name {
@@ -58,5 +63,28 @@
   font-size: 20px;
   padding-top: 20px;
   width: 90%;
-  line-height: 1.2;
+  overflow: hidden;
+  position: relative;
+  line-height: 1.2em;
+  max-height: 6em;
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+}
+
+.search-user-card-bio:before {
+  content: ".....";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.search-user-card-bio:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: white;
 }
