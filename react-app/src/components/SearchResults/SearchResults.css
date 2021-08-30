@@ -88,3 +88,8 @@
   margin-top: 0.2em;
   background: white;
 }
+
+.search-results-none {
+  font-family: "Hind", sans-serif;
+  font-size: 20px;
+}

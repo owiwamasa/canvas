@@ -30,7 +30,7 @@ function SearchResults(){
     return(
         <div className='search-results'>
             <div className='search-results-title'>Search Results for {type?.title}</div>
-            {pageList ? pageList?.map(page => (
+            {pageList.length ? pageList?.map(page => (
                 <div className='search-user-card'>
                     <Link to={`/artist-pages/${page?.id}`}>
                         <div className='search-user-card-image'>
@@ -42,7 +42,7 @@ function SearchResults(){
                         </div>
                     </Link>
                 </div>
-            )) : <div>No results :(</div>}
+            )) : <div className='search-results-none'>No results :(</div>}
         </div>
     )
 }

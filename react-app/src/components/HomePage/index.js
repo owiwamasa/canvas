@@ -8,11 +8,11 @@ import './HomePage.css'
 
 function HomePage(){
     const dispatch = useDispatch()
-    const artistTypes = useSelector(state => state.artistTypeReducer.artistTypes)
-    const users = useSelector(state => state.userReducer.users)
-    const artists = users.filter(user => user.isArtist)
-    const popularArtists = artists.sort((a, b) => (a.numCompletedJobs < b.numCompletedJobs) ? 1 : -1).slice(0,10)
-    const artistPages = useSelector(state => state.artistPageReducer.artistPages)
+    const artistTypes = useSelector(state => state.artistTypeReducer?.artistTypes)
+    const users = useSelector(state => state.userReducer?.users)
+    const artists = users.filter(user => user?.isArtist)
+    const popularArtists = artists?.sort((a, b) => (a?.numCompletedJobs < b?.numCompletedJobs) ? 1 : -1).slice(0,10)
+    const artistPages = useSelector(state => state.artistPageReducer?.artistPages)
 
     useEffect(() => {
         dispatch(allArtistTypes())
@@ -27,12 +27,12 @@ function HomePage(){
             </div>
             <div className='home-artistTypes-scroll-title'>Find Arists By Specialty</div>
             <div className='home-artistTypes-scroll'>
-                {artistTypes && artistTypes.map(type => (
-                    <div className='home-artistTypes-div' key={type.id}>
+                {artistTypes && artistTypes?.map(type => (
+                    <div className='home-artistTypes-div' key={type?.id}>
                         <div className='home-artistTypes-image-div'>
-                            <Link to={`/search-results/${type.id}`}>
-                                <div className='home-artistTypes-title'>{type.title}</div>
-                                <img className='home-artistTypes-image' src={type.image} alt='artist-type'/>
+                            <Link to={`/search-results/${type?.id}`}>
+                                <div className='home-artistTypes-title'>{type?.title}</div>
+                                <img className='home-artistTypes-image' src={type?.image} alt='artist-type'/>
                             </Link>
                         </div>
                     </div>
@@ -41,15 +41,15 @@ function HomePage(){
             <div className='home-page-popular'>
                 <div className='home-page-popular-title'>Popular Artists</div>
                 <div className='home-page-popular-artist-scroll'>
-                {popularArtists && popularArtists.map(artist => {
-                    let artistPageId = artistPages.find(page => page.userId === artist.id).id
+                {popularArtists && popularArtists?.map(artist => {
+                    let artistPageId = artistPages?.find(page => page?.userId === artist?.id)?.id
                     return (
-                    <div className='home-page-usercard' key={artist.id}>
+                    <div className='home-page-usercard' key={artist?.id}>
                         <Link to={`/artist-pages/${artistPageId}`}>
                             <div className='home-page-usercard-image'>
-                                <img src={artist.profilePic} alt='profile'/>
+                                <img src={artist?.profilePic} alt='profile'/>
                             </div>
-                            <div className='home-page-usercard-name'>{artist.username}</div>
+                            <div className='home-page-usercard-name'>{artist?.username}</div>
                         </Link>
                     </div>
                 )})}

@@ -58,7 +58,7 @@ function ArtistPage(){
                 {myTags && <div className='artistPage-tags'>{myTags}</div>}
                 {(artist?.userId !== user?.id && user) ?
                     <div className='artistPage-nonuser-btns'>
-                        {hasJob ?
+                        {hasJob && !hasJob.completed ?
                           <button className='artistPage-job-sent' disabled={true}>Work Request Sent <i className="fas fa-check"></i></button>
                         : <CreateJobModal artistId={artist?.userId} />}
                         <button className='artistPage-message'>Message</button>
