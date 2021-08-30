@@ -7,16 +7,18 @@ import './ArtistTypeForm.css'
 function ArtistTypeForm({setArtistTypeButtonClicked, artistPageId}){
     const artistTypes = useSelector(state => state.artistTypeReducer.artistTypes)
     const typeList = useSelector(state => state.artistTypeListReducer.artistTypeLists)
+    const myLists = typeList.filter(list => list.artistPageId === +artistPageId)
+
     const dispatch = useDispatch()
-    const [checked0, setChecked0] = useState(false)
-    const [checked1, setChecked1] = useState(false)
-    const [checked2, setChecked2] = useState(false)
-    const [checked3, setChecked3] = useState(false)
-    const [checked4, setChecked4] = useState(false)
-    const [checked5, setChecked5] = useState(false)
-    const [checked6, setChecked6] = useState(false)
-    const [checked7, setChecked7] = useState(false)
-    const [checked8, setChecked8] = useState(false)
+    const [checked0, setChecked0] = useState(myLists.find(list => list?.artistTypeId === 1))
+    const [checked1, setChecked1] = useState(myLists.find(list => list?.artistTypeId === 2))
+    const [checked2, setChecked2] = useState(myLists.find(list => list?.artistTypeId === 3))
+    const [checked3, setChecked3] = useState(myLists.find(list => list?.artistTypeId === 4))
+    const [checked4, setChecked4] = useState(myLists.find(list => list?.artistTypeId === 5))
+    const [checked5, setChecked5] = useState(myLists.find(list => list?.artistTypeId === 6))
+    const [checked6, setChecked6] = useState(myLists.find(list => list?.artistTypeId === 7))
+    const [checked7, setChecked7] = useState(myLists.find(list => list?.artistTypeId === 8))
+    const [checked8, setChecked8] = useState(myLists.find(list => list?.artistTypeId === 9))
 
     const onSubmit = (e) => {
         e.preventDefault()

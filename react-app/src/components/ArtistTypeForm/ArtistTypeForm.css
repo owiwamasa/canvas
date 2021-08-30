@@ -38,13 +38,3 @@
   border: 2px solid #1054af;
   color: #1054af;
 }
-
-.tag-form-submit i {
-  font-size: 12px;
-  color: white;
-}
-
-.tag-form-submit i:hover {
-  font-size: 12px;
-  color: #1054af;
-}

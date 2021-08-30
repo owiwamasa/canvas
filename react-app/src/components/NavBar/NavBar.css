@@ -82,3 +82,44 @@
   color: #fa4a18;
   background-color: white;
 }
+
+#nav-search-form {
+  background-color: transparent;
+  padding: 0;
+  position: relative;
+}
+
+.nav-search-input {
+  width: 550px;
+  padding: 10px 15px;
+  font-size: 16px;
+  font-family: "Hind", sans-serif;
+  border-radius: 30px;
+  border: none;
+}
+
+.nav-search-input:focus {
+  outline: none;
+}
+
+.nav-search-results {
+  position: absolute;
+  right: 2px;
+  top: 48px;
+  border-radius: 20px;
+  padding: 10px;
+  width: 578px;
+  font-family: "Hind", sans-serif;
+  font-size: 16px;
+  z-index: 1;
+}
+
+.nav-search-results:focus {
+  outline: none;
+}
+
+.nav-search-results-title {
+  color: grey;
+  font-family: "Hind", sans-serif;
+  font-style: italic;
+}
