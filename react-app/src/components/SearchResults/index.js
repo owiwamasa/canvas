@@ -34,7 +34,7 @@ function SearchResults(){
                 <div className='search-user-card'>
                     <Link to={`/artist-pages/${page?.id}`}>
                         <div className='search-user-card-image'>
-                            <img src={page?.profilePic}/>
+                            <img src={page?.profilePic} alt='profile'/>
                         </div>
                         <div className='search-user-card-info'>
                             <div className='search-user-card-name'>{page?.username}</div>

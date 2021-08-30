@@ -23,7 +23,7 @@ function ArtistPage(){
     const jobs = useSelector(state => state.jobReducer.jobs)
     const hasJob = jobs.find(job => (job?.userId === user?.id) && (job?.artistId === artist?.userId))
     const posts = useSelector(state => state.postReducer.posts)
-    const myPosts = posts.filter(post => post.artistPageId === +artistPageId)
+    const myPosts = posts.filter(post => post.artistPageId === +artistPageId).reverse()
     const artistTypes = useSelector(state => state.artistTypeReducer.artistTypes)
     const typeLists = useSelector(state => state.artistTypeListReducer.artistTypeLists)
     const myLists = typeLists.filter(list => list.artistPageId === +artistPageId)

@@ -19,7 +19,7 @@ function ProfilePage() {
   const users = useSelector(state => state.userReducer.users)
   const artistPageId = artistPages?.filter(page => page?.userId === currentUser?.id)[0]?.id
   const jobs = useSelector(state => state.jobReducer.jobs)
-  const myJobs = jobs?.filter(job => ((job?.userId === +userId) || (job?.artistId === +userId )))
+  const myJobs = jobs?.filter(job => ((job?.userId === +userId) || (job?.artistId === +userId ))).reverse()
   const dispatch = useDispatch()
 
   useEffect(() => {
