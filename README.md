@@ -1,26 +1,110 @@
-# Flask React Project
+# Canvas
 
-This is the starter for the Flask React project.
+<p align='center'>
+  <img src='https://i.imgur.com/0Szj0Wh.png' width='200px' >
+</p>
 
-## Getting started
+Canvas, a <a href='https://fiverr.com'>Fiverr</a> clone, is an app for users to discover and hire freelance artists, or create an 'Artist Page' to receive work inquiries. It is built using React.js, Redux.js, and Flask.
+
+View live: <a href='https://canvas-proj.herokuapp.com/'>Canvas App</a>
+
+<br />
+
+## Features:
+
+<br />
+
+- Sign up/in with email
+- Search by username or artist tags
+- Create, edit, and delete a personalized artist page
+- Create, edit, and delete artwork posts on your artist page
+- Create, edit, and delete work requests for users, who are hiring. Accept and complete work requests for artists
+- Add/delete artist tags on your artist page
+  <br />
+  <br />
+
+## Home Page:
+
+<img src='https://i.imgur.com/vnTnK8Z.jpeg' width='500px' />
+<br />
+<br />
+
+## Artist Page:
+
+<img src='https://i.imgur.com/m5y6t6I.jpeg' width='500px' />
+<br />
+<br />
+
+## Profile Page:
+
+<img src='https://i.imgur.com/0tDd9NI.png' width='500px' />
+<br />
+<br />
+
+## Technologies Used:
+
+<br />
+
+- Languages:
+  ![](https://img.shields.io/badge/-JavaSript-ffffff?style=flat-square&logo=javascript&logoColor=ff0000)
+  ![](https://img.shields.io/badge/-Python-ffffff?style=flat-square&logo=python&logoColor=ff0000)
+- Frontend:
+  ![](https://img.shields.io/badge/-React-ffffff?style=flat-square&logo=react&logoColor=ff0000)
+  ![](https://img.shields.io/badge/-Redux-ffffff?style=flat-square&logo=redux&logoColor=ff0000)
+  ![](https://img.shields.io/badge/-CSS3-ffffff?style=flat-square&logo=css3&logoColor=ff0000)
+  ![](https://img.shields.io/badge/-HTML5-ffffff?style=flat-square&logo=html5&logoColor=ff0000)
+- Backend:
+  ![](https://img.shields.io/badge/-Flask-ffffff?style=flat-square&logo=flask&logoColor=ff0000)
+  ![](https://img.shields.io/badge/-SQLAlchemy-ffffff?style=flat-square&logo=sqlalchemy&logoColor=ff0000)
+
+<br />
+
+## My Information:
+
+<br />
+
+Owen Iwamasa:
+<br />
+<a href='owiwamasa@gmail.com'>
+<img src="https://i.imgur.com/jLLwTjh.png" width="25" height="25">
+</a>
+<a href='https://www.linkedin.com/in/owen-iwamasa-6ab3a9166/'>
+<img src="https://logodix.com/logo/91031.png" width="25" height="25">
+</a>
+<a href='https://github.com/owiwamasa'>
+<img src="https://icones.pro/wp-content/uploads/2021/06/icone-github-grise.png" width="25" height="25">
+</a>
+<br />
+<br />
+
+## Getting started (Installation)
+
+<br />
 
 1. Clone this repository (only this branch)
 
    ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
+   git clone https://github.com/owiwamasa/sidewalk-surfer-proj
    ```
 
 2. Install dependencies
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+   ```bash
+   pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
+   ```
 
-3. Create a **.env** file based on the example with proper settings for your
+3. Install DatePicker
+
+   ```bash
+   npm install react-datepicker --save
+   ```
+
+4. Create a **.env** file based on the .env.example with proper settings for your
    development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+5. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+
+6. Get into your pipenv, migrate your database, seed your database, and run your flask app
 
    ```bash
    pipenv shell
@@ -38,97 +122,18 @@ This is the starter for the Flask React project.
    flask run
    ```
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
 
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
+8. Start up Flask and React
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
-
-## Deploy to Heroku
-
-1. Before you deploy, don't forget to run the following command in order to
-ensure that your production environment has all of your up-to-date
-dependencies. You only have to run this command when you have installed new
-Python packages since your last deployment, but if you aren't sure, it won't
-hurt to run it again.
+   -At the root of the project folder, run:
 
    ```bash
-   pipenv lock -r > requirements.txt
+   flask run
    ```
 
-2. Create a new project on Heroku
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-4. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-5. Run
+   -In the react-app folder, run:
 
    ```bash
-   heroku login
-   ```
-
-6. Login to the heroku container registry
-
-   ```bash
-   heroku container:login
-   ```
-
-7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-8. Push your docker container to heroku from the root directory of your project.
-   (If you are using an M1 mac, follow [these steps below](#for-m1-mac-users) instead, then continue on to step 9.)
-   This will build the Dockerfile and push the image to your heroku container registry.
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. Release your docker container to heroku
-
-      ```bash
-      heroku container:release web -a {NAME_OF_HEROKU_APP}
-      ```
-
-10. set up your database
-
-      ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-      ```
-
-11. Under Settings find "Config Vars" and add any additional/secret .env
-variables.
-
-12. profit
-
-### For M1 Mac users
-
-(Replaces **Step 8**)
-
-1. Build image with linux platform for heroku servers. Replace
-{NAME_OF_HEROKU_APP} with your own tag:
-
-   ```bash=
-   docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
-   ```
-
-2. Tag your app with the url for your apps registry. Make sure to use the name
-of your Heroku app in the url and tag name:
-
-   ```bash=2
-   docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
-
-3. Use docker to push the image to the Heroku container registry:
-
-   ```bash=3
-   docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
+   npm start
    ```
