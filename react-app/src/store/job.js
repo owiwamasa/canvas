@@ -85,11 +85,10 @@ export const editAcceptJob = (job, jobId) => async dispatch => {
     }
 }
 
-export const editCompleteJob = (job, jobId) => async dispatch => {
+export const editCompleteJob = (formData, jobId) => async dispatch => {
     const res = await fetch(`/api/jobs/${jobId}/completed`, {
         method: 'PUT',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(job)
+        body: formData
     })
     if (res.ok) {
         const job = await res.json()

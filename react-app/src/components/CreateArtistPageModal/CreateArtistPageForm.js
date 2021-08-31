@@ -8,21 +8,31 @@ import './CreateArtistPageForm.css'
 
 function CreateArtistPageForm({setShowModal}){
     const [biography, setBiography] = useState('')
-    const [headerImage, setHeaderImage] = useState('')
+    const [headerImage, setHeaderImage] = useState(null)
+    const [imageLoading, setImageLoading] = useState(false)
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch()
     const history = useHistory()
 
     const createArtist = async (e) => {
         e.preventDefault()
+        const formData = new FormData()
+        formData.append('biography', biography)
+        formData.append('headerImage', headerImage)
 
-        const artist = {biography, headerImage, userId: user.id}
-        const success = await dispatch(createArtistPage(artist))
+        setImageLoading(true)
+        const success = await dispatch(createArtistPage(formData))
         if (success) {
             await dispatch(editUser(user))
             setShowModal(false)
+            setImageLoading(false)
             history.push(`/artist-pages/${success.id}`)
         }
+    }
+
+    const updateImage = (e) => {
+        const file = e.target.files[0]
+        setHeaderImage(file)
     }
 
 
@@ -30,7 +40,7 @@ function CreateArtistPageForm({setShowModal}){
         <form onSubmit={createArtist}>
             <div className='form-header'>Create Artist Page</div>
             <Errors />
-            <div className='form-input'>
+            <div className='form-input' id='artistPage-form-biography-input'>
                 <textarea
                 type='text'
                 value={biography}
@@ -38,14 +48,15 @@ function CreateArtistPageForm({setShowModal}){
                 onChange={(e) => setBiography(e.target.value)}
                 />
             </div>
-            <div className='form-input headerImageURL'>
+            <div className='form-input-image-upload'>
+                <label>Upload Header Image:</label>
                 <input
-                text='text'
-                value={headerImage}
-                placeholder='Header Image URL'
-                onChange={(e) => setHeaderImage(e.target.value)}
+                type='file'
+                accept='image/*'
+                onChange={updateImage}
                 />
             </div>
+            {(imageLoading) && <p className='form-loading'>Loading...</p>}
             <button className='form-submit' type='submit'>Create</button>
         </form>
     )

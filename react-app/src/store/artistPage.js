@@ -33,11 +33,10 @@ export const allArtistPages = () => async dispatch => {
 }
 
 
-export const createArtistPage = (artist) => async dispatch => {
+export const createArtistPage = (formData) => async dispatch => {
     const res = await fetch ('/api/artist-pages/', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(artist)
+        body: formData
     })
     if (res.ok){
         const artist = await res.json()
@@ -58,11 +57,10 @@ export const deleteArtist = (artistId) => async dispatch => {
     }
 }
 
-export const editArtist = (artist, artistId) => async dispatch => {
+export const editArtist = (formData, artistId) => async dispatch => {
     const res = await fetch(`/api/artist-pages/${artistId}`, {
         method: 'PUT',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(artist)
+        body: formData
     })
     if (res.ok) {
         const artist = await res.json()
