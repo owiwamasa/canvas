@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user
-from app.models import ArtistPage, User, db
+from app.models import ArtistPage, User, db, Post, ArtistTypeList
 from app.forms import CreateArtistPageForm
 
 
@@ -40,6 +40,14 @@ def create_artist_page():
 
 @artistPage_routes.route('/<int:id>', methods=['DELETE'])
 def delete_artist_page(id):
+    posts = Post.query.filter(Post.artistPageId == id).all()
+    for post in posts:
+        db.session.delete(post)
+    db.session.commit()
+    tags = ArtistTypeList.query.filter(ArtistTypeList.artistPageId == id).all()
+    for tag in tags:
+        db.session.delete(tag)
+    db.session.commit()
     artistPage = ArtistPage.query.get(id)
     db.session.delete(artistPage)
     db.session.commit()
