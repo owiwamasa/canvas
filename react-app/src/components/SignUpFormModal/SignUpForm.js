@@ -10,23 +10,38 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  const [profilePic, setProfilePic] = useState('');
+  const [profilePic, setProfilePic] = useState(null);
+  const [imageLoading, setImageLoading] = useState(false)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
     let errs = []
-
     if (password !== repeatPassword) {
       errs.push('Passwords do not match')
       setErrors(errs)
       return
     }
-    const data = await dispatch(signUp(username, email, password, profilePic));
+    if (!profilePic) {
+    errs.push('Profile Picture is required.')
+    setErrors(errs)
+    return
+    }
+
+
+    const formData = new FormData()
+    formData.append('username', username)
+    formData.append('email', email)
+    formData.append('password', password)
+    formData.append('profilePic', profilePic)
+    setImageLoading(true)
+    const data = await dispatch(signUp(formData));
     if (data){
       errs = [...errs, ...data]
       setErrors(errs)
+    } else {
+      setImageLoading(false)
     }
   };
 
@@ -100,15 +115,15 @@ const SignUpForm = () => {
           </div>
         </div>
       </div>
-      <div className='form-input signup-3'>
+      <div className='form-input-image-upload'>
+        <label>Upload Profile Picture:</label>
         <input
-          type='text'
-          name='profilePic'
-          placeholder='Profile Picture URL'
-          onChange={(e) => setProfilePic(e.target.value)}
-          value={profilePic}
+          type='file'
+          accept='image/*'
+          onChange={(e) => setProfilePic(e.target.files[0])}
         ></input>
       </div>
+      {(imageLoading) && <p className='form-loading'>Loading...</p>}
       <button className='form-submit' type='submit'>Sign Up</button>
     </form>
   );

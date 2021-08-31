@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux'
 import './EditCompletedJobForm.css'
 
 function EditCompletedJobForm ({setShowModal, job}){
-    const [completedArtwork, setCompletedArtwork] = useState('')
+    const [completedArtwork, setCompletedArtwork] = useState(null)
+    const [imageLoading, setImageLoading] = useState(false)
     const [error, setError] = useState('')
     const dispatch = useDispatch()
 
@@ -13,14 +14,21 @@ function EditCompletedJobForm ({setShowModal, job}){
         e.preventDefault()
 
         if (!completedArtwork) {
-            setError('Completed Artwork URL must have a value.')
+            setError('Completed Artwork is required.')
             return
         }
-        await dispatch(editUserCompletedJob(job.artistId))
-        const completedJob = {'title': job.title, 'description': job.description, 'dueDate': job.dueDate, completedArtwork}
-        const success = await dispatch(editCompleteJob(completedJob, job.id))
+        const formData = new FormData()
+        formData.append('title', job.title)
+        formData.append('description',job.description)
+        formData.append('dueDate',job.dueDate)
+        formData.append('completedArtwork', completedArtwork)
+
+        setImageLoading(true)
+        const success = await dispatch(editCompleteJob(formData, job.id))
         if (success) {
+            await dispatch(editUserCompletedJob(job.artistId))
             setShowModal(false)
+            setImageLoading(false)
         }
     }
 
@@ -34,15 +42,14 @@ function EditCompletedJobForm ({setShowModal, job}){
                     </div>
                 </div>
             }
-            <div className='form-input'>
+            <div className='form-input-image-upload'>
                 <input
-                className='form-complete-job-input'
-                value={completedArtwork}
-                type='text'
-                placeholder='Completed Artwork URL'
-                onChange={(e) => setCompletedArtwork(e.target.value)}
+                type='file'
+                accept='image/*'
+                onChange={(e) => setCompletedArtwork(e.target.files[0])}
                 />
             </div>
+            {(imageLoading) && <p className='form-loading'>Loading...</p>}
             <button
             type='submit'
             className='form-submit'

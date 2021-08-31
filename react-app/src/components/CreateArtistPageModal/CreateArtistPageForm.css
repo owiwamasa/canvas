@@ -11,10 +11,6 @@
   margin-top: -20px;
 }
 
-.headerImageURL input {
-  width: 350px;
-}
-
 .create-artistPage {
   font-family: "Hind", sans-serif;
   font-size: 16px;
@@ -31,4 +27,60 @@
   color: #1154af;
   background-color: white;
   border: 3px solid #1154af;
+}
+
+#artistPage-form-biography-input {
+  margin-top: 30px;
+}
+
+.form-loading {
+  font-family: "Hind", sans-serif;
+  font-size: 20px;
+  margin-top: 20px;
+  color: white;
+}
+
+.form-input-image-upload {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  width: 380px;
+}
+
+.form-input-image-upload label {
+  font-family: "Hind", sans-serif;
+  font-size: 18px;
+  font-weight: bolder;
+  margin-bottom: 15px;
+  white-space: nowrap;
+  color: white;
+}
+
+.form-input-image-upload input {
+  color: white;
+  font-family: "Hind", sans-serif;
+  font-weight: bolder;
+  font-size: 14px;
+}
+
+.form-input-image-upload input::-webkit-file-upload-button {
+  color: white;
+  border-radius: 30px;
+  background-color: transparent;
+  font-weight: bolder;
+  border: 2px solid white;
+  padding: 5px 10px;
+  margin-right: 10px;
+  width: 150px;
+}
+
+.form-input-image-upload input::-webkit-file-upload-button:hover {
+  color: #ffc328;
+  border-radius: 30px;
+  background-color: white;
+  font-weight: bolder;
+  border: 2px solid white;
+  padding: 5px 10px;
 }

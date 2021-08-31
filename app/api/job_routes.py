@@ -2,6 +2,8 @@ from flask import Blueprint, jsonify, request
 from flask_login import current_user
 from app.models import Job, User, db
 from app.forms import CreateJobForm, CompleteJobForm
+from app.s3_helpers import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 
 
 job_routes = Blueprint('jobs', __name__)
@@ -49,16 +51,32 @@ def accept_job(id):
     db.session.commit()
     return job.toDict()
 
+
 @job_routes.route('/<int:id>/completed', methods=['PUT'])
 def complete_job(id):
     form = CompleteJobForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
+    if "completedArtwork" not in request.files:
+        return jsonify(['Completed Artwork is required']), 400
+    completedArtwork = request.files['completedArtwork']
+
+    if not allowed_file(completedArtwork.filename):
+        return jsonify(['Completed Artwork file type is not permitted']), 400
+
+    completedArtwork.filename = get_unique_filename(completedArtwork.filename)
+    upload = upload_file_to_s3(completedArtwork)
+
+    if "url" not in upload:
+        return upload, 400
+    url = upload["url"]
     if form.validate_on_submit():
         job = Job.query.get_or_404(id)
         job.completed = True
-        job.completedArtwork = form.completedArtwork.data
+        job.completedArtwork = url
         db.session.commit()
         return job.toDict()
+
 
 @job_routes.route('/<int:id>', methods=['PUT'])
 def edit_job(id):

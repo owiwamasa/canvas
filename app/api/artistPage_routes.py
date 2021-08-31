@@ -2,6 +2,8 @@ from flask import Blueprint, jsonify, request
 from flask_login import current_user
 from app.models import ArtistPage, User, db, Post, ArtistTypeList
 from app.forms import CreateArtistPageForm
+from app.s3_helpers import (
+    upload_file_to_s3, allowed_file, get_unique_filename)
 
 
 artistPage_routes = Blueprint('artistPages', __name__)
@@ -23,10 +25,25 @@ def get_artist_page(id):
 def create_artist_page():
     form = CreateArtistPageForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
+    if "headerImage" not in request.files:
+        return jsonify(['Header image is required']), 400
+    headerImage = request.files['headerImage']
+
+    if not allowed_file(headerImage.filename):
+        return jsonify(['Header image file type is not permitted']), 400
+
+    headerImage.filename = get_unique_filename(headerImage.filename)
+    upload = upload_file_to_s3(headerImage)
+
+    if "url" not in upload:
+        return upload, 400
+    url = upload["url"]
+
     if form.validate_on_submit():
         artist = ArtistPage(
             biography=form.biography.data,
-            headerImage=form.headerImage.data,
+            headerImage=url,
             userId=current_user.id
         )
         db.session.add(artist)
@@ -58,10 +75,25 @@ def delete_artist_page(id):
 def edit_artist_page(id):
     form = CreateArtistPageForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
+    if "headerImage" not in request.files:
+        return jsonify(['Header image is required']), 400
+    headerImage = request.files['headerImage']
+
+    if not allowed_file(headerImage.filename):
+        return jsonify(['Header image file type is not permitted']), 400
+
+    headerImage.filename = get_unique_filename(headerImage.filename)
+    upload = upload_file_to_s3(headerImage)
+
+    if "url" not in upload:
+        return upload, 400
+    url = upload["url"]
+
     if form.validate_on_submit():
         artist = ArtistPage.query.get_or_404(id)
         artist.biography = form.biography.data
-        artist.headerImage = form.headerImage.data
+        artist.headerImage = url
         db.session.commit()
         return artist.toDict()
     errors = form.errors

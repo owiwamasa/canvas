@@ -11,18 +11,23 @@ function EditArtistPageForm({setShowModal}){
     const artist = artistPages.filter(page => page.userId === user.id)[0]
     const artistId = artist.id
     const [biography, setBiography] = useState(artist.biography)
-    const [headerImage, setHeaderImage] = useState(artist.headerImage)
+    const [headerImage, setHeaderImage] = useState(null)
+    const [imageLoading, setImageLoading] = useState(false)
     const dispatch = useDispatch()
 
     const editOneArtist = async (e) => {
         e.preventDefault()
+        const formData = new FormData()
+        formData.append('biography', biography)
+        formData.append('headerImage', headerImage)
 
-        const artist = {biography, headerImage, userId: user.id}
-        const success = await dispatch(editArtist(artist, artistId))
+        setImageLoading(true)
+        const success = await dispatch(editArtist(formData, artistId))
         if (success) {
             setBiography(success.biography)
             setHeaderImage(success.headerImage)
             setShowModal(false)
+            setImageLoading(false)
         }
     }
 
@@ -43,14 +48,15 @@ function EditArtistPageForm({setShowModal}){
                 onChange={(e) => setBiography(e.target.value)}
                 />
             </div>
-            <div className='form-input headerImageURL'>
+            <div className='form-input-image-upload'>
+                <label>Upload Header Image:</label>
                 <input
-                text='text'
-                value={headerImage}
-                placeholder='Header Image URL'
-                onChange={(e) => setHeaderImage(e.target.value)}
+                type='file'
+                accept='image/*'
+                onChange={(e) => setHeaderImage(e.target.files[0])}
                 />
             </div>
+            {(imageLoading) && <p className='form-loading'>Loading...</p>}
             <button className='form-submit' type='submit'>Edit</button>
         </form>
     )

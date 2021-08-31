@@ -6,18 +6,25 @@ import './CreatePostForm.css'
 
 
 function CreatePostForm({setShowModal, artistPageId}){
-    const [image, setImage] = useState('')
+    const [image, setImage] = useState(null)
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
+    const [imageLoading, setImageLoading] = useState(false)
     const dispatch = useDispatch()
 
     const createOnePost = async (e) => {
         e.preventDefault()
+        const formData = new FormData()
+        formData.append('image', image)
+        formData.append('title', title)
+        formData.append('description', description)
+        formData.append('artistPageId', artistPageId)
 
-        const post = {image, title, description, artistPageId}
-        const success = await dispatch(createPost(post))
+        setImageLoading(true)
+        const success = await dispatch(createPost(formData))
         if (success) {
             setShowModal(false)
+            setImageLoading(false)
         }
     }
 
@@ -41,14 +48,15 @@ function CreatePostForm({setShowModal, artistPageId}){
                 onChange={(e) => setDescription(e.target.value)}
                 />
             </div>
-            <div className='form-input form-post'>
+            <div className='form-input-image-upload'>
+                <label>Upload Post Image:</label>
                 <input
-                type='text'
-                value={image}
-                placeholder='Image URL'
-                onChange={(e) => setImage(e.target.value)}
+                type='file'
+                accept='image/*'
+                onChange={(e) => setImage(e.target.files[0])}
                 />
             </div>
+            {(imageLoading) && <p className='form-loading'>Loading...</p>}
             <button className='form-submit' type='submit'>Submit</button>
         </form>
     )

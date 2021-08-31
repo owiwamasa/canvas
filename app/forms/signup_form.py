@@ -20,7 +20,7 @@ def username_exists(form, field):
         raise ValidationError('Username is already in use.')
 
 def email_check(form, field):
-    email = form.data
+    email = form.email.data
     if '@' not in email:
         raise ValidationError('Please enter a valid email address.')
 
