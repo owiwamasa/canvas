@@ -27,6 +27,7 @@ function ArtistTypeForm({setArtistTypeButtonClicked, artistPageId}){
     const [checked6, setChecked6] = useState(listFinder(myLists, 7))
     const [checked7, setChecked7] = useState(listFinder(myLists, 8))
     const [checked8, setChecked8] = useState(listFinder(myLists, 9))
+    const [checked9, setChecked9] = useState(listFinder(myLists, 10))
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -121,6 +122,14 @@ function ArtistTypeForm({setArtistTypeButtonClicked, artistPageId}){
                 onChange={() => setChecked8(!checked8)}
                 />
                 <label key={artistTypes[8]?.id}> {artistTypes[8]?.title}</label>
+            </div>
+            <div className='tag-form-div'>
+                <input
+                type='checkbox'
+                checked={checked9}
+                onChange={() => setChecked9(!checked9)}
+                />
+                <label key={artistTypes[9]?.id}> {artistTypes[9]?.title}</label>
             </div>
             <button className='tag-form-submit' type='submit'><i className="fas fa-plus"></i> Artist Tags</button>
         </form>
