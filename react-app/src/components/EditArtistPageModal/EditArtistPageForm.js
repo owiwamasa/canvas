@@ -35,7 +35,7 @@ function EditArtistPageForm({setShowModal}){
         <form onSubmit={editOneArtist}>
             <div className='form-header'>Edit Artist Page</div>
             <Errors />
-            <div className='form-input'>
+            <div className='form-input form-edit-artist-input'>
                 <textarea
                 type='text'
                 value={biography}

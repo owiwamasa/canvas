@@ -7,4 +7,4 @@ from app.models import ArtistPage
 class CreateArtistPageForm(FlaskForm):
 
     biography = StringField('biography', validators=[DataRequired()])
-    headerImage = StringField('headerImage')
+    headerImage = StringField('headerImage', validators=[DataRequired()])

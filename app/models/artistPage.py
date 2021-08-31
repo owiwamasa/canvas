@@ -6,7 +6,7 @@ class ArtistPage(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     biography = db.Column(db.String(1000), nullable=False)
-    headerImage = db.Column(db.String(2000), nullable=True)
+    headerImage = db.Column(db.String(2000), nullable=False)
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     user = db.relationship("User", back_populates="artistPage")
