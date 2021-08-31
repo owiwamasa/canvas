@@ -31,7 +31,7 @@ function ArtistTypeForm({setArtistTypeButtonClicked, artistPageId}){
 
     const onSubmit = (e) => {
         e.preventDefault()
-        const checks = [checked0, checked1, checked2, checked3, checked4, checked5, checked6, checked7, checked8]
+        const checks = [checked0, checked1, checked2, checked3, checked4, checked5, checked6, checked7, checked8, checked9]
         checks.forEach((check, idx) => {
             let payload = {'artistTypeId': idx + 1, artistPageId}
             let list = myLists.find(list => list['artistTypeId'] === idx + 1)
