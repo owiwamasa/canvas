@@ -6,5 +6,5 @@ from app.models import ArtistPage
 
 class CreateArtistPageForm(FlaskForm):
 
-    biography = StringField('biography', validators=[DataRequired(), Length(min=1, max=1000, message='Biography must be less than 1000 characters')])
-    headerImage = StringField('headerImage', validators=[DataRequired(), Length(min=1, max=1000, message='Header Image File must be less than 1000 characters')])
+    biography = StringField('biography', validators=[DataRequired(), Length(min=1, max=1000, message='Must be less than 1000 characters')])
+    headerImage = StringField('headerImage', validators=[DataRequired(), Length(min=1, max=1000, message='Must be less than 1000 characters')])
