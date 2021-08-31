@@ -14,6 +14,8 @@ from .api.job_routes import job_routes
 from .api.artistType_routes import artistType_routes
 from .api.artistTypeList_routes import artistTypeList_routes
 
+from .socket import socketio
+
 from .seeds import seed_commands
 
 from .config import Config
@@ -43,6 +45,8 @@ app.register_blueprint(artistType_routes, url_prefix='/api/artist-types')
 app.register_blueprint(artistTypeList_routes, url_prefix='/api/artist-type-lists')
 db.init_app(app)
 Migrate(app, db)
+
+socketio.init_app(app)
 
 # Application Security
 CORS(app)
@@ -80,3 +84,7 @@ def react_root(path):
     if path == 'favicon.ico':
         return app.send_static_file('favicon.ico')
     return app.send_static_file('index.html')
+
+
+if __name__ == '__main__':
+    socketio.run(app)
