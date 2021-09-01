@@ -8,6 +8,7 @@ import { allJobs } from "../../store/job"
 import CreateJobModal from "../CreateJobModal"
 import CreatePostModal from "../CreatePostModal"
 import ViewPostModal from "../ViewPostModal"
+import ChatModal from "../Chat"
 import ArtistTypeForm from "../ArtistTypeForm"
 import { allArtistTypeLists } from "../../store/artistTypeList"
 import { allArtistTypes } from "../../store/artistType"
@@ -61,7 +62,7 @@ function ArtistPage(){
                         {hasJob && !hasJob.completed ?
                           <button className='artistPage-job-sent' disabled={true}>Work Request Sent <i className="fas fa-check"></i></button>
                         : <CreateJobModal artistId={artist?.userId} />}
-                        <button className='artistPage-message'>Message</button>
+                        <ChatModal artistId={artist?.userId}/>
                     </div>
                     :
                     (artistTypeButtonClicked ?
