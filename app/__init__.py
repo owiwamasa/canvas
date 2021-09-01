@@ -13,6 +13,7 @@ from .api.post_routes import post_routes
 from .api.job_routes import job_routes
 from .api.artistType_routes import artistType_routes
 from .api.artistTypeList_routes import artistTypeList_routes
+from .api.review_routes import review_routes
 
 from .socket import socketio
 
@@ -43,6 +44,7 @@ app.register_blueprint(post_routes, url_prefix='/api/posts')
 app.register_blueprint(job_routes, url_prefix='/api/jobs')
 app.register_blueprint(artistType_routes, url_prefix='/api/artist-types')
 app.register_blueprint(artistTypeList_routes, url_prefix='/api/artist-type-lists')
+app.register_blueprint(review_routes, url_prefix='/api/reviews')
 db.init_app(app)
 Migrate(app, db)
 

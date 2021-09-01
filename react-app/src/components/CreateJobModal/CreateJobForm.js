@@ -21,19 +21,9 @@ function CreateJobForm({setShowModal, artistId}){
             setShowModal(false)
             setTitle('')
             setDescription('')
-            setDueDate('')
+            setDueDate(null)
         }
     }
-
-    // const useCreateJob = (createOneJob) => {
-    //     useEffect(() => {
-    //         let active = true
-    //         createOneJob().then(data => {
-    //             if (active) console.log(data)
-    //         })
-    //         return () => {active = false}
-    //     }, [createOneJob])
-    // }
 
     return(
         <form onSubmit={createOneJob}>

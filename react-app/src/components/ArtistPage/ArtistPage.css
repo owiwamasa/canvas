@@ -95,6 +95,7 @@
   justify-content: center;
   margin-top: 100px;
   padding-bottom: 50px;
+  min-height: 720px;
 }
 
 .artistPage-post {
@@ -157,4 +158,20 @@
   width: 300px;
   text-align: center;
   line-height: 1.3;
+}
+
+.reviews-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.past-job-title {
+  font-family: "Hind", sans-serif;
+  font-size: 40px;
+  /* text-align: center; */
+  border-top: 2px solid rgba(128, 128, 128, 0.372);
+  width: 90%;
+  padding-top: 90px;
+  margin-bottom: -50px;
 }
