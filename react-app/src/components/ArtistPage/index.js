@@ -96,7 +96,7 @@ function ArtistPage(){
                     </div>
                 ))}
             </div>
-            {completedJobs.length &&
+            {completedJobs.length !== 0 &&
             <div className='reviews-section'>
                 <div className='past-job-title'>PAST PROJECTS</div>
                 {completedJobs.map(job => {
