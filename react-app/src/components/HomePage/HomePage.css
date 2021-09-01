@@ -149,7 +149,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 40px;
+  padding-bottom: 50px;
   background-color: #eeeeee;
 }
 
@@ -158,6 +158,7 @@
   font-size: 45px;
   font-weight: bold;
   margin-top: 100px;
+  padding-bottom: 20px;
 }
 
 .home-review-cards {
