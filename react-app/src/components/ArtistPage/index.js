@@ -66,17 +66,18 @@ function ArtistPage(){
                     <img src={artist?.profilePic} alt='profile'/>
                 </div>
                 {myTags && <div className='artistPage-tags'>{myTags}</div>}
-                {(artist?.userId !== user?.id && user) ?
+                {((artist?.userId !== user?.id) && user) ?
                     <div className='artistPage-nonuser-btns'>
                         {hasJob.length && !hasJob.every(jobCompleted) ?
                           <button className='artistPage-job-sent' disabled={true}>Work Request Sent <i className="fas fa-check"></i></button>
                         : <CreateJobModal artistId={artist?.userId} />}
-                        <ChatModal artistId={artist?.userId}/>
+                        <ChatModal artist={artist}/>
                     </div>
                     :
                     (artistTypeButtonClicked ?
                         <ArtistTypeForm setArtistTypeButtonClicked={setArtistTypeButtonClicked} artistPageId={artistPageId}/> :
-                        <button className='artistPage-tag-btn' onClick={() => setArtistTypeButtonClicked(!artistTypeButtonClicked)}><i className="fas fa-plus"></i> Artist Tags</button>
+                        (user &&
+                        <button className='artistPage-tag-btn' onClick={() => setArtistTypeButtonClicked(!artistTypeButtonClicked)}><i className="fas fa-plus"></i> Artist Tags</button>)
                         )
                 }
                 <div className='artistPage-bio'>

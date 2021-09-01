@@ -3,7 +3,7 @@ import Chat from "./Chat";
 import { Modal } from '../../context/Modal'
 import './Chat.css'
 
-function ChatModal({artistId}) {
+function ChatModal({artist}) {
     const [showModal, setShowModal] = useState(false)
 
     return (
@@ -13,7 +13,7 @@ function ChatModal({artistId}) {
                 <Modal onClose={() => {
                     setShowModal(false)
                     }}>
-                    <Chat setShowModal={setShowModal} artistId={artistId}/>
+                    <Chat setShowModal={setShowModal} artist={artist}/>
                 </Modal>
             )}
         </>
