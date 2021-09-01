@@ -4,6 +4,9 @@ import { Link } from "react-router-dom"
 import { allArtistTypes } from "../../store/artistType"
 import { allUsers } from "../../store/user"
 import { allArtistPages } from "../../store/artistPage"
+import { allJobs } from "../../store/job"
+import { getAllReviews } from "../../store/review"
+import JobReviewCard from "../JobReviewCard"
 import './HomePage.css'
 
 function HomePage(){
@@ -13,11 +16,16 @@ function HomePage(){
     const artists = users.filter(user => user?.isArtist)
     const popularArtists = artists?.sort((a, b) => (a?.numCompletedJobs < b?.numCompletedJobs) ? 1 : -1).slice(0,10)
     const artistPages = useSelector(state => state.artistPageReducer?.artistPages)
+    const jobs = useSelector(state => state.jobReducer.jobs)
+    const completedJobs = jobs.filter(job => job?.completed).slice(0,2).reverse()
+    const reviews = useSelector(state => state.reviewReducer.reviews)
 
     useEffect(() => {
         dispatch(allArtistTypes())
         dispatch(allUsers())
         dispatch(allArtistPages())
+        dispatch(allJobs())
+        dispatch(getAllReviews())
     }, [dispatch])
     return(
         <div className='home-page'>
@@ -53,6 +61,20 @@ function HomePage(){
                         </Link>
                     </div>
                 )})}
+                </div>
+            </div>
+            <div className='home-reviews-section'>
+                <div className='home-reviews-title'>Recent Reviews</div>
+                <div className='home-review-cards'>
+                {completedJobs?.map(job => {
+                    let jobReview = reviews?.find(review => review?.jobId === job?.id)
+                    let reviewUser = users?.find(user => user?.id === jobReview?.userId)
+                    return (
+                        <div className='home-review-card'>
+                            <JobReviewCard job={job} jobReview={jobReview} reviewUser={reviewUser}/>
+                        </div>
+                    )
+                })}
                 </div>
             </div>
         </div>

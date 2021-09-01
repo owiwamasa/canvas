@@ -14,6 +14,7 @@ import { allArtistTypeLists } from "../../store/artistTypeList"
 import { allArtistTypes } from "../../store/artistType"
 import { getAllReviews } from "../../store/review"
 import { getAllUsers } from "../../store/user"
+import JobReviewCard from "../JobReviewCard"
 import './ArtistPage.css'
 
 
@@ -101,22 +102,7 @@ function ArtistPage(){
                     let jobReview = reviews?.find(review => review?.jobId === job?.id)
                     let reviewUser = users?.find(user => user?.id === jobReview?.userId)
                     return (
-                    <div className='review-card' key={job?.id}>
-                        <div className='review-img-div'>
-                            <div className='review-img'>
-                                <img src={job?.completedArtwork} alt='artwork'/>
-                            </div>
-                        </div>
-                        <div className='review-user'>
-                            <div className='review-text'>"{jobReview?.review}"</div>
-                                <div className='review-user-info'>
-                                    <div className='review-user-img'>
-                                        <img src={reviewUser?.profilePic} alt='profile'/>
-                                    </div>
-                                    <div>-{reviewUser?.username}</div>
-                                </div>
-                        </div>
-                    </div>
+                    <JobReviewCard job={job} jobReview={jobReview} reviewUser={reviewUser}/>
                 )})}
             </div>
             }
