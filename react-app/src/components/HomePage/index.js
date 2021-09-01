@@ -6,7 +6,6 @@ import { allUsers } from "../../store/user"
 import { allArtistPages } from "../../store/artistPage"
 import { allJobs } from "../../store/job"
 import { getAllReviews } from "../../store/review"
-import JobReviewCard from "../JobReviewCard"
 import './HomePage.css'
 
 function HomePage(){
@@ -66,12 +65,33 @@ function HomePage(){
             <div className='home-reviews-section'>
                 <div className='home-reviews-title'>Recent Reviews</div>
                 <div className='home-review-cards'>
-                {completedJobs?.map(job => {
+                {completedJobs?.map((job, idx )=> {
                     let jobReview = reviews?.find(review => review?.jobId === job?.id)
                     let reviewUser = users?.find(user => user?.id === jobReview?.userId)
+                    let artist = users?.find(user => user?.id === job?.artistId)
                     return (
-                        <div className='home-review-card'>
-                            <JobReviewCard job={job} jobReview={jobReview} reviewUser={reviewUser}/>
+                        <div className='home-review-card' key={job?.id}>
+                            <div className={`review-card-home-${idx}`}>
+                                <div className='review-img-div'>
+                                    <div className='review-img'>
+                                        <img src={job?.completedArtwork} alt='artwork'/>
+                                    </div>
+                                </div>
+                                <div className='review-user-home'>
+                                    <div>
+                                        <div className='review-text'>"{jobReview?.review}"</div>
+                                        <div className='review-user-info'>
+                                            <div>-{reviewUser?.username}</div>
+                                        </div>
+                                    </div>
+                                        <div className='home-review-artist'>
+                                            <div className='review-artist-name'>Artist: {artist?.username}</div>
+                                            <div className='review-artist-img'>
+                                                <img src={artist?.profilePic} alt='profile'/>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
                         </div>
                     )
                 })}

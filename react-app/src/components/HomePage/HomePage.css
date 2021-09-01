@@ -150,7 +150,7 @@
   align-items: center;
   justify-content: center;
   padding-bottom: 50px;
-  background-color: #eeeeee;
+  background-color: white;
 }
 
 .home-reviews-title {
@@ -164,4 +164,69 @@
 .home-review-cards {
   margin-top: 50px;
   margin-left: -530px;
+}
+
+.review-card-home-0 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 900px;
+  padding: 30px 50px;
+  margin-bottom: 40px;
+  margin-left: 530px;
+}
+
+.review-card-home-1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  width: 900px;
+  padding: 30px 50px;
+  margin-bottom: 40px;
+  margin-left: 530px;
+}
+
+.review-artist-img {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #ffc328;
+  background-color: rgba(0, 0, 0, 0.838);
+  margin-right: 10px;
+}
+
+.review-artist-img img {
+  width: 100%;
+  height: auto;
+}
+
+.home-review-artist {
+  display: flex;
+  align-items: center;
+}
+
+.review-artist-name {
+  font-family: "Hind", sans-serif;
+  font-size: 16px;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+.review-user-home {
+  width: 400px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: white; */
+  padding: 40px;
+  margin-left: 20px;
+  border-radius: 20px;
+  line-height: 1.5;
 }
