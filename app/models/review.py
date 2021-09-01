@@ -6,7 +6,7 @@ class Review(db.Model):
     __tablename__ = 'reviews'
 
     id = db.Column(db.Integer, primary_key=True)
-    review = db.Column(db.String(1000), nullable=False)
+    review = db.Column(db.String(500), nullable=False)
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     jobId = db.Column(db.Integer, db.ForeignKey('jobs.id'), nullable=False)
     createdAt = db.Column(db.DateTime, default=datetime.datetime.utcnow)

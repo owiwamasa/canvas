@@ -8,7 +8,7 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     image = db.Column(db.String(2000), nullable=False)
     title = db.Column(db.String(200), nullable=False)
-    description = db.Column(db.String(1000), nullable=False)
+    description = db.Column(db.String(500), nullable=False)
     artistPageId = db.Column(db.Integer, db.ForeignKey(
         'artistPages.id'), nullable=False)
     createdAt = db.Column(db.DateTime, default=datetime.datetime.utcnow)
