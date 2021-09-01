@@ -25,14 +25,16 @@
   margin-bottom: 10px;
 }
 
-.job-card-dates {
-  margin-right: 160px;
+.job-card-status-div {
+  display: flex;
+  align-items: center;
 }
 
 .job-card-date {
   font-weight: bolder;
   font-size: 14px;
-  margin-right: 20px;
+  margin-left: 20px;
+  white-space: nowrap;
 }
 
 .job-card-header-right {
@@ -41,9 +43,10 @@
 
 .job-card-header-center {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
+  max-width: 640px;
 }
 
 .job-card-header-center .fa-check-circle {
@@ -62,6 +65,7 @@
   font-size: 18px;
   margin-left: 10px;
   margin-right: 10px;
+  white-space: nowrap;
 }
 
 .job-card-accept-btn {

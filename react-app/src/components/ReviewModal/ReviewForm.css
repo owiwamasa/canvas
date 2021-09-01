@@ -1,0 +1,19 @@
+.review-modal-btn {
+  border: 2px solid #2acdb9;
+  color: white;
+  background-color: #2acdb9;
+  font-family: "Hind", sans-serif;
+  font-size: 15px;
+  border-radius: 20px;
+  padding: 5px 15px;
+}
+
+.review-modal-btn:hover {
+  border: 2px solid #2acdb9;
+  color: #2acdb9;
+  background-color: white;
+}
+
+.review-input {
+  margin-top: 30px;
+}

@@ -17,6 +17,7 @@ class Review(db.Model):
     def toDict(self):
         return {
             'id': self.id,
+            'review': self.review,
             'userId': self.userId,
             'jobId': self.jobId,
             'createdAt': self.createdAt

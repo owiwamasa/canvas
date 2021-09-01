@@ -12,6 +12,8 @@ import ChatModal from "../Chat"
 import ArtistTypeForm from "../ArtistTypeForm"
 import { allArtistTypeLists } from "../../store/artistTypeList"
 import { allArtistTypes } from "../../store/artistType"
+import { getAllReviews } from "../../store/review"
+import { getAllUsers } from "../../store/user"
 import './ArtistPage.css'
 
 
@@ -22,7 +24,7 @@ function ArtistPage(){
     const artistPages = useSelector(state => state.artistPageReducer.artistPages)
     const artist = artistPages.find(page => page.id === +artistPageId)
     const jobs = useSelector(state => state.jobReducer.jobs)
-    const hasJob = jobs.find(job => (job?.userId === user?.id) && (job?.artistId === artist?.userId))
+    const hasJob = jobs.filter(job => (job?.userId === user?.id) && (job?.artistId === artist?.userId))
     const posts = useSelector(state => state.postReducer.posts)
     const myPosts = posts.filter(post => post.artistPageId === +artistPageId).reverse()
     const artistTypes = useSelector(state => state.artistTypeReducer.artistTypes)
@@ -34,6 +36,10 @@ function ArtistPage(){
     })
     const myTags = myTypeTitles?.join(', ')
     const [artistTypeButtonClicked, setArtistTypeButtonClicked] = useState(false)
+    const jobCompleted = (currentJob) => currentJob.completed
+    const completedJobs = jobs.filter(job => (job?.artistId === artist?.userId) && job?.completed)
+    const reviews = useSelector(state => state.reviewReducer.reviews)
+    const users = useSelector(state => state.userReducer.users)
 
     useEffect(() => {
         dispatch(allArtistPages())
@@ -41,6 +47,8 @@ function ArtistPage(){
         dispatch(allJobs())
         dispatch(allArtistTypeLists())
         dispatch(allArtistTypes())
+        dispatch(getAllReviews())
+        dispatch(getAllUsers())
     }, [dispatch, artistPageId])
 
     return(
@@ -59,7 +67,7 @@ function ArtistPage(){
                 {myTags && <div className='artistPage-tags'>{myTags}</div>}
                 {(artist?.userId !== user?.id && user) ?
                     <div className='artistPage-nonuser-btns'>
-                        {hasJob && !hasJob.completed ?
+                        {hasJob.length && !hasJob.every(jobCompleted) ?
                           <button className='artistPage-job-sent' disabled={true}>Work Request Sent <i className="fas fa-check"></i></button>
                         : <CreateJobModal artistId={artist?.userId} />}
                         <ChatModal artistId={artist?.userId}/>
@@ -80,15 +88,42 @@ function ArtistPage(){
                 <CreatePostModal artistPageId={artistPageId}/>
             </div>}
             <div className='artistPage-allPosts'>
-                {myPosts && myPosts.map(post => (
-                    <div key={post.id} className='artistPage-post'>
+                {myPosts && myPosts?.map(post => (
+                    <div key={post?.id} className='artistPage-post'>
                         <ViewPostModal post={post} artist={artist} />
                     </div>
                 ))}
             </div>
+            {completedJobs.length &&
+            <div className='reviews-section'>
+                <div className='past-job-title'>PAST PROJECTS</div>
+                {completedJobs.map(job => {
+                    let jobReview = reviews?.find(review => review?.jobId === job?.id)
+                    let reviewUser = users?.find(user => user?.id === jobReview?.userId)
+                    return (
+                    <div className='review-card' key={job?.id}>
+                        <div className='review-img-div'>
+                            <div className='review-img'>
+                                <img src={job?.completedArtwork} alt='artwork'/>
+                            </div>
+                        </div>
+                        <div className='review-user'>
+                            <div className='review-text'>"{jobReview?.review}"</div>
+                                <div className='review-user-info'>
+                                    <div className='review-user-img'>
+                                        <img src={reviewUser?.profilePic} alt='profile'/>
+                                    </div>
+                                    <div>-{reviewUser?.username}</div>
+                                </div>
+                        </div>
+                    </div>
+                )})}
+            </div>
+            }
         </div>
     )
 }
+
 
 
 export default ArtistPage

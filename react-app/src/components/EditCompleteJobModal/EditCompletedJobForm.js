@@ -29,6 +29,7 @@ function EditCompletedJobForm ({setShowModal, job}){
             await dispatch(editUserCompletedJob(job.artistId))
             setShowModal(false)
             setImageLoading(false)
+            setCompletedArtwork(null)
         }
     }
 

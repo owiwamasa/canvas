@@ -95,6 +95,7 @@
   justify-content: center;
   margin-top: 100px;
   padding-bottom: 50px;
+  min-height: 720px;
 }
 
 .artistPage-post {
@@ -157,4 +158,90 @@
   width: 300px;
   text-align: center;
   line-height: 1.3;
+}
+
+.reviews-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.past-job-title {
+  font-family: "Hind", sans-serif;
+  font-size: 40px;
+  /* text-align: center; */
+  border-top: 2px solid rgba(128, 128, 128, 0.372);
+  width: 90%;
+  padding-top: 90px;
+  margin-bottom: -50px;
+}
+
+.review-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 750px;
+  background-color: white;
+  padding: 30px 50px;
+  border-radius: 30px;
+  margin-bottom: 40px;
+  margin-left: 530px;
+}
+
+.review-img-div {
+  width: 375px;
+  display: flex;
+  justify-content: center;
+}
+
+.review-img {
+  max-width: 375px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.review-img img {
+  height: 100%;
+  width: auto;
+}
+
+.review-user {
+  width: 300px;
+}
+
+.review-user-info {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  font-family: "Hind", sans-serif;
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.review-text {
+  font-family: "Hind", sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.review-user-img {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #ffc328;
+  background-color: rgba(0, 0, 0, 0.838);
+  margin-right: 10px;
+}
+
+.review-user-img img {
+  width: 100%;
+  height: auto;
 }

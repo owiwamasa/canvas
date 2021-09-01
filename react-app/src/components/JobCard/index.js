@@ -3,11 +3,16 @@ import { deleteJob, editAcceptJob } from '../../store/job'
 import EditJobModal from '../EditJobModal'
 import EditCompletedJobModal from '../EditCompleteJobModal'
 import CompletedArtModal from '../CompletedArtModal'
+import ReviewModal from '../ReviewModal'
+import { getAllReviews } from '../../store/review'
 import './JobCard.css'
+import { useEffect } from 'react'
 
 function JobCard({artist, otherUser, job}){
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user);
+    const reviews = useSelector(state => state.reviewReducer.reviews)
+    const jobReview = reviews.find(review => review?.jobId === job?.id)
 
     const deleteOneJob = (e, id) => {
         e.preventDefault()
@@ -19,10 +24,9 @@ function JobCard({artist, otherUser, job}){
         dispatch(editAcceptJob(job, job.id))
     }
 
-    // const editComplete = (e) => {
-    //     e.preventDefault()
-    //     dispatch(editCompleteJob(job, job.id))
-    // }
+    useEffect(() => {
+        dispatch(getAllReviews())
+    }, [dispatch])
 
     return(
     (job?.userId === user?.id ?
@@ -31,12 +35,20 @@ function JobCard({artist, otherUser, job}){
                 <div className='job-card-dates'>
                     <div className='job-card-date'>Deadline: {job?.dueDate.slice(0,17)}</div>
                 </div>
-                {job?.accepted ?
-                <div className='job-card-status'>Accepted <i className="far fa-check-circle"></i></div>
-            : <div className='job-card-status'>Accepted <i className="fas fa-times"></i></div>}
-                {job?.completed ?
-                <div className='job-card-status'>Completed <i className="far fa-check-circle"></i></div>
-            : <div className='job-card-status'>Completed <i className="fas fa-times"></i></div>}
+                <div className='job-card-status-div'>
+                    {job?.accepted ?
+                    <div className='job-card-status'>Accepted <i className="far fa-check-circle"></i></div>
+                : <div className='job-card-status'>Accepted <i className="fas fa-times"></i></div>}
+                    {job?.completed ?
+                    <div className='job-card-status'>Completed <i className="far fa-check-circle"></i></div>
+                : <div className='job-card-status'>Completed <i className="fas fa-times"></i></div>}
+                    {job?.completed &&
+                        <div>
+                            {(job?.userId === user?.id && !jobReview) &&
+                                <ReviewModal job={job}/>}
+                        </div>
+                    }
+                </div>
             </div>
             <div className='job-card-header'>
                 <div className='job-card-header-left'>
@@ -70,13 +82,15 @@ function JobCard({artist, otherUser, job}){
                 <div className='job-card-dates'>
                     <div className='job-card-date'>Deadline: {job?.dueDate.slice(0,17)}</div>
                 </div>
-                {job?.accepted ?
-                <div className='job-card-status'>Accepted <i className="far fa-check-circle"></i></div>
-            : <button onClick={editAccept} className='job-card-accept-btn'>Accept</button>}
-                {job?.completed ?
-                <div className='job-card-status'>Completed <i className="far fa-check-circle"></i></div>
-            : <EditCompletedJobModal job={job}/>
-            }
+                <div className='job-card-status-div'>
+                    {job?.accepted ?
+                    <div className='job-card-status'>Accepted <i className="far fa-check-circle"></i></div>
+                : <button onClick={editAccept} className='job-card-accept-btn'>Accept</button>}
+                    {job?.completed ?
+                    <div className='job-card-status'>Completed <i className="far fa-check-circle"></i></div>
+                : <EditCompletedJobModal job={job}/>
+                }
+                </div>
             </div>
             <div className='job-card-header'>
                 <div className='job-card-header-left'>
