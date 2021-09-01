@@ -1,6 +1,7 @@
 import { setErrors } from "./errors"
 
 const GET_ALL_ARTISTS = '/artistPages/GET_ALL_ARTISTS'
+// const GET_ONE_ARTIST = 'artistPages/GET_ONE_ARTIST'
 const CREATE_ARTIST = '/artistPages/CREATE_ARTIST'
 const DELETE_ARTIST = '/artistPages/DELETE_ARTIST'
 const EDIT_ARTIST = '/artistPages/EDIT_ARTIST'
@@ -9,6 +10,10 @@ const EDIT_ARTIST = '/artistPages/EDIT_ARTIST'
 const getAllArtists = (artists) => {
     return {type: GET_ALL_ARTISTS, artists}
 }
+
+// const getArtist = (artist) => {
+//     return {type: GET_ONE_ARTIST, artist}
+// }
 
 const createArtist = (artist) => {
     return {type: CREATE_ARTIST, artist}
@@ -31,6 +36,14 @@ export const allArtistPages = () => async dispatch => {
         dispatch(getAllArtists(allArtists))
     }
 }
+
+// export const getOneArtistPage = (artistPageId) => async dispatch => {
+//     const res = await fetch(`/api/artist-pages/${artistPageId}`)
+//     if (res.ok) {
+//         const artist = await res.json()
+//         dispatch(getArtist(artist))
+//     }
+// }
 
 
 export const createArtistPage = (formData) => async dispatch => {
@@ -80,6 +93,8 @@ const artistPageReducer = (state = initialState, action) => {
     switch(action.type){
         case GET_ALL_ARTISTS:
             return {...state, ...action.artists}
+        // case GET_ONE_ARTIST:
+        //     return {...state, ...action.artist}
         case CREATE_ARTIST:
             return {...state, artistPages: [...state.artistPages, action.artist]}
         case EDIT_ARTIST:

@@ -74,18 +74,6 @@
   line-height: 1.5;
 }
 
-.artistPage-message {
-  font-family: "Hind", sans-serif;
-  font-size: 16px;
-  font-weight: bolder;
-  color: #1154af;
-  background-color: white;
-  border: 3px solid #1154af;
-  padding: 10px 30px;
-  border-radius: 25px;
-  margin-top: 20px;
-}
-
 .artistPage-job-sent {
   font-family: "Hind", sans-serif;
   font-size: 16px;
