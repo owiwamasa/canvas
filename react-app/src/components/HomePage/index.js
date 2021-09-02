@@ -16,7 +16,7 @@ function HomePage(){
     const popularArtists = artists?.sort((a, b) => (a?.numCompletedJobs < b?.numCompletedJobs) ? 1 : -1).slice(0,10)
     const artistPages = useSelector(state => state.artistPageReducer?.artistPages)
     const jobs = useSelector(state => state.jobReducer.jobs)
-    const completedJobs = jobs.filter(job => job?.completed).slice(0,2).reverse()
+    const completedJobs = jobs.filter(job => job?.completed).slice(0,2)
     const reviews = useSelector(state => state.reviewReducer.reviews)
 
     useEffect(() => {
@@ -63,7 +63,7 @@ function HomePage(){
                 </div>
             </div>
             <div className='home-reviews-section'>
-                <div className='home-reviews-title'>Recent Reviews</div>
+                <div className='home-reviews-title'>Testimonials</div>
                 <div className='home-review-cards'>
                 {completedJobs?.map((job, idx )=> {
                     let jobReview = reviews?.find(review => review?.jobId === job?.id)
