@@ -4,6 +4,7 @@ import { allConversations } from '../../store/conversation'
 import { allMessages, createMessage } from '../../store/message'
 import { allUsers } from '../../store/user'
 import './Inbox.css'
+import Errors from '../Errors'
 
 function Inbox({user}){
     const dispatch = useDispatch()
@@ -29,17 +30,33 @@ function Inbox({user}){
 
     return(
         <div>
-            {conversations && conversations.map(conversation => {
+            {conversations.length ? conversations.map(conversation => {
                 let convoMessages = messages.filter(message => message.conversationId === conversation?.id).reverse()
+                let sender = users.find(user => user?.id === conversation?.userId)
+                let receiver = users.find(user => user?.id === conversation?.artistId)
+                console.log(sender)
                 return(
                     <div className='conversation' key={conversation?.id}>
+                        {conversation?.userId === user?.id ?
+                        <div className='message-header'>To: {receiver?.username}
+                            <div className='message-header-img'>
+                                <img src={receiver?.profilePic} alt='profile'/>
+                            </div>
+                        </div>
+                        :
+                        <div className='message-header'>From: {sender?.username}
+                            <div className='message-header-img'>
+                                <img src={sender?.profilePic} alt='profile'/>
+                            </div>
+                        </div>
+                        }
                         <div className='messages-div'>
                         {convoMessages.map(message => (
                             (message?.userId !== user?.id ?
                             <div className='message' key={message.id}>
                                 <div className='message-user'>
                                     <div className='message-user-img'>
-                                        <img src={message?.profilePic}/>
+                                        <img src={message?.profilePic} alt='profile'/>
                                     </div>
                                     <div className='message-username'>{message?.username}</div>
                                 </div>
@@ -50,7 +67,7 @@ function Inbox({user}){
                                 <div className='message-message'>{message?.message}</div>
                                 <div className='message-user-sent'>
                                     <div className='message-user-img'>
-                                        <img src={message?.profilePic}/>
+                                        <img src={message?.profilePic} alt='profile'/>
                                     </div>
                                     <div className='message-username'>{message?.username}</div>
                                 </div>
@@ -59,6 +76,7 @@ function Inbox({user}){
                         ))}
                         </div>
                         <form onSubmit={(e) => onSubmit(e, conversation?.id)} className='reply-form'>
+                            <Errors />
                             <textarea
                             className='message-reply'
                             type='text'
@@ -69,7 +87,9 @@ function Inbox({user}){
                         </form>
                     </div>
                 )
-            })}
+            }):
+            <div className='no-messages'>No Messages :(</div>
+            }
 
         </div>
     )

@@ -8,6 +8,7 @@ import './Chat.css'
 
 const Chat = ({artist, setShowModal}) => {
     const [chatInput, setChatInput] = useState("");
+    const [errors, setErrors] = useState([])
     // const [messages, setMessages] = useState([]);
     // const [room, setRoom] = useState('')
     // const [search, setSearch] = useState('')
@@ -36,18 +37,23 @@ const Chat = ({artist, setShowModal}) => {
     //         socket.disconnect()
     //     })
     // }, [])
-
+    console.log(errors)
     const sendChat = async (e) => {
         e.preventDefault()
+        const errs = []
 
-        const conversationPayload = {userId: user?.id, artistId: receiver?.id}
-        const success = await dispatch(createConversation(conversationPayload))
-        if (success) {
-            const messagePayload = {message: chatInput, conversationId: success?.id, userId: user?.id}
-            const messageSuccess = await dispatch(createMessage(messagePayload))
-            if (messageSuccess){
-                setShowModal(false)
-                setChatInput('')
+        if (chatInput.length > 500) errs.push('Message must be less than 500 characters')
+        setErrors(errs)
+        if (!errors.length){
+            const conversationPayload = {userId: user?.id, artistId: receiver?.id}
+            const success = await dispatch(createConversation(conversationPayload))
+            if (success) {
+                const messagePayload = {message: chatInput, conversationId: success?.id, userId: user?.id}
+                const messageSuccess = await dispatch(createMessage(messagePayload))
+                if (messageSuccess){
+                    setShowModal(false)
+                    setChatInput('')
+                }
             }
         }
         // setRoom(`${user?.id}${receiver?.id}room`)
@@ -60,6 +66,11 @@ const Chat = ({artist, setShowModal}) => {
         <div>
             <form onSubmit={sendChat}>
                 <div className='form-header'>Send Message to {artist?.username}</div>
+                <div className='form-errors'>
+                {errors && errors.map(err => (
+                    <div key={err}>{err}</div>
+                ))}
+                </div>
             {/* <div className='chat-messages'>
                 {messages.map((message, idx) => (
                     <div className='chat-single-message' key={idx}>{`${message.sender}: ${message.msg}`}</div>
