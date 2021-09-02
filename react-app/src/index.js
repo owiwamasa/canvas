@@ -15,9 +15,9 @@ ReactDOM.render(
     <ModalProvider>
       <Provider store={store}>
         <BrowserRouter>
-          <Router history={history}>
-            <App />
-          </Router>
+            <Router history={history}>
+                <App />
+            </Router>
         </BrowserRouter>
       </Provider>
     </ModalProvider>
