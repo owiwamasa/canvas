@@ -76,24 +76,24 @@ def edit_artist_page(id):
     form = CreateArtistPageForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if "headerImage" not in request.files:
-        return jsonify(['Header image is required']), 400
-    headerImage = request.files['headerImage']
+    if "headerImage" in request.files:
+        headerImage = request.files['headerImage']
 
-    if not allowed_file(headerImage.filename):
-        return jsonify(['Header image file type is not permitted']), 400
+        if not allowed_file(headerImage.filename):
+            return jsonify(['Header image file type is not permitted']), 400
 
-    headerImage.filename = get_unique_filename(headerImage.filename)
-    upload = upload_file_to_s3(headerImage)
+        headerImage.filename = get_unique_filename(headerImage.filename)
+        upload = upload_file_to_s3(headerImage)
 
-    if "url" not in upload:
-        return upload, 400
-    url = upload["url"]
+        if "url" not in upload:
+            return upload, 400
+        url = upload["url"]
 
     if form.validate_on_submit():
         artist = ArtistPage.query.get_or_404(id)
         artist.biography = form.biography.data
-        artist.headerImage = url
+        if "headerImage" in request.files:
+            artist.headerImage = url
         db.session.commit()
         return artist.toDict()
     errors = form.errors

@@ -8,12 +8,13 @@ import './EditArtistPage.css'
 function EditArtistPageForm({setShowModal}){
     const user = useSelector(state => state.session.user);
     const artistPages = useSelector(state => state.artistPageReducer.artistPages)
-    const artist = artistPages.filter(page => page.userId === user.id)[0]
-    const artistId = artist.id
-    const [biography, setBiography] = useState(artist.biography)
-    const [headerImage, setHeaderImage] = useState(null)
+    const artist = artistPages?.filter(page => page?.userId === user.id)[0]
+    const artistId = artist?.id
+    const [biography, setBiography] = useState(artist?.biography)
+    const [headerImage, setHeaderImage] = useState(artist?.headerImage)
     const [imageLoading, setImageLoading] = useState(false)
     const dispatch = useDispatch()
+
 
     const editOneArtist = async (e) => {
         e.preventDefault()
