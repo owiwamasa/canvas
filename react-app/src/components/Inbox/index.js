@@ -1,32 +1,22 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { allConversations } from '../../store/conversation'
-import { allMessages, createMessage } from '../../store/message'
+import { allMessages } from '../../store/message'
 import { allUsers } from '../../store/user'
+import InboxMessageForm from '../InboxMessageForm'
 import './Inbox.css'
-import Errors from '../Errors'
 
 function Inbox({user}){
     const dispatch = useDispatch()
     const conversations = useSelector(state => state.conversationReducer.conversations).reverse()
     const messages = useSelector(state => state.messageReducer.messages)
     const users = useSelector(state => state.userReducer.users)
-    const [replyMessage, setReplyMessage] = useState('')
 
     useEffect(() => {
         dispatch(allConversations())
         dispatch(allMessages())
         dispatch(allUsers())
     }, [dispatch])
-
-    const onSubmit = async (e, conversationId) => {
-        e.preventDefault()
-        const payload = {message: replyMessage, conversationId, userId: user?.id}
-        const success = await dispatch(createMessage(payload))
-        if (success) {
-            setReplyMessage('')
-        }
-    }
 
     return(
         <div>
@@ -75,16 +65,7 @@ function Inbox({user}){
                             )
                         ))}
                         </div>
-                        <form onSubmit={(e) => onSubmit(e, conversation?.id)} className='reply-form'>
-                            <Errors />
-                            <textarea
-                            className='message-reply'
-                            type='text'
-                            value={replyMessage}
-                            onChange={(e) => setReplyMessage(e.target.value)}
-                            />
-                            <button type='submit'>Send</button>
-                        </form>
+                        <InboxMessageForm user={user} conversation={conversation}/>
                     </div>
                 )
             }):
