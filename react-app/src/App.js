@@ -9,6 +9,7 @@ import ArtistPage from './components/ArtistPage';
 import HomePage from './components/HomePage';
 import Footer from './components/Footer';
 import SearchResults from './components/SearchResults';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -28,6 +29,7 @@ function App() {
   return (
     <BrowserRouter>
       <NavBar />
+      <ScrollToTop />
       <Switch>
         <Route path='/' exact={true} >
           <HomePage />

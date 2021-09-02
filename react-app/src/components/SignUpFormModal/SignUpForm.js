@@ -18,17 +18,15 @@ const SignUpForm = () => {
   const onSignUp = async (e) => {
     e.preventDefault();
     let errs = []
-    if (password !== repeatPassword) {
-      errs.push('Passwords do not match')
-      setErrors(errs)
-      return
-    }
-    if (!profilePic) {
-    errs.push('Profile Picture is required.')
-    setErrors(errs)
-    return
-    }
 
+    if (password !== repeatPassword && !errors.find(error => error.includes('Passwords'))) {
+      errs.push('Passwords do not match')
+      setErrors(errors.concat(errs))
+    }
+    if (!profilePic && !errors.find(error => error.includes('Profile'))) {
+      errs.push('Profile Picture is required.')
+      setErrors(errors.concat(errs))
+    }
 
     const formData = new FormData()
     formData.append('username', username)
@@ -39,7 +37,7 @@ const SignUpForm = () => {
     const data = await dispatch(signUp(formData));
     if (data){
       errs = [...errs, ...data]
-      setErrors(errs)
+      setErrors(errors.concat(errs))
     } else {
       setImageLoading(false)
     }
@@ -68,14 +66,17 @@ const SignUpForm = () => {
   return (
     <form onSubmit={onSignUp}>
       <div className='form-header'>SIGN UP</div>
-      <div className='form-errors'>
+      {/* <div className='form-errors-signup'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
-      </div>
+      </div> */}
       <div className='signup-div'>
         <div className='signup-1'>
           <div className='form-input'>
+            {errors.filter(err => err.includes('username')).map(err => (
+              <div className='form-errors-signup' key={err}><div>{err.slice(0,8)} {err.slice(22)}</div></div>
+            ))}
             <input
               type='text'
               name='username'
@@ -85,6 +86,9 @@ const SignUpForm = () => {
             ></input>
           </div>
           <div className='form-input'>
+          {errors.filter(err => err.includes('Password')).map(err => (
+              <div className='form-errors-signup signup-password-error' key={err}><div>{err}</div></div>
+            ))}
             <input
               type='password'
               name='password'
@@ -96,6 +100,9 @@ const SignUpForm = () => {
         </div>
         <div className='signup-2'>
         <div className='form-input'>
+        {errors.filter(err => err.includes('email')).map(err => (
+              <div className='form-errors-signup' key={err}><div>{err.slice(0,6)} {err.slice(19)}</div></div>
+            ))}
             <input
               type='text'
               name='email'
@@ -105,6 +112,9 @@ const SignUpForm = () => {
             ></input>
           </div>
           <div className='form-input'>
+          {errors.filter(err => err.includes('Password')).map(err => (
+              <div className='form-errors-signup signup-password-error' key={err}><div><br></br></div></div>
+            ))}
             <input
               type='password'
               name='repeat_password'
@@ -116,6 +126,9 @@ const SignUpForm = () => {
         </div>
       </div>
       <div className='form-input-image-upload'>
+      {errors.filter(err => err.includes('Picture')).map(err => (
+              <div className='form-errors-signup' key={err}><div>{err}</div></div>
+            ))}
         <label>Upload Profile Picture:</label>
         <input
           type='file'

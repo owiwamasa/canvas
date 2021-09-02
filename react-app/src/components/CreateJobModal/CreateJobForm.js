@@ -50,6 +50,7 @@ function CreateJobForm({setShowModal, artistId}){
                 value={dueDate}
                 dateFormat='MM/dd/yyyy'
                 selected={dueDate}
+                minDate={new Date()}
                 onChange={(date) => setDueDate(date)} />
             </div>
             <button className='form-submit'>Submit</button>
