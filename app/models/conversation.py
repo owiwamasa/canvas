@@ -5,20 +5,20 @@ class Conversation(db.Model):
     __tablename__ = 'conversations'
 
     id = db.Column(db.Integer, primary_key=True)
-    userInboxId = db.Column(
-        db.Integer, db.ForeignKey('inboxes.id'), nullable=False)
-    artistInboxId = db.Column(
-        db.Integer, db.ForeignKey('inboxes.id'), nullable=False)
+    userId = db.Column(
+        db.Integer, db.ForeignKey('users.id'), nullable=False)
+    artistId = db.Column(
+        db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    userInbox = db.relationship(
-        'Inbox', back_populates='conversations', foreign_keys='Conversation.userInboxId')
-    artistInbox = db.relationship('Inbox', back_populates='conversations',
-                                  foreign_keys='Conversation.artistInboxId')
+    user = db.relationship(
+        'User', back_populates='conversations', foreign_keys='Conversation.userId')
+    artist = db.relationship('User', back_populates='conversations',
+                                  foreign_keys='Conversation.artistId')
     messages = db.relationship('Message', back_populates='conversation')
 
     def toDict(self):
         return {
             'id': self.id,
-            'userInboxId': self.userInboxId,
-            'artistInboxId': self.artistInboxId
+            'userId': self.userId,
+            'artistId': self.artistId
         }

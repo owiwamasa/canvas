@@ -15,6 +15,7 @@ import { allArtistTypes } from "../../store/artistType"
 import { getAllReviews } from "../../store/review"
 import { getAllUsers } from "../../store/user"
 import JobReviewCard from "../JobReviewCard"
+import { allConversations } from "../../store/conversation"
 import './ArtistPage.css'
 
 
@@ -41,6 +42,9 @@ function ArtistPage(){
     const completedJobs = jobs.filter(job => (job?.artistId === artist?.userId) && job?.completed)
     const reviews = useSelector(state => state.reviewReducer.reviews)
     const users = useSelector(state => state.userReducer.users)
+    const artistUser = users.find(user => user?.id === artist?.userId)
+    const conversations = useSelector(state => state.conversationReducer.conversations)
+    const hasConversation = conversations.filter(conversation => (conversation?.artistId === artistUser?.id) || (conversation?.userId === artistUser?.id))
 
     useEffect(() => {
         dispatch(allArtistPages())
@@ -50,7 +54,9 @@ function ArtistPage(){
         dispatch(allArtistTypes())
         dispatch(getAllReviews())
         dispatch(getAllUsers())
+        dispatch(allConversations())
     }, [dispatch, artistPageId])
+
 
     return(
         <div className='artistPage'>
@@ -71,7 +77,9 @@ function ArtistPage(){
                         {hasJob.length && !hasJob.every(jobCompleted) ?
                           <button className='artistPage-job-sent' disabled={true}>Work Request Sent <i className="fas fa-check"></i></button>
                         : <CreateJobModal artistId={artist?.userId} />}
-                        <ChatModal artist={artist}/>
+                        {hasConversation.length ?
+                        <button className='message-btn-disabled' disabled={true}>Message Sent</button>:
+                        <ChatModal artist={artist}/>}
                     </div>
                     :
                     (artistTypeButtonClicked ?

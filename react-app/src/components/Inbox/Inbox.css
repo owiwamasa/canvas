@@ -1,0 +1,82 @@
+.conversation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 600px;
+  height: 200px;
+  background-color: white;
+  border-radius: 30px;
+  padding: 30px;
+}
+
+.messages-div {
+  height: 180px;
+  overflow-y: scroll;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  font-family: "Hind", sans-serif;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.message-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Hind", sans-serif;
+  font-size: 14px;
+  margin-right: 20px;
+}
+
+.message-username {
+  margin-top: 5px;
+}
+
+.message-user-img {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border: 3px solid black;
+  border-radius: 50%;
+}
+
+.message-user-img img {
+  width: 100%;
+  height: auto;
+}
+
+.reply-form {
+  border-radius: none;
+  height: 20px;
+  width: 100%;
+  background-color: transparent;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.reply-form button {
+  border: none;
+  background-color: transparent;
+  font-family: "Hind", sans-serif;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.message-reply {
+  font-family: "Hind", sans-serif;
+  font-size: 16px;
+  width: 85%;
+  border-radius: 20px;
+  padding: 8px 15px;
+  resize: none;
+  height: 20px;
+}
