@@ -30,11 +30,12 @@ function Inbox({user}){
     return(
         <div>
             {conversations && conversations.map(conversation => {
-                let convoMessages = messages.filter(message => message.conversationId === conversation?.id)
+                let convoMessages = messages.filter(message => message.conversationId === conversation?.id).reverse()
                 return(
                     <div className='conversation' key={conversation?.id}>
                         <div className='messages-div'>
                         {convoMessages.map(message => (
+                            (message?.userId !== user?.id ?
                             <div className='message' key={message.id}>
                                 <div className='message-user'>
                                     <div className='message-user-img'>
@@ -44,6 +45,17 @@ function Inbox({user}){
                                 </div>
                                 <div className='message-message'>{message?.message}</div>
                             </div>
+                            :
+                            <div className='message-from-user' key={message.id}>
+                                <div className='message-message'>{message?.message}</div>
+                                <div className='message-user-sent'>
+                                    <div className='message-user-img'>
+                                        <img src={message?.profilePic}/>
+                                    </div>
+                                    <div className='message-username'>{message?.username}</div>
+                                </div>
+                            </div>
+                            )
                         ))}
                         </div>
                         <form onSubmit={(e) => onSubmit(e, conversation?.id)} className='reply-form'>
