@@ -1,54 +1,70 @@
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { io } from 'socket.io-client';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { createConversation } from "../../store/conversation";
+import { createMessage } from "../../store/message";
 import './Chat.css'
-let socket;
+// import { io } from 'socket.io-client';
+// let socket;
 
-const Chat = ({artist}) => {
+const Chat = ({artist, setShowModal}) => {
     const [chatInput, setChatInput] = useState("");
-    const [messages, setMessages] = useState([]);
-    const [room, setRoom] = useState('')
-    const [search, setSearch] = useState('')
-    const [selectedUser, setSelectedUser] = useState('')
+    // const [messages, setMessages] = useState([]);
+    // const [room, setRoom] = useState('')
+    // const [search, setSearch] = useState('')
+    // const [selectedUser, setSelectedUser] = useState('')
     const user = useSelector(state => state.session.user)
     const users = useSelector(state => state.userReducer.users)
-    const searchUsers = users.filter(user => user.username.toLowerCase().includes(search.toLowerCase()))
     const receiver = users.find(user => user?.username === artist?.username)
+    const dispatch = useDispatch()
 
-    useEffect(() => {
-        socket = io();
 
-        // socket.on('join', (join) => {
-        //     setRoom()
-        // })
+    // const searchUsers = users.filter(user => user.username.toLowerCase().includes(search.toLowerCase()))
+    // useEffect(() => {
+    //     socket = io();
 
-        socket.on("chat", (chat) => {
-            setMessages(messages => [...messages, chat])
-        })
+    //     socket.on('join', (join) => {
+    //         setRoom()
+    //     })
 
-        socket.emit('join', { sender: user.username, receiver, room})
+    //     socket.on("chat", (chat) => {
+    //         setMessages(messages => [...messages, chat])
+    //     })
 
-        return (() => {
-            socket.disconnect()
-        })
-    }, [])
+    //     socket.emit('join', { sender: user.username, receiver, room})
 
-    const sendChat = (e) => {
+    //     return (() => {
+    //         socket.disconnect()
+    //     })
+    // }, [])
+
+    const sendChat = async (e) => {
         e.preventDefault()
-        setRoom(`${user?.id}${receiver?.id}room`)
+
+        const conversationPayload = {userId: user?.id, artistId: receiver?.id}
+        const success = await dispatch(createConversation(conversationPayload))
+        if (success) {
+            const messagePayload = {message: chatInput, conversationId: success?.id, userId: user?.id}
+            const messageSuccess = await dispatch(createMessage(messagePayload))
+            if (messageSuccess){
+                setShowModal(false)
+                setChatInput('')
+            }
+        }
+        // setRoom(`${user?.id}${receiver?.id}room`)
         // socket.emit calls 'chat' in backend
-        socket.emit("chat", { sender: user.username, msg: chatInput, receiver: artist});
-        setChatInput("")
+        // socket.emit("chat", { sender: user.username, msg: chatInput, receiver: artist});
+        // setChatInput("")
     }
 
     return (user && (
         <div>
             <form onSubmit={sendChat}>
-            <div className='chat-messages'>
+                <div className='form-header'>Send Message to {artist?.username}</div>
+            {/* <div className='chat-messages'>
                 {messages.map((message, idx) => (
                     <div className='chat-single-message' key={idx}>{`${message.sender}: ${message.msg}`}</div>
                 ))}
-            </div>
+            </div> */}
                 {/* <div className='chat-send-to-input'>
                     <label>Send to: </label>
                     <input
@@ -72,7 +88,7 @@ const Chat = ({artist}) => {
                     </select>
                     }
                 </div> */}
-                <input
+                <textarea
                 className='chat-textarea'
                 type='text'
                 placeholder='Write a message...'

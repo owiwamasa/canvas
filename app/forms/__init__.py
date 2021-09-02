@@ -6,3 +6,5 @@ from .complete_job_form import CompleteJobForm
 from .create_post_form import CreatePostForm
 from .create_artist_type_list_form import CreateArtistTypeListForm
 from .create_review_form import CreateReviewForm
+from .create_conversation_form import CreateConversationForm
+from .message_form import MessageForm

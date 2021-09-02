@@ -8,6 +8,7 @@ import { editUser } from '../../store/session';
 import { allUsers } from '../../store/user';
 import CreateArtistPageModal from '../CreateArtistPageModal';
 import JobCard from '../JobCard';
+import Inbox from '../Inbox';
 import './ProfilePage.css'
 
 function ProfilePage() {
@@ -80,7 +81,7 @@ function ProfilePage() {
           </div>
         :
         <div>
-          <div>INBOX CONTENT</div>
+          <Inbox user={currentUser}/>
         </div>}
       </div>
     </div>

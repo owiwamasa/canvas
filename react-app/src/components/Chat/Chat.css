@@ -16,6 +16,18 @@
   border: 3px solid #1154af;
 }
 
+.message-btn-disabled {
+  font-family: "Hind", sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+  color: #1153af89;
+  background-color: white;
+  border: 3px solid #1153af89;
+  padding: 10px 30px;
+  border-radius: 25px;
+  margin-top: 20px;
+}
+
 .chat-send-to-input {
   font-family: "Hind", sans-serif;
   font-size: 16px;
@@ -59,7 +71,8 @@
   font-size: 16px;
   border-radius: 10px;
   resize: none;
-  width: 300px;
+  width: 350px;
+  height: 150px;
   padding: 10px;
   border: none;
 }

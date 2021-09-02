@@ -15,7 +15,8 @@ class User(db.Model, UserMixin):
     numCompletedJobs = db.Column(db.Integer, default=0)
 
     artistPage = db.relationship('ArtistPage', back_populates='user')
-    inbox = db.relationship('Inbox', back_populates='user')
+    conversations = db.relationship('Conversation', back_populates='user', foreign_keys='Conversation.userId')
+    conversations = db.relationship('Conversation', back_populates='artist', foreign_keys='Conversation.artistId')
     jobs = db.relationship('Job', back_populates='user',
                            foreign_keys='Job.userId')
     jobs = db.relationship('Job', back_populates='artist',

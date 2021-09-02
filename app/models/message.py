@@ -10,7 +10,7 @@ class Message(db.Model):
     conversationId = db.Column(db.Integer, db.ForeignKey(
         'conversations.id'), nullable=False)
     userId = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    read = db.Column(db.Boolean, nullable=False)
+    read = db.Column(db.Boolean, default=False, nullable=False)
     createdAt = db.Column(db.DateTime, default=datetime.datetime.utcnow)
 
     user = db.relationship('User', back_populates='messages')
@@ -23,5 +23,7 @@ class Message(db.Model):
             'conversationId': self.conversationId,
             'userId': self.userId,
             'read': self.read,
-            'createdAt': self.createdAt
+            'createdAt': self.createdAt,
+            'username': self.user.username,
+            'profilePic': self.user.profilePic
         }
