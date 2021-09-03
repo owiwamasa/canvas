@@ -2,14 +2,15 @@
   border: none;
   background-color: transparent;
   position: absolute;
-  right: 50px;
-  top: 140px;
-  color: white;
+  left: 80px;
+  top: 345px;
+  color: rgb(201, 201, 201);
+  z-index: 1;
 }
 
 .fa-edit {
   font-size: 40px;
-  color: white;
+  color: rgb(201, 201, 201);
 }
 
 .form-edit-artist-input {
