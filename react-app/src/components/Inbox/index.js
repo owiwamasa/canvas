@@ -48,7 +48,6 @@ function Inbox({user}){
                                     <div className='message-user-img'>
                                         <img src={message?.profilePic} alt='profile'/>
                                     </div>
-                                    {/* <div className='message-username'>{message?.username}</div> */}
                                 </div>
                                 <div className='message-message'>{message?.message}</div>
                             </div>
@@ -59,7 +58,6 @@ function Inbox({user}){
                                     <div className='message-user-img'>
                                         <img src={message?.profilePic} alt='profile'/>
                                     </div>
-                                    {/* <div className='message-username'>{message?.username}</div> */}
                                 </div>
                             </div>
                             )
