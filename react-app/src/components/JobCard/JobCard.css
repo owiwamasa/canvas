@@ -152,3 +152,12 @@
   display: flex;
   justify-content: center;
 }
+
+.edit-completed-job-disabled {
+  font-size: 14px;
+  background-color: #2acdba7b;
+  border: 2px solid #2acdba7b;
+  color: rgba(255, 255, 255, 0.797);
+  padding: 10px 30px;
+  border-radius: 20px;
+}
