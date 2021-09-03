@@ -8,7 +8,8 @@ import './Inbox.css'
 
 function Inbox({user}){
     const dispatch = useDispatch()
-    const conversations = useSelector(state => state.conversationReducer.conversations).reverse()
+    const conversations = useSelector(state => state.conversationReducer.conversations)
+    const conversationsByTime = conversations.slice(0).reverse()
     const messages = useSelector(state => state.messageReducer.messages)
     const users = useSelector(state => state.userReducer.users)
 
@@ -20,11 +21,10 @@ function Inbox({user}){
 
     return(
         <div>
-            {conversations.length ? conversations.map(conversation => {
+            {conversationsByTime.length ? conversationsByTime.map(conversation => {
                 let convoMessages = messages.filter(message => message.conversationId === conversation?.id).reverse()
                 let sender = users.find(user => user?.id === conversation?.userId)
                 let receiver = users.find(user => user?.id === conversation?.artistId)
-                console.log(sender)
                 return(
                     <div className='conversation' key={conversation?.id}>
                         {conversation?.userId === user?.id ?
