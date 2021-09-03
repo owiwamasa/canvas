@@ -13,7 +13,7 @@ import './ProfilePage.css'
 
 function ProfilePage() {
   const [user, setUser] = useState({});
-  const [jobsClicked, setJobsClicked] = useState(true)
+  const [jobsClicked, setJobsClicked] = useState(false)
   const { userId }  = useParams();
   const currentUser = useSelector(state => state.session.user);
   const artistPages = useSelector(state => state.artistPageReducer.artistPages)

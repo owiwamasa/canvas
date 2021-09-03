@@ -78,7 +78,7 @@ function ArtistPage(){
                           <button className='artistPage-job-sent' disabled={true}>Work Request Sent <i className="fas fa-check"></i></button>
                         : <CreateJobModal artistId={artist?.userId} />}
                         {hasConversation.length ?
-                        <button className='message-btn-disabled' disabled={true}>Message Sent</button>:
+                        <button className='message-btn-disabled' disabled={true}>Message Sent (Check Inbox)</button>:
                         <ChatModal artist={artist}/>}
                     </div>
                     :
