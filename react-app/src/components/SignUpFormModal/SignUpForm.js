@@ -37,7 +37,7 @@ const SignUpForm = () => {
     const data = await dispatch(signUp(formData));
     if (data){
       errs = [...errs, ...data]
-      setErrors(errors.concat(errs))
+      setErrors(errs)
     } else {
       setImageLoading(false)
     }
