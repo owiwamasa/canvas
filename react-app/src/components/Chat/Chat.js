@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { createConversation } from "../../store/conversation";
 import { createMessage } from "../../store/message";
 import './Chat.css'
@@ -17,6 +18,7 @@ const Chat = ({artist, setShowModal}) => {
     const users = useSelector(state => state.userReducer.users)
     const receiver = users.find(user => user?.username === artist?.username)
     const dispatch = useDispatch()
+    const history = useHistory()
 
 
     // const searchUsers = users.filter(user => user.username.toLowerCase().includes(search.toLowerCase()))
@@ -53,6 +55,7 @@ const Chat = ({artist, setShowModal}) => {
                 if (messageSuccess){
                     setShowModal(false)
                     setChatInput('')
+                    history.push(`/users/${user?.id}`)
                 }
             }
         }
