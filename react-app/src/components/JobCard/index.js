@@ -86,10 +86,11 @@ function JobCard({artist, otherUser, job}){
                     {job?.accepted ?
                     <div className='job-card-status'>Accepted <i className="far fa-check-circle"></i></div>
                 : <button onClick={editAccept} className='job-card-accept-btn'>Accept</button>}
-                    {job?.completed ?
+                {job?.accepted ?
+                    (job?.completed ?
                     <div className='job-card-status'>Completed <i className="far fa-check-circle"></i></div>
-                : <EditCompletedJobModal job={job}/>
-                }
+                    : <EditCompletedJobModal job={job}/>
+                ): <button className='edit-completed-job-disabled' disabled={true}>Complete</button>}
                 </div>
             </div>
             <div className='job-card-header'>

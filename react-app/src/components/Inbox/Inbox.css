@@ -3,10 +3,10 @@
   flex-direction: column;
   justify-content: space-between;
   width: 600px;
-  height: 250px;
+  height: 300px;
   background-color: white;
   border-radius: 30px;
-  padding: 30px 30px 30px 30px;
+  padding: 20px 30px 30px 30px;
   margin-bottom: 40px;
 }
 
@@ -15,7 +15,9 @@
   font-size: 20px;
   display: flex;
   align-items: center;
-  margin-left: 20px;
+  width: 100%;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.529);
 }
 
 .messages-div {
@@ -25,7 +27,6 @@
   flex-direction: column-reverse;
   width: 550px;
   margin-left: 25px;
-  margin-top: 10px;
 }
 
 .message {
@@ -84,6 +85,7 @@
   border: 2px solid #ffc328;
   border-radius: 50%;
   margin-left: 10px;
+  background-color: rgba(0, 0, 0, 0.673);
 }
 
 .message-header-img img {
@@ -118,6 +120,7 @@
   justify-content: center;
   align-items: baseline;
   margin-bottom: 10px;
+  position: relative;
 }
 
 .reply-form button {
@@ -126,14 +129,17 @@
   font-family: "Hind", sans-serif;
   font-size: 16px;
   margin-left: 10px;
+  position: absolute;
+  right: 65px;
+  top: 5px;
 }
 
 .message-reply {
   font-family: "Hind", sans-serif;
   font-size: 16px;
-  width: 80%;
+  width: 70%;
   border-radius: 20px;
-  padding: 8px 15px;
+  padding: 8px 60px 8px 15px;
   resize: none;
   height: 20px;
 }
