@@ -11,10 +11,14 @@ function EditJobForm({setShowModal, job}){
     const [description, setDescription] = useState(job?.description)
     const [dueDate, setDueDate] = useState(new Date())
     const dispatch = useDispatch()
+    console.log(new Date())
+    console.log(dueDate)
+    console.log(typeof dueDate)
 
     const editOneJob = async (e) => {
         e.preventDefault()
-        const editedJob = {title, description, dueDate, userId: job.userId, artistId: job.artistId}
+        debugger
+        const editedJob = {title, description, dueDate: dueDate.toString(), userId: job.userId, artistId: job.artistId}
         const success = await dispatch(editJob(editedJob, job.id))
         if (success) {
             setShowModal(false)

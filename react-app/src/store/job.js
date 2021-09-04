@@ -57,16 +57,19 @@ export const deleteJob = (jobId) => async dispatch => {
 }
 
 export const editJob = (job, jobId) => async dispatch => {
+    debugger
     const res = await fetch(`/api/jobs/${jobId}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(job)
     })
     if (res.ok) {
+        debugger
         const job = await res.json()
         dispatch(editOneJob(job))
         return job
     } else {
+        debugger
         const job = await res.json()
         dispatch(setErrors(job))
     }
@@ -116,6 +119,7 @@ const jobReducer = (state = initialState, action) => {
                     job => job.id !== action.jobId)]
             }
         case EDIT_JOB:
+            debugger
             return {
                 ...state,
                 jobs: [...state.jobs.filter(

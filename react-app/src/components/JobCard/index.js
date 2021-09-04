@@ -33,7 +33,7 @@ function JobCard({artist, otherUser, job}){
         <div className='job-card' key={job.id}>
             <div className='job-card-header-center'>
                 <div className='job-card-dates'>
-                    <div className='job-card-date'>Deadline: {job?.dueDate.slice(0,17)}</div>
+                    <div className='job-card-date'>Deadline: {job?.dueDate.slice(0,16)}</div>
                 </div>
                 <div className='job-card-status-div'>
                     {job?.accepted ?
@@ -80,7 +80,7 @@ function JobCard({artist, otherUser, job}){
         <div className='job-card' key={job?.id}>
             <div className='job-card-header-center'>
                 <div className='job-card-dates'>
-                    <div className='job-card-date'>Deadline: {job?.dueDate.slice(0,17)}</div>
+                    <div className='job-card-date'>Deadline: {job?.dueDate.slice(0,16)}</div>
                 </div>
                 <div className='job-card-status-div'>
                     {job?.accepted ?

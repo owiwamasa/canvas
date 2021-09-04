@@ -8,7 +8,7 @@ class Job(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.String(500), nullable=False)
-    dueDate = db.Column(db.DateTime, nullable=False)
+    dueDate = db.Column(db.String(100), nullable=False)
     accepted = db.Column(db.Boolean, default=False)
     completed = db.Column(db.Boolean, default=False)
     completedArtwork = db.Column(db.String(2000), nullable=True)

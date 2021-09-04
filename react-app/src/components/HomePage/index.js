@@ -32,7 +32,7 @@ function HomePage(){
                 <div className='home-page-header-title'>Discover and hire freelance artists.<br></br>Create an 'Artist Page' and <br></br>start receiving job inquiries.</div>
                 <img src='https://images.pexels.com/photos/4212917/pexels-photo-4212917.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' alt='home header'/>
             </div>
-            <div className='home-artistTypes-scroll-title'>Find Arists By Specialty</div>
+            <div className='home-artistTypes-scroll-title'>Find Artists By Specialty</div>
             <div className='home-artistTypes-scroll'>
                 {artistTypes && artistTypes?.map(type => (
                     <div className='home-artistTypes-div' key={type?.id}>
