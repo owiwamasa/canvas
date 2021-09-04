@@ -13,9 +13,11 @@ function CreateJobForm({setShowModal, artistId}){
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user);
 
+
     const createOneJob = async (e) => {
         e.preventDefault()
         const job = {title, description, dueDate, userId: user.id, artistId}
+
         const success = await dispatch(createJob(job))
         if (success) {
             setShowModal(false)
@@ -47,8 +49,7 @@ function CreateJobForm({setShowModal, artistId}){
             </div>
             <div className='form-input'>
                 <DatePicker className='work-datepicker'
-                value={dueDate}
-                dateFormat='MM/dd/yyyy'
+                // dateFormat='MM/dd/yyyy'
                 selected={dueDate}
                 minDate={new Date()}
                 onChange={(date) => setDueDate(date)} />
