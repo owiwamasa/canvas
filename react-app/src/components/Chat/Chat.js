@@ -39,7 +39,6 @@ const Chat = ({artist, setShowModal}) => {
     //         socket.disconnect()
     //     })
     // }, [])
-    console.log(errors)
     const sendChat = async (e) => {
         e.preventDefault()
         const errs = []

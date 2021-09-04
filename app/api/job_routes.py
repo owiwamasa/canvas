@@ -82,7 +82,6 @@ def complete_job(id):
 def edit_job(id):
     form = CreateJobForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('----------', type(form.dueDate.data))
     if form.validate_on_submit():
         job = Job.query.get_or_404(id)
         job.title = form.title.data
