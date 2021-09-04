@@ -27,3 +27,16 @@
 .work-datepicker {
   width: 350px;
 }
+
+.datepicker-calendar {
+  font-family: "Hind", sans-serif;
+  font-size: 17px;
+  border-radius: 12px;
+  background-color: white;
+  padding: 10px;
+  border: 2px solid #fa4a18;
+}
+
+.react-datepicker__header {
+  background-color: white;
+}

@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import DatePicker from "react-datepicker";
 import Errors from "../Errors"
 import { createJob } from '../../store/job';
-import './CreateJobForm.css'
 import "react-datepicker/dist/react-datepicker.css";
+import './CreateJobForm.css'
 
 function CreateJobForm({setShowModal, artistId}){
     const [title, setTitle] = useState('')
@@ -47,9 +47,9 @@ function CreateJobForm({setShowModal, artistId}){
                 onChange={(e) => setDescription(e.target.value)}
                 />
             </div>
-            <div className='form-input'>
+            <div className='form-input datepicker-wrapper'>
                 <DatePicker className='work-datepicker'
-                // dateFormat='MM/dd/yyyy'
+                calendarClassName='datepicker-calendar'
                 selected={dueDate}
                 minDate={new Date()}
                 onChange={(date) => setDueDate(date)} />

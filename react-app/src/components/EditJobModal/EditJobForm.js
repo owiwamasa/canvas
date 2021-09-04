@@ -42,7 +42,7 @@ function EditJobForm({setShowModal, job}){
             </div>
             <div className='form-input'>
                 <DatePicker className='work-datepicker'
-                dateFormat='MM/dd/yyyy'
+                calendarClassName='datepicker-calendar'
                 selected={dueDate}
                 minDate={new Date()}
                 onChange={(date) => setDueDate(date)} />

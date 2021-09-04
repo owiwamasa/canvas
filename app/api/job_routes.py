@@ -20,7 +20,6 @@ def create_job():
     form = CreateJobForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        print('--------------', form.dueDate.data)
         job = Job(
             title = form.title.data,
             description = form.description.data,
