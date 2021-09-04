@@ -14,7 +14,7 @@ function EditJobForm({setShowModal, job}){
 
     const editOneJob = async (e) => {
         e.preventDefault()
-        const editedJob = {title, description, dueDate , userId: job.userId, artistId: job.artistId}
+        const editedJob = {title, description, dueDate: dueDate.toString() , userId: job.userId, artistId: job.artistId}
         const success = await dispatch(editJob(editedJob, job.id))
         if (success) {
             setShowModal(false)
