@@ -17,7 +17,8 @@ const NavBar = () => {
   const artistPages = useSelector(state => state.artistPageReducer.artistPages)
   const myArtistPageId = artistPages?.filter(page => page?.userId === user?.id)[0]?.id
   const users = useSelector(state => state.userReducer.users)
-  const searchUsers = users.filter(user => user.username.toLowerCase().includes(search.toLowerCase()))
+  const artistUsers = users.filter(user => user.isArtist)
+  const searchUsers = artistUsers.filter(user => user.username.toLowerCase().includes(search.toLowerCase()))
   const artistTypes = useSelector(state => state.artistTypeReducer.artistTypes)
   const searchTypes = artistTypes.filter(type => type.title.toLowerCase().includes(search.toLowerCase()))
   const dispatch = useDispatch();

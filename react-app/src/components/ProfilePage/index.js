@@ -23,6 +23,7 @@ function ProfilePage() {
   const myJobs = jobs?.filter(job => ((job?.userId === +userId) || (job?.artistId === +userId ))).reverse()
   const dispatch = useDispatch()
 
+
   useEffect(() => {
     if (!userId) {
       return;
@@ -44,10 +45,11 @@ function ProfilePage() {
     return null;
   }
 
-  const deleteArtistPage = (e) => {
+  const deleteArtistPage = async (e) => {
     e.preventDefault()
-    dispatch(deleteArtist(artistPageId))
-    dispatch(editUser(currentUser))
+    await dispatch(deleteArtist(artistPageId))
+    await dispatch(editUser(currentUser))
+    await dispatch(allUsers())
   }
 
   return (
@@ -71,8 +73,8 @@ function ProfilePage() {
         {jobsClicked ?
           <div className='profilePage-jobs'>
             {myJobs?.length ? myJobs?.map(job => {
-              let artist = users.find(user => user.id === job.artistId)
-              let otherUser = users.find(user => user.id === job.userId)
+              let artist = users?.find(user => user?.id === job?.artistId)
+              let otherUser = users?.find(user => user?.id === job?.userId)
               return (
                 <JobCard key={job?.id} job={job} artist={artist} otherUser={otherUser}/>
               )}):

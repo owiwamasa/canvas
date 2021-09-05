@@ -40,7 +40,8 @@ function EditJobForm({setShowModal, job}){
                 onChange={(e) => setDescription(e.target.value)}
                 />
             </div>
-            <div className='form-input'>
+            <div className='form-input datepicker-wrapper'>
+            <label className='datepicker-deadline'>Deadline: </label>
                 <DatePicker className='work-datepicker'
                 calendarClassName='datepicker-calendar'
                 selected={dueDate}
