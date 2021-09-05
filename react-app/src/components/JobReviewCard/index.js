@@ -8,6 +8,7 @@ function JobReviewCard({job, jobReview, reviewUser}){
                     <img src={job?.completedArtwork} alt='artwork'/>
                 </div>
             </div>
+            {jobReview?.review ?
             <div className='review-user'>
                 <div className='review-text'>"{jobReview?.review}"</div>
                     <div className='review-user-info'>
@@ -17,6 +18,8 @@ function JobReviewCard({job, jobReview, reviewUser}){
                         <div>-{reviewUser?.username}</div>
                     </div>
             </div>
+            :
+            <div><div className='review-user'>Awaiting user review...</div></div>}
         </div>
     )
 }
