@@ -18,10 +18,12 @@ function ProfilePage() {
   const currentUser = useSelector(state => state.session.user);
   const artistPages = useSelector(state => state.artistPageReducer.artistPages)
   const users = useSelector(state => state.userReducer.users)
+  // const thisUser = users.filter(user => user?.id === currentUser?.id)
   const artistPageId = artistPages?.filter(page => page?.userId === currentUser?.id)[0]?.id
   const jobs = useSelector(state => state.jobReducer.jobs)
   const myJobs = jobs?.filter(job => ((job?.userId === +userId) || (job?.artistId === +userId ))).reverse()
   const dispatch = useDispatch()
+
 
   useEffect(() => {
     if (!userId) {
@@ -71,8 +73,8 @@ function ProfilePage() {
         {jobsClicked ?
           <div className='profilePage-jobs'>
             {myJobs?.length ? myJobs?.map(job => {
-              let artist = users.find(user => user.id === job.artistId)
-              let otherUser = users.find(user => user.id === job.userId)
+              let artist = users?.find(user => user?.id === job?.artistId)
+              let otherUser = users?.find(user => user?.id === job?.userId)
               return (
                 <JobCard key={job?.id} job={job} artist={artist} otherUser={otherUser}/>
               )}):

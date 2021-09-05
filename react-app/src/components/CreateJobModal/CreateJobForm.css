@@ -25,7 +25,7 @@
 }
 
 .work-datepicker {
-  width: 350px;
+  width: 250px;
 }
 
 .datepicker-calendar {
@@ -39,4 +39,17 @@
 
 .react-datepicker__header {
   background-color: white;
+}
+
+.datepicker-wrapper {
+  display: flex;
+  align-items: center;
+  font-family: "Hind", sans-serif;
+  font-size: 20px;
+  color: white;
+}
+
+.datepicker-deadline {
+  margin-right: 10px;
+  padding-bottom: 10px;
 }

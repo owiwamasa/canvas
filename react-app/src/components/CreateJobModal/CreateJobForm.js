@@ -48,6 +48,7 @@ function CreateJobForm({setShowModal, artistId}){
                 />
             </div>
             <div className='form-input datepicker-wrapper'>
+                <label className='datepicker-deadline'>Deadline: </label>
                 <DatePicker className='work-datepicker'
                 calendarClassName='datepicker-calendar'
                 selected={dueDate}
