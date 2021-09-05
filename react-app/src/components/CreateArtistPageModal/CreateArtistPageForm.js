@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { createArtistPage } from "../../store/artistPage"
 import { editUser } from "../../store/session"
+import { allUsers } from "../../store/user"
 import Errors from "../Errors"
 import './CreateArtistPageForm.css'
 
@@ -26,6 +27,7 @@ function CreateArtistPageForm({setShowModal}){
             await dispatch(editUser(user))
             setShowModal(false)
             setImageLoading(false)
+            await dispatch(allUsers())
             history.push(`/artist-pages/${success.id}`)
         }
     }

@@ -18,7 +18,6 @@ function ProfilePage() {
   const currentUser = useSelector(state => state.session.user);
   const artistPages = useSelector(state => state.artistPageReducer.artistPages)
   const users = useSelector(state => state.userReducer.users)
-  // const thisUser = users.filter(user => user?.id === currentUser?.id)
   const artistPageId = artistPages?.filter(page => page?.userId === currentUser?.id)[0]?.id
   const jobs = useSelector(state => state.jobReducer.jobs)
   const myJobs = jobs?.filter(job => ((job?.userId === +userId) || (job?.artistId === +userId ))).reverse()
@@ -46,10 +45,11 @@ function ProfilePage() {
     return null;
   }
 
-  const deleteArtistPage = (e) => {
+  const deleteArtistPage = async (e) => {
     e.preventDefault()
-    dispatch(deleteArtist(artistPageId))
-    dispatch(editUser(currentUser))
+    await dispatch(deleteArtist(artistPageId))
+    await dispatch(editUser(currentUser))
+    await dispatch(allUsers())
   }
 
   return (
