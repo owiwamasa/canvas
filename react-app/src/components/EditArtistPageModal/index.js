@@ -1,9 +1,12 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import EditArtistPageForm from "./EditArtistPageForm";
 import { Modal } from '../../context/Modal'
+import { setErrors } from '../../store/errors';
 
 function EditArtistPageModal() {
     const [showModal, setShowModal] = useState(false)
+    const dispatch = useDispatch()
 
     return (
         <>
@@ -12,6 +15,7 @@ function EditArtistPageModal() {
             </button>
             {showModal && (
                 <Modal onClose={() => {
+                    dispatch(setErrors([]))
                     setShowModal(false)
                     }}>
                     <EditArtistPageForm setShowModal={setShowModal}/>

@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import DatePicker from "react-datepicker";
-import Errors from "../Errors"
 import { editJob } from '../../store/job';
 import './EditJobForm.css'
 import "react-datepicker/dist/react-datepicker.css";
