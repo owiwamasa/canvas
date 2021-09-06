@@ -29,6 +29,8 @@ function CreateArtistPageForm({setShowModal}){
             setImageLoading(false)
             await dispatch(allUsers())
             history.push(`/artist-pages/${success.id}`)
+        } else {
+            setImageLoading(false)
         }
     }
 

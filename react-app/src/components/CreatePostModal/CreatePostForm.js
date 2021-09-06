@@ -25,6 +25,8 @@ function CreatePostForm({setShowModal, artistPageId}){
         if (success) {
             setShowModal(false)
             setImageLoading(false)
+        } else {
+            setImageLoading(false)
         }
     }
 

@@ -38,6 +38,7 @@ const SignUpForm = () => {
     if (data){
       errs = [...errs, ...data]
       setErrors(errs)
+      setImageLoading(false)
     } else {
       setImageLoading(false)
     }
@@ -66,11 +67,6 @@ const SignUpForm = () => {
   return (
     <form onSubmit={onSignUp}>
       <div className='form-header'>SIGN UP</div>
-      {/* <div className='form-errors-signup'>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div> */}
       <div className='signup-div'>
         <div className='signup-1'>
           <div className='form-input'>

@@ -15,6 +15,7 @@ function EditCompletedJobForm ({setShowModal, job}){
 
         if (!completedArtwork) {
             setError('Completed Artwork is required.')
+            setImageLoading(false)
             return
         }
         const formData = new FormData()
@@ -30,6 +31,8 @@ function EditCompletedJobForm ({setShowModal, job}){
             setShowModal(false)
             setImageLoading(false)
             setCompletedArtwork(null)
+        } else {
+            setImageLoading(false)
         }
     }
 

@@ -29,6 +29,8 @@ function EditArtistPageForm({setShowModal}){
             setHeaderImage(success.headerImage)
             setShowModal(false)
             setImageLoading(false)
+        } else {
+            setImageLoading(false)
         }
     }
 
