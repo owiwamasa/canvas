@@ -42,10 +42,10 @@ const Chat = ({artist, setShowModal}) => {
     const sendChat = async (e) => {
         e.preventDefault()
         const errs = []
-
+        if (chatInput.length === 0) errs.push('Message is required')
         if (chatInput.length > 500) errs.push('Message must be less than 500 characters')
         setErrors(errs)
-        if (!errors.length){
+        if (!errs){
             const conversationPayload = {userId: user?.id, artistId: receiver?.id}
             const success = await dispatch(createConversation(conversationPayload))
             if (success) {
