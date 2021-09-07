@@ -17,23 +17,32 @@ const SignUpForm = () => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    const errs = []
+    // const errs = []
 
-    if (!password && !errors.find(error => error.includes('Password'))) {
-      errs.push('Password is required')
-      setErrors(errors.concat(errs))
-    }
+    // if (!password && !errors.find(error => error.includes('Password'))) {
+    //   errs.push('Password is required')
+    //   // setErrors(errors.concat(errs))
+    // }
 
-    if (password !== repeatPassword && !errors.find(error => error.includes('Passwords'))) {
-      errs.push('Passwords do not match')
-      setErrors(errors.concat(errs))
-    }
-    if (!profilePic && !errors.find(error => error.includes('Profile'))) {
-      errs.push('Profile Picture is required.')
-      setErrors(errors.concat(errs))
-    }
-
-    if (errs.length === 0){
+    // if (password !== repeatPassword && !errors.find(error => error.includes('Passwords'))) {
+    //   errs.push('Passwords do not match')
+    //   // setErrors(errors.concat(errs))
+    // }
+    // if (!profilePic && !errors.find(error => error.includes('Profile'))) {
+    //   errs.push('Profile Picture is required.')
+    //   // setErrors(errors.concat(errs))
+    // }
+    // await setErrors(errs)
+    if (password !== repeatPassword) {
+			setErrors(['Passwords do not match'])
+      return
+		}
+		if (!profilePic) {
+			setErrors(['Profile Picture is required'])
+			return
+		}
+		if (password === repeatPassword) {
+    // if (errs.length === 0){
     const formData = new FormData()
     formData.append('username', username)
     formData.append('email', email)
@@ -43,12 +52,13 @@ const SignUpForm = () => {
     const data = await dispatch(signUp(formData));
     if (data){
       // errs = [...errs, ...data]
-      setErrors(...errs, ...data)
+      setErrors(data)
       setImageLoading(false)
     } else {
       setImageLoading(false)
     }
-  }
+  // }
+    }
   };
 
   const updateUsername = (e) => {
@@ -77,7 +87,7 @@ const SignUpForm = () => {
       <div className='signup-div'>
         <div className='signup-1'>
           <div className='form-input'>
-            {errors?.filter(err => err?.includes('username'))?.map(err => (
+            {errors && errors?.filter(err => err?.includes('username'))?.map(err => (
               <div className='form-errors-signup' key={err}><div>{err}</div></div>
             ))}
             <input
@@ -89,7 +99,7 @@ const SignUpForm = () => {
             ></input>
           </div>
           <div className='form-input'>
-          {errors?.filter(err => err?.includes('Password'))?.map(err => (
+          {errors && errors?.filter(err => err?.includes('Password'))?.map(err => (
               <div className='form-errors-signup signup-password-error' key={err}><div>{err}</div></div>
             ))}
             <input
@@ -103,7 +113,7 @@ const SignUpForm = () => {
         </div>
         <div className='signup-2'>
         <div className='form-input'>
-            {errors?.filter(err => err?.includes('email'))?.map(err => (
+            {errors && errors?.filter(err => err?.includes('email'))?.map(err => (
               <div className='form-errors-signup' key={err}><div>{err}</div></div>
             ))}
             <input
@@ -115,7 +125,7 @@ const SignUpForm = () => {
             ></input>
           </div>
           <div className='form-input'>
-          {errors?.filter(err => err?.includes('Password'))?.map(err => (
+          {errors && errors?.filter(err => err?.includes('Password'))?.map(err => (
               <div className='form-errors-signup signup-password-error' key={err}><div><br></br></div></div>
             ))}
             <input
@@ -129,7 +139,7 @@ const SignUpForm = () => {
         </div>
       </div>
       <div className='form-input-image-upload'>
-      {errors?.filter(err => err?.includes('Picture'))?.map(err => (
+      {errors && errors?.filter(err => err?.includes('Picture'))?.map(err => (
               <div className='form-errors-signup' key={err}><div>{err}</div></div>
             ))}
         <label>Upload Profile Picture:</label>
