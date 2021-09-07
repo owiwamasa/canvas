@@ -33,6 +33,11 @@ const SignUpForm = () => {
     //   // setErrors(errors.concat(errs))
     // }
     // await setErrors(errs)
+    if (!password) {
+      setErrors(['Password is required'])
+      return
+    }
+
     if (password !== repeatPassword) {
 			setErrors(['Passwords do not match'])
       return
