@@ -92,9 +92,12 @@ const SignUpForm = () => {
       <div className='signup-div'>
         <div className='signup-1'>
           <div className='form-input'>
-            {errors && errors?.filter(err => err?.includes('username'))?.map(err => (
+            {errors.find(err => err.includes('email')) && !errors.find(err => err.includes('username')) ?
+            <div className='form-errors-signup spacer'><br></br><br></br><br></br></div>
+            :
+            (errors && errors?.filter(err => err?.includes('username'))?.map(err => (
               <div className='form-errors-signup' key={err}><div>{err}</div></div>
-            ))}
+            )))}
             <input
               type='text'
               name='username'
@@ -118,9 +121,12 @@ const SignUpForm = () => {
         </div>
         <div className='signup-2'>
         <div className='form-input'>
-            {errors && errors?.filter(err => err?.includes('email'))?.map(err => (
+          {errors.find(err => err.includes('username')) && !errors.find(err => err.includes('email')) ?
+            <div className='form-errors-signup'><br></br><br></br><br></br></div>
+            :
+            (errors && errors?.filter(err => err?.includes('email'))?.map(err => (
               <div className='form-errors-signup' key={err}><div>{err}</div></div>
-            ))}
+            )))}
             <input
               type='text'
               name='email'
