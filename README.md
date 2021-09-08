@@ -20,6 +20,7 @@ View live: <a href='https://canvas-proj.herokuapp.com/'>Canvas App</a>
 - Create, edit, and delete artwork posts on your artist page
 - Create, edit, and delete work requests for users, who are hiring. Accept and complete work requests for artists
 - Add/delete artist tags on your artist page
+- Send messages to artists / users
 - AWS image upload for posts, profile picture, artist page header, and completed job artwork.
   <br />
   <br />
