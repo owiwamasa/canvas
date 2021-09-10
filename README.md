@@ -4,7 +4,7 @@
   <img src='https://i.imgur.com/0Szj0Wh.png' width='200px' >
 </p>
 
-Canvas, a <a href='https://fiverr.com'>Fiverr</a> clone, is an app for users to discover and hire freelance artists, or create an 'Artist Page' to receive work inquiries. It is built using React.js, Redux.js, and Flask.
+Canvas, a <a href='https://fiverr.com'>Fiverr</a> clone, is an app for users to discover and hire freelance artists, or create an 'Artist Page' to receive work inquiries. It is built using React.js, Redux.js, Python, and Flask.
 
 View live: <a href='https://canvas-proj.herokuapp.com/'>Canvas App</a>
 
