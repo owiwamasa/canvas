@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { deleteJob, editAcceptJob } from '../../store/job'
 import EditJobModal from '../EditJobModal'
 import EditCompletedJobModal from '../EditCompleteJobModal'
@@ -7,12 +8,15 @@ import ReviewModal from '../ReviewModal'
 import { getAllReviews } from '../../store/review'
 import './JobCard.css'
 import { useEffect } from 'react'
+import { allArtistPages } from '../../store/artistPage'
 
 function JobCard({artist, otherUser, job}){
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user);
     const reviews = useSelector(state => state.reviewReducer.reviews)
     const jobReview = reviews.find(review => review?.jobId === job?.id)
+    const artistPages = useSelector(state => state.artistPageReducer.artistPages)
+    const artistPageId = artistPages.find(page => page?.userId === artist.id).id
 
     const deleteOneJob = (e, id) => {
         e.preventDefault()
@@ -26,6 +30,7 @@ function JobCard({artist, otherUser, job}){
 
     useEffect(() => {
         dispatch(getAllReviews())
+        dispatch(allArtistPages())
     }, [dispatch])
 
     return(
@@ -57,9 +62,11 @@ function JobCard({artist, otherUser, job}){
                 </div>
                 <div className='job-card-header-right'>
                     <div className='job-card-user'>
-                        <div className='job-card-profilePic'>
-                            <img src={artist?.profilePic} alt='profile'/>
-                        </div>
+                        <Link to={`/artist-pages/${artistPageId}`}>
+                            <div className='job-card-profilePic'>
+                                <img src={artist?.profilePic} alt='profile'/>
+                            </div>
+                        </Link>
                         <div className='job-card-name'>Artist:</div>
                         <div>{artist?.username}</div>
                     </div>

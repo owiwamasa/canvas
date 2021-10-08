@@ -4,6 +4,8 @@
   background-color: #fa4a18;
   height: 90px;
   align-items: center;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .nav-logo img {
@@ -37,6 +39,11 @@
   text-decoration: none;
   white-space: nowrap;
   padding: 6px 0;
+}
+
+.nav-artist-link,
+.nav-login {
+  margin-left: 10px;
 }
 
 .nav-artist-link:hover,
@@ -122,4 +129,14 @@
   color: grey;
   font-family: "Hind", sans-serif;
   font-style: italic;
+}
+
+@media only screen and (max-width: 1150px) {
+  .nav-search-input {
+    width: 300px;
+  }
+
+  .nav-search-results {
+    width: 328px;
+  }
 }

@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect, useState } from 'react'
-import { useParams } from "react-router-dom"
+import { useParams, useHistory } from "react-router-dom"
 import { allArtistPages } from "../../store/artistPage"
 import EditArtistPageModal from "../EditArtistPageModal"
 import { getAllPosts } from "../../store/post"
@@ -45,6 +45,7 @@ function ArtistPage(){
     const artistUser = users.find(user => user?.id === artist?.userId)
     const conversations = useSelector(state => state.conversationReducer.conversations)
     const hasConversation = conversations.filter(conversation => (conversation?.artistId === artistUser?.id) || (conversation?.userId === artistUser?.id))
+    const history = useHistory()
 
     useEffect(() => {
         dispatch(allArtistPages())
@@ -57,6 +58,10 @@ function ArtistPage(){
         dispatch(allConversations())
     }, [dispatch, artistPageId])
 
+    const goToInbox = (e) => {
+        e.preventDefault()
+        history.push(`/users/${user?.id}`)
+    }
 
     return(
         <div className='artistPage'>
@@ -78,7 +83,7 @@ function ArtistPage(){
                           <button className='artistPage-job-sent' disabled={true}>Work Request Sent <i className="fas fa-check"></i></button>
                         : <CreateJobModal artistId={artist?.userId} />}
                         {hasConversation.length ?
-                        <button className='message-btn-disabled' disabled={true}>Message Sent (Check Inbox)</button>:
+                        <button className='message-btn-disabled' onClick={goToInbox}>Message Sent (Go To Inbox)</button>:
                         <ChatModal artist={artist}/>}
                     </div>
                     :

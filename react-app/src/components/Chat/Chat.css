@@ -20,12 +20,18 @@
   font-family: "Hind", sans-serif;
   font-size: 16px;
   font-weight: bolder;
-  color: #1153af89;
+  color: #1154af;
   background-color: white;
-  border: 3px solid #1153af89;
+  border: 3px solid #1154af;
   padding: 10px 30px;
   border-radius: 25px;
   margin-top: 20px;
+}
+
+.message-btn-disabled:hover {
+  color: white;
+  background-color: #1154af;
+  border: 3px solid #1154af;
 }
 
 .chat-send-to-input {
