@@ -69,7 +69,7 @@ function HomePage(){
                     let jobReview = reviews?.find(review => review?.jobId === job?.id)
                     let reviewUser = users?.find(user => user?.id === jobReview?.userId)
                     let artist = users?.find(user => user?.id === job?.artistId)
-                    let artistPageId = artistPages?.find(page => page?.userId === job?.artistId).id
+                    let artistPageId = artistPages?.find(page => page?.userId === job?.artistId)?.id
                     return (
                         <div className='home-review-card' key={job?.id}>
                             <div className={`review-card-home-${idx}`}>
