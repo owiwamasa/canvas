@@ -4,9 +4,27 @@
   <img src='https://i.imgur.com/0Szj0Wh.png' width='200px' >
 </p>
 
-Canvas, a <a href='https://fiverr.com'>Fiverr</a> clone, is an app for users to discover and hire freelance artists, or create an 'Artist Page' to receive work inquiries. It is built using React.js, Redux.js, and Flask.
+Canvas, a <a href='https://fiverr.com'>Fiverr</a> clone, is an app for users to discover and hire freelance artists, or create an 'Artist Page' to receive work inquiries. It is built using React.js, Redux.js, Python, and Flask.
 
 View live: <a href='https://canvas-proj.herokuapp.com/'>Canvas App</a>
+
+<br />
+
+## Technologies Used:
+
+<br />
+
+- Languages:
+  ![](https://img.shields.io/badge/-JavaSript-ffffff?style=flat-square&logo=javascript&logoColor=ff0000)
+  ![](https://img.shields.io/badge/-Python-ffffff?style=flat-square&logo=python&logoColor=ff0000)
+- Frontend:
+  ![](https://img.shields.io/badge/-React-ffffff?style=flat-square&logo=react&logoColor=ff0000)
+  ![](https://img.shields.io/badge/-Redux-ffffff?style=flat-square&logo=redux&logoColor=ff0000)
+  ![](https://img.shields.io/badge/-CSS3-ffffff?style=flat-square&logo=css3&logoColor=ff0000)
+  ![](https://img.shields.io/badge/-HTML5-ffffff?style=flat-square&logo=html5&logoColor=ff0000)
+- Backend:
+  ![](https://img.shields.io/badge/-Flask-ffffff?style=flat-square&logo=flask&logoColor=ff0000)
+  ![](https://img.shields.io/badge/-SQLAlchemy-ffffff?style=flat-square&logo=sqlalchemy&logoColor=ff0000)
 
 <br />
 
@@ -43,23 +61,6 @@ View live: <a href='https://canvas-proj.herokuapp.com/'>Canvas App</a>
 <br />
 <br />
 
-## Technologies Used:
-
-<br />
-
-- Languages:
-  ![](https://img.shields.io/badge/-JavaSript-ffffff?style=flat-square&logo=javascript&logoColor=ff0000)
-  ![](https://img.shields.io/badge/-Python-ffffff?style=flat-square&logo=python&logoColor=ff0000)
-- Frontend:
-  ![](https://img.shields.io/badge/-React-ffffff?style=flat-square&logo=react&logoColor=ff0000)
-  ![](https://img.shields.io/badge/-Redux-ffffff?style=flat-square&logo=redux&logoColor=ff0000)
-  ![](https://img.shields.io/badge/-CSS3-ffffff?style=flat-square&logo=css3&logoColor=ff0000)
-  ![](https://img.shields.io/badge/-HTML5-ffffff?style=flat-square&logo=html5&logoColor=ff0000)
-- Backend:
-  ![](https://img.shields.io/badge/-Flask-ffffff?style=flat-square&logo=flask&logoColor=ff0000)
-  ![](https://img.shields.io/badge/-SQLAlchemy-ffffff?style=flat-square&logo=sqlalchemy&logoColor=ff0000)
-
-<br />
 
 ## My Information:
 
