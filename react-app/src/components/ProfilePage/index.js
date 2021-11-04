@@ -14,13 +14,13 @@ import './ProfilePage.css'
 function ProfilePage() {
   const [user, setUser] = useState({});
   const [jobsClicked, setJobsClicked] = useState(false)
-  const { userId }  = useParams();
+  const { userId } = useParams();
   const currentUser = useSelector(state => state.session.user);
   const artistPages = useSelector(state => state.artistPageReducer.artistPages)
   const users = useSelector(state => state.userReducer.users)
   const artistPageId = artistPages?.filter(page => page?.userId === currentUser?.id)[0]?.id
   const jobs = useSelector(state => state.jobReducer.jobs)
-  const myJobs = jobs?.filter(job => ((job?.userId === +userId) || (job?.artistId === +userId ))).reverse()
+  const myJobs = jobs?.filter(job => ((job?.userId === +userId) || (job?.artistId === +userId))).reverse()
   const dispatch = useDispatch()
 
 
@@ -29,7 +29,7 @@ function ProfilePage() {
       return;
     }
     (async () => {
-      const response = await fetch(`/api/users/${userId}`);
+      const response = await fetch(`/api/users/${+userId}`);
       const user = await response.json();
       setUser(user);
     })();
@@ -66,7 +66,7 @@ function ProfilePage() {
         {!currentUser.isArtist ?
           <CreateArtistPageModal />
           :
-            <button className='delete-artistPage' onClick={deleteArtistPage}>Delete Artist Page</button>
+          <button className='delete-artistPage' onClick={deleteArtistPage}>Delete Artist Page</button>
         }
       </div>
       <div className='profilePage-content'>
@@ -76,15 +76,16 @@ function ProfilePage() {
               let artist = users?.find(user => user?.id === job?.artistId)
               let otherUser = users?.find(user => user?.id === job?.userId)
               return (
-                <JobCard key={job?.id} job={job} artist={artist} otherUser={otherUser}/>
-              )}):
-            <div className='profilePage-noJob'>No Jobs :(</div>
+                <JobCard key={job?.id} job={job} artist={artist} otherUser={otherUser} />
+              )
+            }) :
+              <div className='profilePage-noJob'>No Jobs :(</div>
             }
           </div>
-        :
-        <div>
-          <Inbox user={currentUser}/>
-        </div>}
+          :
+          <div>
+            <Inbox user={currentUser} />
+          </div>}
       </div>
     </div>
   );
