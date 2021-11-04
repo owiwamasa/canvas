@@ -29,8 +29,8 @@ function Inbox({user}){
                 let convoMessages = messages.filter(message => message.conversationId === conversation?.id).reverse()
                 let sender = users.find(user => user?.id === conversation?.userId)
                 let receiver = users.find(user => user?.id === conversation?.artistId)
-                let senderPageId = artistPages.find(artist => artist.userId === sender?.id).id
-                let receiverPageId = artistPages.find(artist => artist.userId === receiver?.id).id
+                let senderPageId = artistPages.find(artist => artist.userId === sender?.id)?.id
+                let receiverPageId = artistPages.find(artist => artist.userId === receiver?.id)?.id
                 return(
                     <div className='conversation' key={conversation?.id}>
                         {conversation?.userId === user?.id ?

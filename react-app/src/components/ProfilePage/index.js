@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { allArtistPages } from '../../store/artistPage';
 import { allJobs } from '../../store/job';
 import { deleteArtist } from '../../store/artistPage';
@@ -22,6 +22,7 @@ function ProfilePage() {
   const jobs = useSelector(state => state.jobReducer.jobs)
   const myJobs = jobs?.filter(job => ((job?.userId === +userId) || (job?.artistId === +userId))).reverse()
   const dispatch = useDispatch()
+  const history = useHistory()
 
 
   useEffect(() => {
@@ -42,7 +43,7 @@ function ProfilePage() {
   }, [dispatch])
 
   if (!user) {
-    return null;
+    history.push('/');
   }
 
   const deleteArtistPage = async (e) => {
